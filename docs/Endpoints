@@ -1,0 +1,160 @@
+# API Endpoints Documentation for DPI System
+
+This document provides a simple guide for all API endpoints required to develop the **Dossier Patient Informatisé (DPI)** system. These endpoints cover patient management, consultations, prescriptions, and related features. Each endpoint includes the HTTP method, URL, and a short description.
+
+---
+
+## **1. Authentication**
+
+### **Login**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/auth/login/`
+- **Description**: Authenticate the user and return a token.
+
+### **Logout**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/auth/logout/`
+- **Description**: Invalidate the user session.
+
+---
+
+## **2. Patient Management**
+
+### **Create a New Patient**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/patients/`
+- **Description**: Create a new patient record.
+
+### **Get Patient Details**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/patients/{nss}/`
+- **Description**: Retrieve details of a patient by their NSS.
+
+### **Search Patient**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/patients/search/?nss={nss}&qr_code={code}`
+- **Description**: Search for a patient using NSS or QR code.
+
+---
+
+## **3. Consultation Management**
+
+### **Create a Consultation**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/consultations/`
+- **Description**: Add a new consultation for a patient.
+
+### **Get Consultations for a Patient**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/consultations/{patient_nss}/`
+- **Description**: Retrieve all consultations for a specific patient.
+
+---
+
+## **4. Prescription Management**
+
+### **Validate Prescription**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/prescriptions/validate/`
+- **Description**: Validate a prescription through the pharmacy system.
+
+---
+
+## **5. Laboratory and Radiology Results**
+
+### **Upload Laboratory Results**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/results/laboratory/`
+- **Description**: Submit laboratory results for a consultation.
+
+### **Upload Radiology Results**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/results/radiology/`
+- **Description**: Upload radiology images for a consultation.
+
+### **Get All Results for a Consultation**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/results/{consultation_id}/`
+- **Description**: Retrieve all results (laboratory and radiology) for a consultation.
+
+---
+
+## **6. Nurse Management**
+
+### **Record Patient Care**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/nurses/care/`
+- **Description**: Add care details for a patient.
+
+---
+
+## **7. Trends and Summaries**
+
+### **Generate Patient Trends**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/trends/{patient_nss}/`
+- **Description**: Generate trends for medical parameters (e.g., glycemia, blood pressure).
+
+---
+
+## **8. Certificate and Fee Requests**
+
+### **Request Medical Certificate**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/patients/{nss}/certificate/`
+- **Description**: Request a medical certificate for a patient.
+
+### **Retrieve Hospitalization Fees**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/patients/{nss}/fees/`
+- **Description**: Get a summary of a patient’s hospitalization fees.
+
+---
+
+## **9. User Management (Admin)**
+
+### **Create a New User**
+
+- **Method**: `POST`
+- **Endpoint**: `/api/users/`
+- **Description**: Add a new user to the system (e.g., admin, doctor, nurse).
+
+---
+
+## **10. Additional Features**
+
+### **Health Parameter Trends**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/parameters/{patient_nss}/`
+- **Description**: Retrieve health parameter trends over time.
+
+### **Retrieve Doctor’s Patients**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/medecins/{doctor_id}/patients/`
+- **Description**: Retrieve all patients associated with a specific doctor.
+
+---
+
+### **Notes for Developers**
+
+- **Database**: Use MySQL to ensure proper relational mapping.
+- **Authentication**: Protect all endpoints with JWT-based authentication.
+- **Testing**: Use Postman for API testing and pytest for unit testing.
+- **Documentation**: Auto-generate API documentation using Swagger or a similar tool.
