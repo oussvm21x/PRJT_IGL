@@ -152,7 +152,31 @@ This document provides a simple guide for all API endpoints required to develop 
 
 ---
 
-### **Notes for Developers**
+### \*\*11. DPI
+
+Here’s the updated notation for the suggested endpoints, following the format you've requested:
+
+---
+
+### **Retrieve DPI**
+
+- **Method**: `GET`
+- **Endpoint**: `/api/dpi/{nss}/`
+- **Description**: Retrieve the complete DPI of a patient using their NSS.
+
+---
+
+### **Update DPI**
+
+- **Method**: `PUT`
+- **Endpoint**: `/api/dpi/{nss}/`
+- **Description**: Update the DPI of a patient using their NSS.
+
+---
+
+### \*\*Notes
+
+for Developers\*\*
 
 - **Database**: Use MySQL to ensure proper relational mapping.
 - **Authentication**: Protect all endpoints with JWT-based authentication.
