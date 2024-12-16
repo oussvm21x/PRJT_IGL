@@ -1,17 +1,17 @@
-<div class="flex justify-between items-center  h-[100vh] ">
-    <img src="assets/images/Group 51.svg" alt="logo" class="absolute top-0 left-0 p-2 hobject-cover">
-    <div class="w-1/2 h-full flex justify-center items-center flex-col gap-12  p-20">
-        <h2 class="text-4xl text-[#103550] font-bold text-center mb-6">Se connecter</h2>
+<div class="flex flex-col md:flex-row justify-between items-center h-screen">
+    <!-- Left Section -->
+    <div class="w-full md:w-1/2 h-full flex flex-col justify-center items-center gap-12 p-8 md:p-20">
+        <img src="assets/images/Group 51.svg" alt="logo" class="absolute top-0 left-0 p-2 w-12 md:w-24">
+        <h2 class="text-2xl md:text-4xl text-[#103550] font-bold text-center mb-6">Se connecter</h2>
 
-        <form [formGroup]=" myForm" (ngSubmit)="onSubmit()" class="w-full p-10  ">
-
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="w-full p-6 md:p-10">
             <!-- Name Field -->
             <div class="mb-4 flex items-center space-x-2 border-b-2">
-                <label class="text-gray-700" for="name">
-                    <img src="assets/images/username.svg" alt="username icon" class="w-6 h-6">
+                <label for="name" class="text-gray-700">
+                    <img src="assets/images/username.svg" alt="username icon" class="w-5 h-5 md:w-6 md:h-6">
                 </label>
                 <input type="text" id="name" formControlName="name"
-                    class="flex-1 p-2 font-medium  focus:outline-none focus:ring-0 focus:border-gray-300"
+                    class="flex-1 p-2 font-medium focus:outline-none focus:ring-0 focus:border-gray-300"
                     placeholder="Nom d’utilisateur" />
             </div>
 
@@ -20,10 +20,10 @@
                 Name is required.
             </div>
 
-            <!-- Password Field (same style as Name) -->
+            <!-- Password Field -->
             <div class="mb-4 flex items-center space-x-2 border-b-2">
-                <label class="text-gray-700" for="password">
-                    <img src="assets/images/Password.svg" alt="password icon" class="w-6 h-6">
+                <label for="password" class="text-gray-700">
+                    <img src="assets/images/Password.svg" alt="password icon" class="w-5 h-5 md:w-6 md:h-6">
                 </label>
                 <input type="password" id="password" formControlName="password"
                     class="flex-1 p-2 font-medium focus:outline-none focus:ring-0 focus:border-gray-300"
@@ -35,29 +35,35 @@
                 class="text-red-500 text-sm mt-1">
                 Password must be at least 6 characters.
             </div>
-
-
-
         </form>
+
         <!-- Submit Button -->
-        <button type="submit" class="bg-[#2D6974] text-white w-44 p-2 rounded-3xl hover:bg-indigo-700 transition"
+        <button type="submit"
+            class="bg-[#2D6974] text-white w-full md:w-44 p-2 rounded-3xl hover:bg-indigo-700 transition"
             [disabled]="myForm.invalid">
             Submit
         </button>
     </div>
 
-    <div class="flex justify-end w-1/2 h-full overflow-hidden relative ">
+    <!-- Right Section -->
+    <div class="w-full md:w-1/2 h-full relative overflow-hidden hidden md:block">
         <img src="assets/images/Vector 2.svg" alt="login" class="h-full w-full object-cover">
-        <div class="absolute top-[20%] right-[10%] flex justify-between items-center flex-col gap-5">
-            <h1 class="text-4xl font-semibold text-white">Bienvenu !</h1>
-            <img src="assets/images/discussion 1.svg" alt="login" class="w-80">
+
+        <!-- Welcome Text & Dr Image -->
+        <div
+            class="absolute top-[20%] right-1/2 md:right-[10%] flex flex-col items-center gap-5 transform translate-x-1/2 md:translate-x-0">
+            <h1 class="text-2xl md:text-4xl font-semibold text-white">Bienvenu !</h1>
+            <img src="assets/images/discussion 1.svg" alt="login" class="w-32 sm:w-36 md:w-60 lg:w-80">
         </div>
-        <div class="absolute top-[20%] left-[15%] w-12">
-            <img src="assets/images/Ellipse 8.svg" alt="login">
+
+        <!-- Decorative Elements (Ellipses) -->
+        <div class="absolute top-[18%] left-[18%] w-4 sm:w-6 md:w-8 lg:w-12">
+            <img src="assets/images/Ellipse 8.svg" alt="decorative element">
         </div>
-        <div class="absolute bottom-[20%] left-[5%] w-6">
-            <img src="assets/images/Ellipse 8.svg" alt="login">
+        <div class="absolute bottom-[18%] left-[8%] w-3 sm:w-4 md:w-6 lg:w-8">
+            <img src="assets/images/Ellipse 8.svg" alt="decorative element">
         </div>
+
     </div>
 
 </div>
