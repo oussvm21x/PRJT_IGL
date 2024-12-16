@@ -1,22 +1,39 @@
-<div class="grid grid-rows-[5fr] grid-cols-6 px-5">
-    <!-- Div spanning from row 1 to 2 and column 1 to 2 -->
-    <div class="row-start-1 row-span-2 col-start-1 col-span-2 ">
-        <img src="assets/images/logo+rec.svg" alt="Hero Section Image" class="w-80 object-cover">
+<div class="flex justify-between ">
+    <div class="flex justify-start items-start align-top ">
+        <img src="assets/images/hero.svg" alt="hero" class="object-top h-auto">
     </div>
 
-    <!-- Div spanning from row 2 to row 3 and column 1 -->
-    <div class="col-start-1 row-start-2 row-end-4 ">
-        <img src="assets/images/rectangle1.svg" alt="Hero Section Image" class="w-36 object-cover">
-    </div>
+    <div class="w-full align-top h-full ">
+        <div class="absolute top-0 left-1/4 ">
+            <app-navbar></app-navbar>
+        </div>
+        <div class="opacity-0 top-0 left-[30vw] ">
+            <app-navbar></app-navbar>
+        </div>
+        <div class="flex flex-col gap-10">
+            <div>
+                <h1 class="text-7xl leading-tight mb-14">
+                    Votre santé, votre
+                    <span class="text-[#22608E]">dossier</span> ,
+                    toujours
+                    à <span class="text-[#22608E]">portée</span> de main <br> en
+                    un clic .
+                </h1>
+                <h1>
+                    "One simplifie la gestion de votre dossier médical en centralisant toutes vos informations de santé
+                    en un seul endroit.
+                    Accédez à vos données, suivez vos traitements, et restez connecté avec vos professionnels de santé,
+                    où que vous soyez."
+                </h1>
+            </div>
+            <div class="flex justify-center items-center w-full">
+                <button class="bg-[#2D6974] px-6 py-3 rounded-3xl flex items-center justify-between gap-10 w-fit ">
+                    <img src="assets/images/arrow.svg" alt="arrow" class="w-8 ">
+                    <h1 class="text-2xl text-center text-white  ">Essayez maintenant</h1>
+                </button>
+            </div>
 
-    <!-- Div spanning from row 3 to row 4 and column 1 to 2 -->
-    <div class="row-start-3 row-span-2 col-start-1 col-span-2 h-full flex align-bottom mt-2">
-        <img src="assets/images/rectangle 2.svg" alt="Hero Section Image" class="w-80 object-cover">
-    </div>
-    <div class="row-start-4 col-start-1 col-end-2 row-span-3  ">
-        <img src="assets/images/nurse.svg" alt="Hero Section Image" class="w-36 object-cover">
-    </div>
-    <div class="row-start-3 col-start-2 row-end-7 flex items-end h-full ">
-        <img src="assets/images/doctor.svg" alt="Hero Section Image" class="h-96 object-cover">
+        </div>
+
     </div>
 </div>
