@@ -18,7 +18,8 @@ export const routes: Routes = [
         ],
         
     },
-   
+    { path: '', redirectTo: '/medecin/dashboardMdcn', pathMatch: 'full' },
+
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
