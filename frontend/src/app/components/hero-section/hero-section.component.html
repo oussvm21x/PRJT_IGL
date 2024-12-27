@@ -1,39 +1,49 @@
-<div class="flex justify-between ">
-    <div class="flex justify-start items-start align-top ">
-        <img src="assets/images/hero.svg" alt="hero" class="object-top h-auto">
-    </div>
+<div>
 
-    <div class="w-full align-top h-full ">
-        <div class="absolute top-0 left-1/4 ">
-            <app-navbar></app-navbar>
+    <div class="justify-between h-screen hidden md:flex">
+        <div class="flex justify-start items-start  h-screen lg:w-1/3">
+            <img src="assets/images/hero.svg" alt="hero" class="h-full object-cover">
         </div>
-        <div class="opacity-0 top-0 left-[30vw] ">
-            <app-navbar></app-navbar>
-        </div>
-        <div class="flex flex-col gap-10">
-            <div>
-                <h1 class="text-7xl leading-tight mb-14">
-                    Votre santé, votre
-                    <span class="text-[#22608E]">dossier</span> ,
-                    toujours
-                    à <span class="text-[#22608E]">portée</span> de main <br> en
-                    un clic .
-                </h1>
-                <h1>
-                    "One simplifie la gestion de votre dossier médical en centralisant toutes vos informations de santé
-                    en un seul endroit.
-                    Accédez à vos données, suivez vos traitements, et restez connecté avec vos professionnels de santé,
-                    où que vous soyez."
-                </h1>
+
+
+        <div class="w-full justify-between flex flex-col gap-0 align-top h-screen ">
+
+            <div class="">
+                <app-navbar></app-navbar>
             </div>
-            <div class="flex justify-center items-center w-full">
-                <button class="bg-[#2D6974] px-6 py-3 rounded-3xl flex items-center justify-between gap-10 w-fit ">
-                    <img src="assets/images/arrow.svg" alt="arrow" class="w-8 ">
-                    <h1 class="text-2xl text-center text-white  ">Essayez maintenant</h1>
+            <div class="flex flex-col gap-10 pr-6 ">
+                <div class="flex flex-col text-left pl-10  ">
+                    <h1 class="md:text-[3rem] lg:text-[4.5rem] 2xl:text-[6.55rem] leading-tight mb-14">
+                        Votre santé, votre
+                        <span class="text-[#22608E]">dossier</span> ,<br>
+                        toujours à <span class="text-[#22608E]">portée</span> de main <br> en
+                        un clic .
+                    </h1>
+                    <h1 class="text-base lg:text-lg 2xl:text-xl ">
+                        "One simplifie la gestion de votre dossier médical en centralisant toutes vos informations de
+                        santé
+                        en un seul endroit.
+                        Accédez à vos données, suivez vos traitements, et restez connecté avec vos professionnels de
+                        santé,
+                        où que vous soyez."
+                    </h1>
+                </div>
+
+
+            </div>
+            <div class="flex justify-center items-center w-full pr-6 py-2 ">
+                <button class="bg-[#2D6974] px-6 py-3 rounded-2xl flex items-center justify-between w-fit gap-5 ">
+                    <img src="assets/images/arrow.svg" alt="arrow" class="w-6 h-6 ">
+                    <h1 class="text-xl text-center text-white    ">Essayez maintenant</h1>
                 </button>
             </div>
 
         </div>
-
     </div>
+
+    <div class="flex md:hidden">
+        hi
+    </div>
+
+
 </div>
