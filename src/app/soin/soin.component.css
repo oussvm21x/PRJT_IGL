@@ -1,0 +1,80 @@
+.soin-container {
+    position: relative;
+    margin-top: 30px;
+    top: -10px;
+}
+
+.date-text {
+    position: relative;
+    color: #000000;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 15px;
+    font-weight: 200;
+    left: 100px;
+    top: 60px;
+    line-height: 26px;
+}
+
+.soin-box {
+    position: relative;
+    display: flex;
+    width: 700px;
+    height: 350px;
+    left: 82px;
+    top: 70px;
+    background-color: #F7FAFC;
+    border-radius: 10px;
+}
+
+.green-bar {
+    position: relative;
+    width: 13px;
+    height: 350px; 
+    background-color: #448894;
+    border-radius: 10px 0 0 10px;
+}
+
+.soin-content-box {
+    
+    list-style-type: none;
+    /*flex-direction: column; /* Stack children vertically */
+    
+}
+
+.soin-title-text {
+    margin-top: 30px;
+    margin-left: 25px;
+    margin-bottom: 10px; /* Space between the first and second elements */
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.soin-description-text {
+    margin-left: 25px;
+    margin-bottom: 25px; /* Space between the second and third elements */
+    color: #2D6974;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+
+}
+
+.soin-nurse-text {
+    margin-left: 25px;
+    margin-bottom: 25px; /* Space between the third and fourth elements */
+    color: #3A405B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+   
+}
+.soin-observations-text {
+    margin-left: 25px;
+    color: #3A405B; /* No bottom margin needed here as it's the last element */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    
+}

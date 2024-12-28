@@ -1,0 +1,209 @@
+body, .dashboard-header {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #F7FAFC;
+}
+
+/* dashboard.component.css */
+.dashboard {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F7FAFC;
+}
+
+.welcome {
+  padding: 1rem;
+  background-color: #F4F4F4;
+  margin: 0.5rem auto;
+  border-radius: 10px;
+  width: 70%;
+  height: 100px;
+  max-width: 600px;
+  text-align: left;
+}
+
+.welcome h3 {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.welcome p {
+  font-size: small;
+  color: #959595;
+}
+
+.patient-info {
+  background-color: #F7FAFC;
+  padding: 1rem;
+  margin: 1rem 0;
+  margin-left: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.ordonnances, .consultations, .imageries {
+  background-color: #F7FAFC;
+  padding: 1rem;
+  width: 48%; /* Uniformiser la taille avec les imageries */
+  max-width: 700px; /* Largeur maximale égale */
+  margin: 1rem auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.ordonnances ul, .imageries ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ordonnances li, .imageries li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 20px;
+  margin-bottom: 1rem;
+}
+
+.voir-bilan-btn {
+  background-color: #CDE8E5;
+  color: #2E2E2E;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.download-btn, .visualiser-btn {
+  background-color: #CDE8E5;
+  color: #2E2E2E;
+  border: none;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.download-icon {
+  width: 15px;
+  height: 15px;
+}
+.visualiser-icon{
+  width: 25px;
+  height: 25px;
+}
+
+.download-btn:hover, .voir-bilan-btn:hover, .visualiser-btn:hover {
+  background-color: #78b5ae;
+}
+
+.status {
+  color: #6c757d;
+  flex-grow: 2;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.status.valid {
+  color: #28a745;
+}
+
+/* Styles pour le calendrier */
+.calendar {
+  background-color: #F7FAFC;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.welcome {
+  margin-left: 0; /* Supprimer toute marge à gauche pour les déplacer à gauche */
+  margin-right: auto; /* Garder la marge automatique à droite pour maintenir un alignement à gauche */
+  width: auto; /* Supprimer toute limitation de largeur */
+  padding: 1rem; /* Ajouter du padding à gauche si nécessaire */
+  flex: 1 1 calc(30% - 1rem); /* Ajuste la largeur à 48% et permet une réduction flexible */
+  max-width: 700px; /* Limite la largeur maximale */
+  border-radius: 10px;
+}
+.ordonnances{
+  margin-left: 50px;
+}
+.imageries {
+margin-left: 50px;
+margin-right: auto; /* Garder la marge automatique à droite pour maintenir un alignement à gauche */
+width: auto; /* Supprimer toute limitation de largeur */
+padding: 1rem; /* Ajouter du padding à gauche si nécessaire */
+flex: 1 1 calc(30% - 1rem); /* Ajuste la largeur à 48% et permet une réduction flexible */
+max-width: 700px; /* Limite la largeur maximale */
+border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .welcome, .imageries {
+    flex: 1 1 100%; /* Occupe toute la largeur à des résolutions plus petites */
+    margin: 1rem 0;
+  }
+}
+
+.welcome {
+  text-align: left; /* Garder le texte aligné à gauche à l'intérieur */
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.imageries {
+  text-align: left; /* Garder le texte aligné à gauche à l'intérieur */
+  padding: 1rem; /* Ajouter du padding à l'intérieur si nécessaire */
+}
+
+
+.welcome {
+  flex: 2 1 calc(68% - 1rem); /* Prend 68% de la largeur au lieu de 48% */
+  max-width: 68%; /* Largeur maximale plus grande */
+  min-width: 400px; /* Augmente la largeur minimale pour qu'il soit plus large */
+  padding: 1.5rem; /* Ajoutez plus de padding si nécessaire */
+  background-color: #F4F4F4; /* Couleur de fond pour mieux le distinguer (optionnel) */
+  border-radius: 8px; /* Coins arrondis pour l'esthétique */
+}
+
+@media screen and (max-width: 768px) {
+  .welcome {
+    flex: 1 1 100%; /* Sur petits écrans, il revient à 100% */
+    max-width: 100%;
+  }
+}
+
+.ordonnances,
+.consultations,
+.imageries {
+  flex: 1 1 calc(48% - 1rem); /* Réduction par défaut */
+  max-width: 48%; /* Toujours à 48% de la largeur */
+  min-width: 300px;
+}
+
+@media screen and (max-width: 768px) {
+  .ordonnances,
+  .consultations,
+  .imageries {
+    flex: 1 1 100%; /* Sur petits écrans, ils prennent toute la largeur */
+    max-width: 100%;
+  }
+}

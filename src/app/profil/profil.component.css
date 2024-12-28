@@ -1,0 +1,18 @@
+.folder {
+  position: absolute; 
+  width: 864px;
+  height: 573px; 
+  top: 180px; 
+  left: 150px; 
+  background-color: #F4F4F4; 
+  border-radius: 0 28px 28px 28px; 
+  margin-bottom: 30px; 
+  overflow-x: hidden; /* prevent horizontal scrolling */
+}
+
+@media (max-width: 1800px) {
+  .folder {
+    flex: 1 1 100%; /* Occupe toute la largeur à des résolutions plus petites */
+    margin: 1rem 0;
+  }
+}

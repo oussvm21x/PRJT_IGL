@@ -1,0 +1,49 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F7FAFC;
+}
+
+.search-bar {
+  width: 350px;
+  padding: 0.5rem;
+  border: 1px solid #C1C1C1;
+  border-radius: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  font-family: Poppins;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.notification-btn, .help-btn {
+  background-color: #FAFAFA;
+  color: #2E2E2E;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+.notification-icon, .help-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.notification-btn:hover, .help-btn:hover {
+  background-color: #d2dbd9;
+}

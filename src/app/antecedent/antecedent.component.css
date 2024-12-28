@@ -1,0 +1,48 @@
+
+.antecedent-box {
+    position: relative;
+    display: flex;
+    width: 329px;
+    height: 203px;
+    left: 82px;
+    top: 80px;
+    background-color: #F7FAFC;
+    border-radius: 25px;
+}
+
+.antecedent-title-text {
+    margin-top: 35px;
+    margin-left: 35px;
+    margin-bottom: 5px; /* space between the first and second elements */
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.antecedent-duration-text {
+    margin-left: 35px;
+    margin-bottom: 35px; /* space between the second and third elements */
+    color: #2D6974;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+
+}
+
+.antecedent-detaills-text {
+    margin-left: 35px;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+   
+
+}
+.green-bar {
+    position: relative;
+    width:13px;
+    height: 203px;
+    background-color: #448894;
+    border-radius: 10px 0 0 10px;
+}
