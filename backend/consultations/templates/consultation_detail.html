@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        .details, .section {
+            margin-bottom: 20px;
+        }
+        .details strong {
+            display: inline-block;
+            width: 150px;
+            color: #444;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        .no-data {
+            color: red;
+            font-weight: bold;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consultation Details</h1>
+
+    <div class="details">
+        <p><strong>Consultation ID:</strong> {{ consultation.id_consultation }}</p>
+        <p><strong>Date:</strong> {{ consultation.date }}</p>
+        <p><strong>Motif:</strong> {{ consultation.motif }}</p>
+        <p><strong>Observations:</strong> {{ consultation.observations }}</p>
+    </div>
+    
+    <hr>
+
+    <div class="section">
+        <h2>Résumé</h2>
+        {% if consultation.resume %}
+            <p>{{ consultation.resume.contenu }}</p>
+        {% else %}
+            <p class="no-data">No Résumé Available</p>
+        {% endif %}
+    </div>
+    
+    <hr>
+
+    <div class="section">
+        <h2>Soins (Treatments)</h2>
+        {% if consultation.soins.exists %}
+            <ul>
+                {% for soin in consultation.soins.all %}
+                    <li>{{ soin.date }} - {{ soin.description }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-data">No Soins Available</p>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Examens (Exams)</h2>
+        {% if consultation.examens.exists %}
+            <ul>
+                {% for examen in consultation.examens.all %}
+                    <li>{{ examen.type }} - {{ examen.date }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-data">No Examens Available</p>
+        {% endif %}
+    </div>
+
+    <hr>
+</body>
+</html>

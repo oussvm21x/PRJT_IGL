@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultations for {{ patient.nom }} {{ patient.prenom }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .no-data {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consultations for {{ patient.nom }} {{ patient.prenom }}</h1>
+
+    <h2>Patient Details</h2>
+    <ul>
+        <li><strong>Full Name:</strong> {{ patient.nom }} {{ patient.prenom }}</li>
+        <li><strong>Date of Birth:</strong> {{ patient.date_naissance }}</li>
+        <li><strong>Address:</strong> {{ patient.adresse }}</li>
+        <li><strong>Phone:</strong> {{ patient.telephone }}</li>
+        <li><strong>Email:</strong> {{ patient.email }}</li>
+    </ul>
+
+    <h2>Consultations</h2>
+    {% if consultations %}
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Motif</th>
+                <th>Observations</th>
+                <th>Résumé</th>
+                <th>Soins</th>
+                <th>Examens</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consultation in consultations %}
+            <tr>
+                <td>{{ consultation.date }}</td>
+                <td>{{ consultation.motif }}</td>
+                <td>{{ consultation.observations }}</td>
+                <td>
+                    {% if consultation.resume %}
+                        {{ consultation.resume.contenu }}
+                    {% else %}
+                        <span class="no-data">No Résumé</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if consultation.soins.exists %}
+                        <ul>
+                            {% for soin in consultation.soins.all %}
+                                <li>{{ soin.date }} - {{ soin.description }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span class="no-data">No Soins</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if consultation.examens.exists %}
+                        <ul>
+                            {% for examen in consultation.examens.all %}
+                                <li>{{ examen.type }} - {{ examen.date }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span class="no-data">No Examens</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p class="no-data">No consultations found for this patient.</p>
+    {% endif %}
+</body>
+</html>
