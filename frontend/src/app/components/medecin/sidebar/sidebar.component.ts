@@ -1,6 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive,Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,10 +10,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  @Input() activeButton: string = 'dashboard'; // Le bouton actif par défaut
+  
+  @Input() activeRoute: string = 'dashboard';
+   activeButton: string = 'dashboard'; 
 
-  onClick(button: string) {
-    this.activeButton = button;
-
-}
+  setActiveButton(button: string): void {
+    this.activeButton = button;}
 }

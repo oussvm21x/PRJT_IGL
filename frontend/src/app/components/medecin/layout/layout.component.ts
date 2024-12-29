@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -13,6 +13,14 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
+  activeRoute: string = '';
 
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.router.events.subscribe(() => {
+      this.activeRoute = this.router.url;
+    });
+  }
 }
