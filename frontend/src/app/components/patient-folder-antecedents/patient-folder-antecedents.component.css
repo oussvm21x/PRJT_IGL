@@ -1,0 +1,15 @@
+.list-title-text {
+    position: relative;
+    color: #3A405B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    left: 90px;
+    top:50px;
+    letter-spacing: 1.34px;
+    
+}
+.antecedents-container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    gap: 35px; /* Space between the components */
+}

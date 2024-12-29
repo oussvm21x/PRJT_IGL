@@ -1,0 +1,49 @@
+.nss-text {
+    position: relative;
+    color: #3A405B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    left: 255px;
+    top:70px;
+    letter-spacing: 1px;
+    line-height: 17px; 
+  }
+  .entry-date-text {
+    position: relative;
+    color: #103550;
+    font-family: 'ABeeZee',sans-serif;
+    font-size: 14px;
+    left: 255px;
+    top:88px;
+    
+  }
+  .patient-info {
+
+    background-color: #FFFFFF;
+    position: absolute;
+    width: 609px;
+    height: 380px;
+    border-radius: 35px;
+    left: 230px;
+    bottom: 23px;
+  
+  }
+  .patient-pic {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transform:scale(0.9);
+  
+  }
+  .patient-info-text {
+    position: relative;
+    color: #212529;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    left: 30px;
+    top: 45px;
+    margin-bottom: 18px;
+    
+  }

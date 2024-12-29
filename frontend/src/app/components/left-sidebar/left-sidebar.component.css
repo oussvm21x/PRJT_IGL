@@ -1,0 +1,141 @@
+.sidenav {
+  background: #2d6974;
+  transition: all 0.5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 16.5625rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Cette propriété aligne les éléments de la sidebar du haut vers le bas */
+}
+
+.sidenav-collapsed {
+  width: 5rem;
+}
+
+.sidenav .logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem;
+}
+
+.sidenav .logo-container .logo {
+  background: #2d6974;
+  text-align: center;
+  width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  cursor: pointer;
+  border: none;
+}
+
+.sidenav .logo-container .logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: aileron;
+  color: white;
+}
+
+.sidenav .logo-container .btn-close {
+  margin-left: auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Ajout d'un espace entre le logo et les éléments */
+  margin-top: 2rem; /* Ajuste cette valeur pour augmenter ou réduire l'espace */
+}
+
+.sidenav-nav .sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
+  font-size: 22px;
+  width: 2rem;
+  text-align: center;
+  padding: 12px;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
+  margin-left: 1.5rem;
+}
+
+.sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
+  background-color: #448894;
+  color: white;
+}
+
+.active {
+  background-color: #448894;
+}
+
+.active .sidenav-link-icon,
+.active .sidenav-link-text {
+  color: white;
+}
+
+.logout-section {
+  margin-top: auto;
+  padding: 1rem;
+}
+
+.sidenav-link-icon {
+  width: 60px; /* Taille de l'icône en pixels */
+  height: 60px; /* Taille de l'icône en pixels */
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
+  width: 47px; /* Ajuste selon la taille souhaitée */
+  height: 47px; /* Ajuste selon la taille souhaitée */
+}
+
+
+/* Descendre la section Logout en bas */
+.logout-section {
+  margin-top: auto; /* Descend l'élément en bas de la sidebar */
+  padding: 1rem; /* Ajoute un peu de padding si nécessaire */
+  transition: none;
+  overflow: hidden; /* Empêcher le contenu de déborder */
+  white-space: nowrap; /* Éviter que le texte passe à la ligne */
+}
+
+/* Réduire la taille de l'icône et du texte du Logout */
+.logout-section .sidenav-nav-link .sidenav-link-icon {
+  width: 25px; /* Réduit la taille de l'icône */
+  height:25px; /* Réduit la taille de l'icône */
+}
+
+.logout-section .sidenav-nav-link .sidenav-link-text {
+  font-size: 14px; /* Réduit la taille du texte */
+}
+
+.logout-text {
+  color : white; /* Couleur */
+  font-size: 16px; /* Taille du texte */
+  margin-left: 10px; /* Ajouter un espace à gauche */
+}
