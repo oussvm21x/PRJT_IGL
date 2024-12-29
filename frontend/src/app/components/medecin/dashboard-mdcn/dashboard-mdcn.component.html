@@ -1,130 +1,205 @@
-<main class="flex flex-row  h-screen ">
-  <!-- Section  principale -->
-  <div class="flex-1 p-6 mt-[%] ">
-          <div class="flex flex-col space-y-4 bg-gray-100 p-9 rounded-3xl relative">
-            <p class="text-2xl font-bold">Bienvenue Monsieur {{ userName}} ! </p>
-            <p class="text-sm text-gray-400 font-thin-light ">Bienvenue dans votre tableau du bord. Accédez facilement à vos outils pour une gestion simplifiée et efficace .</p>
+<main class="flex flex-row h-screen">
+  <!-- Section principale -->
+  <div class="flex-1 p-6 mt-[%]">
+     <!-- Sidebar pour petits écrans -->
+    <div class="flex flex-row items-center justify-end mb-4 space-x-2 p-2 top-0 xl:hidden">
+      <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2.2"
+      stroke="currentColor"
+      class="w-5 h-5  text-black">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+    </svg>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 21 25"
+      fill="none"
+      class="w-5 h-5 mt-1 text-black">
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M2.62501 8.125C2.62501 6.03642 3.4547 4.03338 4.93155 2.55653C6.4084 1.07969 8.41143 0.25 10.5 0.25C12.5886 0.25 14.5916 1.07969 16.0685 2.55653C17.5453 4.03338 18.375 6.03642 18.375 8.125V12.3595L20.4248 16.459C20.5191 16.6477 20.5637 16.8574 20.5542 17.0681C20.5447 17.2789 20.4815 17.4837 20.3706 17.6631C20.2597 17.8426 20.1047 17.9907 19.9205 18.0934C19.7362 18.1961 19.5287 18.25 19.3178 18.25H14.8583C14.608 19.2155 14.0442 20.0706 13.2554 20.681C12.4666 21.2915 11.4974 21.6227 10.5 21.6227C9.50259 21.6227 8.5334 21.2915 7.74459 20.681C6.95578 20.0706 6.39201 19.2155 6.14176 18.25H1.68226C1.4713 18.25 1.26383 18.1961 1.07956 18.0934C0.895295 17.9907 0.740343 17.8426 0.629426 17.6631C0.51851 17.4837 0.45531 17.2789 0.44583 17.0681C0.436351 16.8574 0.480905 16.6477 0.575263 16.459L2.62501 12.3595V8.125ZM8.55151 18.25C8.749 18.592 9.03303 18.876 9.37506 19.0735C9.71709 19.2709 10.1051 19.3749 10.5 19.3749C10.895 19.3749 11.2829 19.2709 11.625 19.0735C11.967 18.876 12.251 18.592 12.4485 18.25H8.55151ZM10.5 2.5C9.00817 2.5 7.57743 3.09263 6.52254 4.14752C5.46765 5.20242 4.87501 6.63316 4.87501 8.125V12.3595C4.87499 12.7086 4.79372 13.053 4.63764 13.3652L3.32139 16H17.6798L16.3635 13.3652C16.207 13.0531 16.1254 12.7087 16.125 12.3595V8.125C16.125 6.63316 15.5324 5.20242 14.4775 4.14752C13.4226 3.09263 11.9919 2.5 10.5 2.5Z"
+        fill="currentColor" />
+    </svg>
+    <img
+      src="assets/user-photo.jpg"
+      alt="Photo de profil"
+      class="h-10 w-10 rounded-full" />
+    </div>
+    <!-- section principale -->
+    <div class="relative">
+      <!-- Image -->
+      <img src="assets/divtbib.svg" alt="" class="z-0 " />
+    
+      <!-- Texte positionné sur l'image -->
+      <div class="flex flex-col space-y-4 absolute top-0   mt-[6%] p-5 xl:w-[90%] w-[90%]">
+        <p class="text-sm font-bold xl:text-xl xl:font-bold leading-tight">Bienvenue Monsieur {{ userName }} !</p>
+        <p class="hidden xl:block xl:text-xs text-gray-400">
+          Bienvenue dans votre tableau du bord. Accédez facilement à vos outils pour une gestion simplifiée et efficace.
+        </p>
+        
+      </div>
+    </div>
+    
+
+    <p class="xl:text-2xl text-xl font-bold mt-[1.5%]">Statistiques générale</p>
+
+    <div class="grid grid-cols-3 gap-8 mt-[2%]">
+      <!-- Carte 1 -->
+      <div class="bg-[#EEF7FF] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
+        <div class="flex flex-row items-center space-x-2">
+          <img src="assets/patient.svg" class="w-6 h-6 xl:w-5 xl:h-5 hidden lg:block" alt="">
+          <p class="xl:text-base text-xs font-bold text-[#3375A4]">Nombre de patients</p>
+        </div>
+        <div class="relative w-[70%] max-w-[150px] h-auto aspect-square">
+          <svg class="absolute top-0 left-0 hidden lg:block" width="100%" height="100%" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="35" stroke="#ddd" stroke-width="3" fill="none" />
+            <circle
+              cx="50"
+              cy="50"
+              r="35"
+              stroke="#3375A4"
+              stroke-width="4"
+              fill="none"
+              stroke-dasharray="263"
+              stroke-dashoffset="95"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold text-gray-400">
+            <p class="text-base xl:text-sm">4000</p>
+            <p class="xl:text-xs text-[10px]">patients</p>
           </div>
-          <img src="assets/tbib.svg" alt="" class="absolute ml-[49%] top-1 size-[22%] z-0" />
-          <p class="text-2xl font-bold mt-[1.5%]">Statistiques générale</p>
+        </div>
+        <a
+          routerLink="/medecin/patients"
+          class="xl:text-xs text-[10px] text-gray-400 hover:underline mt-2 self-end">
+          Voir plus
+        </a>
+      </div>
 
-          <div class="grid grid-cols-3 gap-8 mt-[2%] ">
-            
-            <div class="bg-[#EEF7FF] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
-              <div class="flex flex-row items-center space-x-2">
-                <img src="assets/patient.svg" class="w-6 h-6 md:w-8 md:h-8" alt="">
-                <p class="text-base md:text-lg font-bold text-[#3375A4]">Nombre de patients</p>
-              </div>
-              <div class="relative w-[70%] max-w-[150px] h-auto aspect-square">
-                <svg class="absolute top-0 left-0" width="100%" height="100%" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="35" stroke="#ddd" stroke-width="3" fill="none" />
-                  <circle cx="50" cy="50" r="35" stroke="#3375A4" stroke-width="4" fill="none" stroke-dasharray="263" stroke-dashoffset="95" stroke-linecap="round" />
-                </svg>
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold text-gray-400">
-                  <p class="text-base md:text-lg">4000</p>
-                  <p class="text-xs md:text-sm">patients</p>
-                </div>
-              </div>
-              <a routerLink="/medecin/patients" class="text-xs md:text-sm text-gray-400 hover:underline mt-2 self-end">Voir plus</a>
-            </div>
-
-            <div class="bg-[#EEF5F5] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
-                    <div class="flex flex-row items-center space-x-2">
-                      <img src="assets/mdcn.svg" class="w-6 h-6 md:w-8 md:h-8" alt="">
-                      <p class="text-base md:text-lg font-bold text-[#2D6974]">Nombre des ordonnances</p>
-                    </div>
-                    <div class="relative w-[70%] max-w-[150px] h-auto aspect-square">
-                      <svg class="absolute top-0 left-0" width="100%" height="100%" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="35" stroke="#ddd" stroke-width="3" fill="none" />
-                        <circle cx="50" cy="50" r="35" stroke="#2D6974" stroke-width="4" fill="none" stroke-dasharray="263" stroke-dashoffset="95" stroke-linecap="round" />
-                      </svg>
-                      <div class="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold text-gray-400">
-                        <p class="text-base md:text-lg">400</p>
-                        <p class="text-xs md:text-sm">ordonnances</p>
-                      </div>
-                    </div>
-                    <a routerLink="/medecin/patients" class="text-xs md:text-sm text-gray-400 hover:underline mt-2 self-end">Voir plus</a>
-                  </div>
-
-            
-            <div class="bg-[#FEF5EC] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
-                    <div class="flex flex-row items-center space-x-2">
-                      <img src="assets/consultation.svg" class="w-6 h-6 md:w-8 md:h-8" alt="">
-                      <p class="text-base md:text-lg font-bold text-[#FCC698]">Nombre des consultations</p>
-                    </div>
-                    <div class="relative w-[70%] max-w-[150px] h-auto aspect-square">
-                      <svg class="absolute top-0 left-0" width="100%" height="100%" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="35" stroke="#ddd" stroke-width="3" fill="none" />
-                        <circle cx="50" cy="50" r="35" stroke="#FCC698" stroke-width="4" fill="none" stroke-dasharray="263" stroke-dashoffset="95" stroke-linecap="round" />
-                      </svg>
-                      <div class="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold text-gray-400">
-                        <p class="text-base md:text-lg">4000</p>
-                        <p class="text-xs md:text-sm">consultations</p>
-                      </div>
-                    </div>
-                    <a routerLink="/medecin/patients" class="text-xs md:text-sm text-gray-400 hover:underline mt-2 self-end">Voir plus</a>
-                  </div>
-
-            </div>
-          <div class="flex flex-row justify-between items-baseline">
-            <p class="text-2xl font-bold mt-[1.5%]">Les derniers patients :</p>
-            <a
-                routerLink="/medecin/patients" 
-                class="text-[#2D6974] hover:underline  font-semibold flex flex-row  ">
-                Afficher tous  
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-            </a>   
+      <!-- Carte 2 -->
+      <div class="bg-[#EEF5F5] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
+        <div class="flex flex-row items-center space-x-2">
+          <img src="assets/mdcn.svg" class="xl:w-6 xl:h-6 w-5 h-5 hidden lg:block" alt="">
+          <p class="xl:text-base text-xs font-bold text-[#2D6974]">Nombre des ordonnances</p>
+        </div>
+        <div class="relative w-[70%] max-w-[150px] h-auto aspect-square">
+          <svg class="absolute top-0 left-0 hidden lg:block" width="100%" height="100%" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="35" stroke="#ddd" stroke-width="3" fill="none" />
+            <circle
+              cx="50"
+              cy="50"
+              r="35"
+              stroke="#2D6974"
+              stroke-width="4"
+              fill="none"
+              stroke-dasharray="263"
+              stroke-dashoffset="95"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold text-gray-400">
+            <p class=" xl:text-base text-sm">400</p>
+            <p class="xl:text-xs text-[10px]">ordonnances</p>
           </div>
+        </div>
+        <a
+          routerLink="/medecin/patients"
+          class="xl:text-xs text-[10px] text-gray-400 hover:underline mt-2 self-end">
+          Voir plus
+        </a>
+      </div>
 
+      <!-- Carte 3 -->
+      <div class="bg-[#FEF5EC] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
+        <div class="flex flex-row items-center space-x-2">
+          <img src="assets/consultation.svg" class="w-6 h-6 xl:w-5 xl:h-5 hidden lg:block" alt="">
+          <p class="xl:text-base text-xs font-bold text-[#FCC698]">Nombre des consultations</p>
+        </div>
+        <div class="relative w-[70%] max-w-[150px] h-auto aspect-square">
+          <svg class="absolute top-0 left-0 hidden lg:block" width="100%" height="100%" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="35" stroke="#ddd" stroke-width="3" fill="none" />
+            <circle
+              cx="50"
+              cy="50"
+              r="35"
+              stroke="#FCC698"
+              stroke-width="4"
+              fill="none"
+              stroke-dasharray="263"
+              stroke-dashoffset="95"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-sm font-semibold text-gray-400">
+            <p class="xl:text-base text-sm">4000</p>
+            <p class="xl:text-xs text-[10px]">consultations</p>
+          </div>
+        </div>
+        <a
+          routerLink="/medecin/patients"
+          class="xl:text-xs text-[10px] text-gray-400 hover:underline mt-2 self-end">
+          Voir plus
+        </a>
+      </div>
+    </div>
   </div>
 
 
-
   <!-- sidebardroite -->
-      <div class="flex flex-col bg-[#AACECE]  rounded-lg shadow-md w-[25%] rounded-tl-[60px] p-2">
-            <div class="flex flex-row items-center justify-end mb-4 space-x-5 p-2">
-              <p class="text-white font-medium">Dr {{ userName}}</p>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.1" stroke="white" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-              </svg>
-              
-              <svg
-                class="w-6 h-6 mt-[0.9%]"
-                width="19"
-                height="19"
-                viewBox="0 0 21 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M2.62501 8.125C2.62501 6.03642 3.4547 4.03338 4.93155 2.55653C6.4084 1.07969 8.41143 0.25 10.5 0.25C12.5886 0.25 14.5916 1.07969 16.0685 2.55653C17.5453 4.03338 18.375 6.03642 18.375 8.125V12.3595L20.4248 16.459C20.5191 16.6477 20.5637 16.8574 20.5542 17.0681C20.5447 17.2789 20.4815 17.4837 20.3706 17.6631C20.2597 17.8426 20.1047 17.9907 19.9205 18.0934C19.7362 18.1961 19.5287 18.25 19.3178 18.25H14.8583C14.608 19.2155 14.0442 20.0706 13.2554 20.681C12.4666 21.2915 11.4974 21.6227 10.5 21.6227C9.50259 21.6227 8.5334 21.2915 7.74459 20.681C6.95578 20.0706 6.39201 19.2155 6.14176 18.25H1.68226C1.4713 18.25 1.26383 18.1961 1.07956 18.0934C0.895295 17.9907 0.740343 17.8426 0.629426 17.6631C0.51851 17.4837 0.45531 17.2789 0.44583 17.0681C0.436351 16.8574 0.480905 16.6477 0.575263 16.459L2.62501 12.3595V8.125ZM8.55151 18.25C8.749 18.592 9.03303 18.876 9.37506 19.0735C9.71709 19.2709 10.1051 19.3749 10.5 19.3749C10.895 19.3749 11.2829 19.2709 11.625 19.0735C11.967 18.876 12.251 18.592 12.4485 18.25H8.55151ZM10.5 2.5C9.00817 2.5 7.57743 3.09263 6.52254 4.14752C5.46765 5.20242 4.87501 6.63316 4.87501 8.125V12.3595C4.87499 12.7086 4.79372 13.053 4.63764 13.3652L3.32139 16H17.6798L16.3635 13.3652C16.207 13.0531 16.1254 12.7087 16.125 12.3595V8.125C16.125 6.63316 15.5324 5.20242 14.4775 4.14752C13.4226 3.09263 11.9919 2.5 10.5 2.5Z"
-                  fill="white"
-                />
-              </svg>
-              
-              <img
-                src="assets/user-photo.jpg"
-                alt="Photo de profil"
-                class="h-12 w-12 rounded-full mr-4"
-              />
-              
-            </div>
+  
 
-            <!-- Calendrier -->
-            <div class="calendar-container bg-white rounded-lg shadow-md overflow-hidden text-[70%] z-20  ">
-              <full-calendar [options]="calendarOptions"></full-calendar>
-            </div>
-            <!-- <div class="flex justify-end mt-4">
-              <button
-                (click)="addEvent()"
-                class="bg-[#2D6974] text-white px-4 py-2 rounded-md shadow-md hover:bg-[#2f6d78] transition">
-                Ajouter événement
-              </button>
-            </div> -->
-            
-        </div>
+<!-- Sidebar pour grands écrans -->
+
+<div class="hidden xl:flex flex-col bg-[#AACECE] rounded-lg shadow-md w-[25%] rounded-tl-[60px] p-2">
+    <div class="flex flex-row items-center justify-end mb-4 space-x-5 p-2">
+      <p class="text-white font-medium">Dr {{ userName}}</p>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.1" stroke="white" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+      </svg>
+      
+      <svg
+        class="w-6 h-6 mt-[0.9%]"
+        width="19"
+        height="19"
+        viewBox="0 0 21 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M2.62501 8.125C2.62501 6.03642 3.4547 4.03338 4.93155 2.55653C6.4084 1.07969 8.41143 0.25 10.5 0.25C12.5886 0.25 14.5916 1.07969 16.0685 2.55653C17.5453 4.03338 18.375 6.03642 18.375 8.125V12.3595L20.4248 16.459C20.5191 16.6477 20.5637 16.8574 20.5542 17.0681C20.5447 17.2789 20.4815 17.4837 20.3706 17.6631C20.2597 17.8426 20.1047 17.9907 19.9205 18.0934C19.7362 18.1961 19.5287 18.25 19.3178 18.25H14.8583C14.608 19.2155 14.0442 20.0706 13.2554 20.681C12.4666 21.2915 11.4974 21.6227 10.5 21.6227C9.50259 21.6227 8.5334 21.2915 7.74459 20.681C6.95578 20.0706 6.39201 19.2155 6.14176 18.25H1.68226C1.4713 18.25 1.26383 18.1961 1.07956 18.0934C0.895295 17.9907 0.740343 17.8426 0.629426 17.6631C0.51851 17.4837 0.45531 17.2789 0.44583 17.0681C0.436351 16.8574 0.480905 16.6477 0.575263 16.459L2.62501 12.3595V8.125ZM8.55151 18.25C8.749 18.592 9.03303 18.876 9.37506 19.0735C9.71709 19.2709 10.1051 19.3749 10.5 19.3749C10.895 19.3749 11.2829 19.2709 11.625 19.0735C11.967 18.876 12.251 18.592 12.4485 18.25H8.55151ZM10.5 2.5C9.00817 2.5 7.57743 3.09263 6.52254 4.14752C5.46765 5.20242 4.87501 6.63316 4.87501 8.125V12.3595C4.87499 12.7086 4.79372 13.053 4.63764 13.3652L3.32139 16H17.6798L16.3635 13.3652C16.207 13.0531 16.1254 12.7087 16.125 12.3595V8.125C16.125 6.63316 15.5324 5.20242 14.4775 4.14752C13.4226 3.09263 11.9919 2.5 10.5 2.5Z"
+          fill="white"
+        />
+      </svg>
+      
+      <img
+        src="assets/user-photo.jpg"
+        alt="Photo de profil"
+        class="h-12 w-12 rounded-full mr-4"
+      />
+      
+    </div>
+
+    <!-- Calendrier -->
+    <div class="calendar-container bg-white rounded-lg shadow-md overflow-hidden text-[55%] z-20  ">
+      <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    <!-- <div class="flex justify-end mt-4">
+      <button
+        (click)="addEvent()"
+        class="bg-[#2D6974] text-white px-4 py-2 rounded-md shadow-md hover:bg-[#2f6d78] transition">
+        Ajouter événement
+      </button>
+    </div> -->
+    
+</div>
 </main>
