@@ -32,12 +32,9 @@
       alt="Photo de profil"
       class="h-10 w-10 rounded-full" />
     </div>
-    <!-- section principale -->
     <div class="relative">
-      <!-- Image -->
       <img src="assets/divtbib.svg" alt="" class="z-0 " />
     
-      <!-- Texte positionné sur l'image -->
       <div class="flex flex-col space-y-4 absolute top-0   mt-[6%] p-5 xl:w-[90%] w-[90%]">
         <p class="text-sm font-bold xl:text-xl xl:font-bold leading-tight">Bienvenue Monsieur {{ userName }} !</p>
         <p class="hidden xl:block xl:text-xs text-gray-400">
@@ -51,7 +48,6 @@
     <p class="xl:text-2xl text-xl font-bold mt-[1.5%]">Statistiques générale</p>
 
     <div class="grid grid-cols-3 gap-8 mt-[2%]">
-      <!-- Carte 1 -->
       <div class="bg-[#EEF7FF] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
         <div class="flex flex-row items-center space-x-2">
           <img src="assets/patient.svg" class="w-6 h-6 xl:w-5 xl:h-5 hidden lg:block" alt="">
@@ -84,7 +80,6 @@
         </a>
       </div>
 
-      <!-- Carte 2 -->
       <div class="bg-[#EEF5F5] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
         <div class="flex flex-row items-center space-x-2">
           <img src="assets/mdcn.svg" class="xl:w-6 xl:h-6 w-5 h-5 hidden lg:block" alt="">
@@ -117,7 +112,6 @@
         </a>
       </div>
 
-      <!-- Carte 3 -->
       <div class="bg-[#FEF5EC] p-4 rounded-3xl flex flex-col items-center justify-center text-center">
         <div class="flex flex-row items-center space-x-2">
           <img src="assets/consultation.svg" class="w-6 h-6 xl:w-5 xl:h-5 hidden lg:block" alt="">
@@ -149,6 +143,27 @@
           Voir plus
         </a>
       </div>
+    </div>
+    <div class="flex items-baseline justify-between">
+      <!-- Titre -->
+      <p class="text-2xl font-bold mt-[1.5%]">Les derniers patients :</p>
+    
+      <!-- Lien "Afficher tous" -->
+      <a
+        routerLink="/medecin/patients" 
+        class="text-[#2D6974] hover:underline font-semibold flex items-center space-x-1">
+        <span>Afficher tous</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </a>
     </div>
   </div>
 
