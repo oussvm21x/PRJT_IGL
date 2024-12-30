@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('consultations/', include('consultations.urls')),  # Include the URLs from the consultations app    
     path('nursing/',include('nursing.urls')),
-    path('api/auth/', include('authentication.urls')),
+    path('auth/', include('authentication.urls')),
+    path('dpi/',include('DPI.urls')),
+    
 
 ]

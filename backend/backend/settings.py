@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'consultations',
     'authentication',
     'nursing',
+    'DPI',
 
 ]
 
