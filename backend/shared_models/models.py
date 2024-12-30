@@ -1,8 +1,41 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser , Permission ,Group
+from django.conf import Settings
+from rest_framework.authtoken.models import Token
+
+
+class User(AbstractUser):
+    ROLE_CHOICES = [
+        ('admin', 'Admin'),
+        ('administratif', 'Administratif'),
+        ('patient', 'Patient'),
+        ('medecin', 'Medecin'),
+        ('infermier', 'Infermier'),
+    ]
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+
+    # Using descriptive related_name to avoid conflicts
+    groups = models.ManyToManyField(
+        Group,
+        related_name='user_set_custom',  # Custom related name for reverse relation
+        blank=True
+    )
+
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='permission_users',  # Custom related name for reverse relation
+        blank=True
+    )
+
+    def __str__(self):
+        return f"{self.username} ({self.get_role_display()})"
+
+    
 
 
 # Medecin Model
 class Medecin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_medecin = models.CharField(max_length=50)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
@@ -11,6 +44,7 @@ class Medecin(models.Model):
 
 # Patient Model
 class Patient(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     num_securite_sociale = models.CharField(max_length=50)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
@@ -50,6 +84,7 @@ class Medicament(models.Model):
 
 # Infirmier Model
 class Infirmier(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_infirmier = models.CharField(max_length=50)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
