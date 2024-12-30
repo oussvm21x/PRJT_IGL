@@ -1,0 +1,135 @@
+<!-- FIRST POP UP -->
+<div class="popup-container" id="popup1" *ngIf="currentPopup === 'popup1'">
+    <div class="top-part">
+        <p class="pop-up-title">Ajouter patient</p>
+        <button class="close_icon_button" (click)="closePopup()"> 
+            <img src="assets/close_icon.svg"/>
+        </button>
+    </div>
+    <div class="line"></div>
+    <div class="section-title">
+        <img src="assets/info_personelles_icon.svg" class="icon"/> 
+        <p>Informations Personnelles</p>
+    </div>    
+    <div class="input-row">
+        <div class="input-group">
+            <label>Nom</label>
+            <input type="text" [(ngModel)]="patientInfo.nom" style="width: 230px;" placeholder="Nom du patient" class="input-box" />
+        </div>
+        <div class="input-group">
+            <label>Prénom</label>
+            <input type="text" [(ngModel)]="patientInfo.prenom" style="width: 230px;" placeholder="Prénom du patient" class="input-box" />
+        </div>
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label>Sexe</label>
+            <select [(ngModel)]="patientInfo.sexe" style="width: 230px;" class="input-box">
+                <option *ngFor="let sexe of sexes" [value]="sexe">{{ sexe }}</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Date de Naissance</label>
+            <div style="display:flex; gap:10px;">
+                <select [(ngModel)]="patientInfo.dateNaissance.day" style="width: 45px;" class="input-box">
+                    <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+                </select>
+                <select [(ngModel)]="patientInfo.dateNaissance.month" style="width: 100px;" class="input-box">
+                    <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+                </select>
+                <select [(ngModel)]="patientInfo.dateNaissance.year" style="width: 65px;" class="input-box">
+                    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label>NSS</label>
+            <input type="text" [(ngModel)]="patientInfo.numeroSecu" style="width: 230px;" placeholder="Numéro de Sécurité Sociale" class="input-box" />
+        </div>
+        <div class="input-group">
+            <label>Mutuelle</label>
+            <input type="text" [(ngModel)]="patientInfo.mutuelle" style="width: 230px;" class="input-box" />
+        </div>
+    </div>
+    <div class="bottom-part" style="margin-top: 35px;">
+        <div class="line"></div>
+        <div class="add-cancel-buttons-container">
+            <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="closePopup()">Annuler</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="showPopup('popup2')">Suivant</button>
+        </div>
+    </div>
+</div>
+<!--  -->
+<!-- SECOND POP UP -->
+<div class="popup-container" id="popup2" *ngIf="currentPopup === 'popup2'">
+    <div class="top-part">
+        <p class="pop-up-title">Ajouter patient</p>
+        <button class="close_icon_button" (click)="closePopup()"> 
+            <img src="assets/close_icon.svg"/>
+        </button>
+    </div>
+    <div class="line"></div>
+    <div class="section-title">
+        <img src="assets/info_contact_icon.svg" class="icon"/> 
+        <p>Information de contact</p>
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label>Adresse</label>
+            <input type="text" [(ngModel)]="patientInfo.adresse" style="width: 473px;" placeholder="Adresse du patient" class="input-box" />
+        </div>
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label>N° Téléphone</label>
+            <input type="text" [(ngModel)]="patientInfo.telephone" style="width: 473px;" placeholder="Numéro de téléphone" class="input-box" />
+        </div>
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label>Personnes à contacter</label>
+            <input type="text" [(ngModel)]="patientInfo.contactPerson" style="width: 473px;" placeholder="Numéro de téléphone" class="input-box" />
+        </div>
+    </div>
+    <div class="bottom-part" style="margin-top: 35px;">
+        <div class="line"></div>
+        <div class="add-cancel-buttons-container">
+            <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="showPopup('popup1')">Précédent</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="showPopup('popup3')">Suivant</button>
+        </div>
+    </div>
+</div>
+<!--  -->
+<!-- THIRD POP UP -->
+<div class="popup-container" id="popup3" *ngIf="currentPopup === 'popup3'">
+    <div class="top-part">
+        <p class="pop-up-title">Ajouter patient</p>
+        <button class="close_icon_button" (click)="closePopup()"> 
+            <img src="assets/close_icon.svg"/>
+        </button>
+    </div>
+    <div class="line"></div>
+    <div class="section-title">
+        <img src="assets/info_medicales_icon.svg" class="icon"/> 
+        <p>Informations médicales</p>
+    </div>
+    <div class="input-row">
+        <div class="input-group">
+            <label>Médecin traitant</label>
+            <select [(ngModel)]="patientInfo.doctor" style="width: 473px;" class="input-box">
+                <option value="" disabled selected>Selectioner le médecin traitant...</option>
+                <!-- Add options of doctors here -->
+            </select>
+        </div>
+    </div>
+    <div class="bottom-part" style="margin-top: 145px;">
+        <div class="line"></div>
+        <div class="add-cancel-buttons-container">
+            <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="showPopup('popup2')">Précédent</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="addPatient()">Ajouter</button>
+        </div>
+    </div>
+</div>
+<!--  -->

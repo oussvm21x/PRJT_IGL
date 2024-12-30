@@ -1,0 +1,76 @@
+<!-- FIRST POP UP -->
+<div class="popup-container" id="popup1" *ngIf="currentPopup === 'popup1'">
+    <div class="top-part" >
+        <p class="pop-up-title" style="margin-right: 328px;">Ajouter soin</p>
+        <button class="close_icon_button" (click)="closePopup()"> 
+            <img src="assets/close_icon.svg"/>
+        </button>
+    </div>
+    <div class="line"></div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label style="margin-top: 35px;" >Nom</label>
+            <input type="text" [(ngModel)]="soinInfo.titre" style="width: 473px; height: 38px;" placeholder="Nom du soin" class="input-box" />
+        </div>
+    </div>
+    <div class="bottom-part" style="margin-top: 190px;">
+        <div class="line"></div>
+        <div class="add-cancel-buttons-container">
+            <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="closePopup()">Annuler</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="showPopup('popup2')">Suivant</button>
+        </div>
+    </div>
+</div>
+<!--  -->
+<!-- SECOND POP UP -->
+<div class="popup-container" id="popup2" *ngIf="currentPopup === 'popup2'">
+    <div class="top-part" >
+        <p class="pop-up-title" style="margin-right: 328px;">Ajouter soin</p>
+        <button class="close_icon_button" (click)="closePopup()"> 
+            <img src="assets/close_icon.svg"/>
+        </button>
+    </div>
+    <div class="line"></div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label style="margin-top: 35px;" >Description</label>
+            <input type="text" [(ngModel)]="soinInfo.description" style="width: 473px; height: 193px;"  class="input-box" />
+        </div>
+    </div>
+    <div class="bottom-part" style="margin-top: 35px;">
+        <div class="line"></div>
+        <div class="add-cancel-buttons-container">
+            <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="showPopup('popup1')">Précédent</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="showPopup('popup3')">Suivant</button>
+        </div>
+    </div>
+</div>
+
+<!--  -->
+<!-- THIRD POP UP  -->
+<div class="popup-container" id="popup3" *ngIf="currentPopup === 'popup3'">
+    <div class="top-part" >
+        <p class="pop-up-title" style="margin-right: 328px;">Ajouter soin</p>
+        <button class="close_icon_button" (click)="closePopup()"> 
+            <img src="assets/close_icon.svg"/>
+        </button>
+    </div>
+    <div class="line"></div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label style="margin-top: 35px;" >Observations</label>
+            <input type="text" [(ngModel)]="soinInfo.observations" style="width: 473px; height: 193px;"  class="input-box" />
+        </div>
+    </div>
+    <div class="bottom-part" style="margin-top: 35px;">
+        <div class="line"></div>
+        <div class="add-cancel-buttons-container">
+            <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="showPopup('popup2')">Précédent</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="addSoin()">Ajouter</button>
+        </div>
+    </div>
+</div>
+

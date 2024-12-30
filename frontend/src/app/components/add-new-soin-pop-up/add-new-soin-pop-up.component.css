@@ -1,0 +1,129 @@
+.popup-container {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    background-color: #ECECEC;
+    border-radius: 43px;
+    padding: 20px;
+    left: 400px;
+
+}
+.top-part {
+    display: flex;
+    align-items: center; /* align items vertically in the center */
+    margin-bottom: 10px;
+}
+
+.pop-up-title {
+    margin-top: 7px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    margin-left: 20px; /* Space on the left */
+}
+
+.close_icon_button {
+    margin-top: 9px;
+    border: none;
+    width: 30px; 
+    height: 30px;
+    cursor: pointer; 
+    background-color: #ECECEC; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, border-color 0.3s; /* smooth transition for hover effects */
+    padding: 0; /* Remove padding to fit the image */
+}
+
+
+.close_icon_button:hover {
+    background-color: #DEE2E6; 
+    border-color: #DEE2E6; 
+}
+.line {
+    width: 460px;
+    height: 2px;
+    background-color: #D1DEE5;
+    margin-left: 20px
+}
+
+.section-title {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+    margin-top: 35px; /* Space above section title */
+    margin-left: 20px;
+    margin-bottom: 35px;
+   
+    
+}
+
+.input-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsive design */
+}
+
+.input-group {
+    display: flex; 
+    flex-direction: column; /* for the label to be above input */
+    margin-left: 13px; /* Space between input groups */
+    margin-bottom: 5px;
+}
+
+.input-group label {
+    margin-bottom: 5px; /* Space between label and input box */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 12px;
+    color: black;
+}
+
+.input-box {
+ 
+    border-radius: 10px; 
+    border-width: 2px;
+    border-color: #D1DEE5; 
+    border-style: solid;
+    padding: 0 0 0 10px; 
+    box-sizing: border-box; /* include padding and border in height */
+    background-color: #FFFFFF; 
+    color: black; 
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" >bg-image>"#23FF0000"/></svg>'); 
+}
+
+
+
+
+.full-width {
+   width: calc(100% - 10px); /* Full width minus margin */
+}
+
+.icon {
+   transform: scale(0.8);
+   margin-right: 10px; /* Space between icon and title */
+   vertical-align: middle; /* Align icon vertically with text */
+}
+
+.add-cancel-buttons-container {
+    display: flex; 
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-left: 155px; /* Move the buttons to the right by 155px */
+}
+
+.add-cancel-buttons {
+    width: 160px; 
+    height: 27px; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 500; 
+    font-size: 12px; 
+    border-radius: 10px; 
+    border: none;
+    cursor: pointer; 
+    text-align: center; 
+    margin-right: 20px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+
