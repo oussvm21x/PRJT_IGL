@@ -1,0 +1,31 @@
+
+  
+
+
+<div class="sidebar">
+  <img src="assets/logo.png" alt="logo image" class="logo-image" />
+  <div class="user-info">
+    <img src="assets/user_img.png" alt="User Image" class="user-image" />
+    <div class="user-details">
+      <h2 class="user-name">Dr. Kiran Patel</h2>
+      <p class="user-role">Administrator</p>
+    </div>
+  </div>
+  
+
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item" *ngFor="let element of sideBarElements; let last = last">
+      <a class="sidebar-nav-link" [routerLink]="element.routeLink">
+        <img [src]="element.icon" alt="{{ element.label }} Icon" class="sidebar-link-icon" />
+        <span class="sidenav-link-text">{{ element.label }}</span>
+      </a>
+      <!-- Add margin-bottom for the last item -->
+      <div *ngIf="last" style="margin-bottom:500px;"></div>
+    </li>
+  </ul>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+

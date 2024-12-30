@@ -1,0 +1,16 @@
+<div>
+    <!-- Patient Information -->
+      <img src="assets/patient_profile_pic.svg" class="patient-pic"/>
+      <p class="nss-text"> N° Sécurité Sociale </p>
+      <p class="entry-date-text"> Patient depuis date d'entrée </p>
+
+      <div class="patient-info">
+  
+          <ul style="list-style-type: none;">
+              <li class="patient-info-text" *ngFor="let element of patientInfos">
+                   <p>{{element}}</p>    
+              </li>
+           </ul>
+      </div>
+   
+</div>

@@ -1,0 +1,44 @@
+.list-title-text {
+    position: relative;
+    color: #3A405B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    left: 90px;
+    top:50px;
+    letter-spacing: 1.34px;
+    
+}
+.previous-next-buttons-container {
+    position: absolute; 
+    margin-top: 20px; 
+    top: 500px; 
+    left: 82px;
+}
+
+.previous-next-buttons {
+    width: 119px; 
+    height: 35px; 
+    background-color: #F7FAFC;
+    color: #000000; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 500; 
+    font-size: 16px; 
+    border-radius: 10px; 
+    border: none;
+    cursor: pointer; 
+    text-align: center; 
+    margin-right: 462px; 
+}
+
+.previous-next-buttons:last-child {
+    margin-right: 0;
+}
+
+/* style of the buttons on hover and focus */
+.previous-next-buttons:hover,
+.previous-next-buttons:focus {
+    background-color: #448894; 
+    color: white; 
+    border: none;
+}

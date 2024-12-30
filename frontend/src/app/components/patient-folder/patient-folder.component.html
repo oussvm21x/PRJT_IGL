@@ -1,0 +1,67 @@
+<
+<div class="main-container">
+  <div class="svg-container">
+      <svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+          <path d="M403 304C403 279.147 423.147 259 448 259H608.937C640.398 
+          259 653.1 301.89 678.446 320.528V320.528H403V304Z" fill="#F4F4F4"/>
+      </svg>
+  </div>
+
+<!--Buttons de navigation dans le dossier -->
+  <div class="folder-buttons">  
+        <ul class="folder-buttons-list">
+            <li class="folder-buttons-content" *ngFor="let element of buttons">
+                 <button class="styled-button" (click)="changeComponent(element)">{{element}}</button>    
+            </li>
+        </ul>
+  </div>
+
+  <!-- Button retour -->
+  <div class="back-button-container">
+    <button class="back_icon_button"> 
+        <img src='assets/back_icon.svg'/> 
+    </button>
+    <p class="back-text">Retour</p>
+  </div>
+  
+  <div class="folder">
+      <!-- Tab part -->
+      
+      
+
+      <div class="folder-body">
+        <!-- Body part -->
+
+        
+        <ng-container [ngSwitch]="selectedComponent">
+            <!-- 1er cas: Profile -->
+            <ng-container *ngSwitchCase="'Profil'">
+                <div class="component-container">
+                    <app-patient-folder-profile></app-patient-folder-profile>
+                </div>
+            </ng-container>
+            <!-- 2ème cas: Consultations -->
+            <ng-container *ngSwitchCase="'Consultations'">
+                <div class="component-container">
+                    <app-patient-folder-consultations></app-patient-folder-consultations>
+                </div>
+            </ng-container>
+            <!-- 3ème cas: Antécédents -->
+            <ng-container *ngSwitchCase="'Antécédents'">
+                <div class="component-container">
+                    <app-patient-folder-antecedents></app-patient-folder-antecedents>
+                </div>
+            </ng-container>
+            <!-- 4ème cas: Soins -->
+            <ng-container *ngSwitchCase="'Soins'">
+                <div class="component-container">
+                    <app-patient-folder-soins></app-patient-folder-soins>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+
+      
+  </div>
+
+ 
