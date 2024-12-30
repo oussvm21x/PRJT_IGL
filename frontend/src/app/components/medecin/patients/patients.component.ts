@@ -1,15 +1,18 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { PatientService } from '../../../services/patient.service';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-patients',
-  imports: [CommonModule,FormsModule], 
+  imports: [CommonModule, FormsModule],
   standalone: true,
   templateUrl: './patients.component.html',
-  styleUrl: './patients.component.css'
+  styleUrls: ['./patients.component.css'],
 })
-export class PatientsComponent {
+export class PatientsComponent implements OnInit {
+  Math = Math;
+
   patientForm = {
     nom: '',
     prenom: '',
@@ -19,33 +22,76 @@ export class PatientsComponent {
     dateNaissance: '',
     adresse: '',
     telephone: '',
-    contacts: [''] // Liste de contacts
+    contacts: [''], // Liste de contacts
   };
 
+  patients: any[] = []; // Liste des patients chargée dynamiquement
+  ajouterPatientVisible = false;
+  currentPage: number = 1;
+  itemsPerPage: number = 11;
+
+  constructor(private patientService: PatientService) {}
+
+  ngOnInit(): void {
+    this.loadPatients(); // Charger les patients au démarrage
+  }
+
+  // Charger les patients depuis le service
+  loadPatients(): void {
+    this.patientService.getPatients().subscribe(
+      (data) => {
+        this.patients = data; // Charger les données dans la liste des patients
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des patients:', error);
+      }
+    );
+  }
+
+  // Ajouter un patient
   ajouterPatient(): void {
-    // Vérification des champs obligatoires
-    if (!this.patientForm.nom || !this.patientForm.prenom || !this.patientForm.sexe || !this.patientForm.nss || !this.patientForm.mutuelle || !this.patientForm.dateNaissance || !this.patientForm.adresse || !this.patientForm.telephone  ) {
+    if (!this.patientForm.nom || !this.patientForm.prenom || !this.patientForm.sexe || !this.patientForm.nss || !this.patientForm.mutuelle || !this.patientForm.dateNaissance || !this.patientForm.adresse || !this.patientForm.telephone) {
       alert('Veuillez remplir tous les champs obligatoires.');
       return;
     }
-  
-    // Ajouter le patient à la liste des patients
+
     const nouveauPatient = {
-      nom: this.patientForm.nom,
-      prenom: this.patientForm.prenom,
-      sexe: this.patientForm.sexe,
-      nss: this.patientForm.nss,
-      mutuelle: this.patientForm.mutuelle,
-      dateNaissance: this.patientForm.dateNaissance,
-      adresse: this.patientForm.adresse,
-      telephone: this.patientForm.telephone,
-      contacts: [...this.patientForm.contacts], // Cloner les contacts
-      dateEntree: new Date().toISOString().split('T')[0] // Date actuelle
+      ...this.patientForm,
+      dateEntree: new Date().toISOString().split('T')[0], // Date actuelle
     };
-  
-    this.patients.push(nouveauPatient);
-  
-    // Réinitialiser le formulaire
+
+    this.patientService.addPatient(nouveauPatient).subscribe(
+      (patient) => {
+        this.patients.push(patient); // Ajouter localement
+        this.resetForm();
+        this.toggleAjouterPatient();
+      },
+      (error) => {
+        console.error('Erreur lors de l\'ajout du patient:', error);
+      }
+    );
+  }
+
+  // Modifier un patient
+  modifierPatient(patient: any): void {
+    console.log('Modifier patient :', patient);
+    // Implémenter la modification via le service
+  }
+
+  // Supprimer un patient
+  supprimerPatient(patient: any): void {
+    this.patientService.deletePatient(patient.nss).subscribe(
+      () => {
+        this.patients = this.patients.filter((p) => p.nss !== patient.nss); // Retirer localement
+      },
+      (error) => {
+        console.error('Erreur lors de la suppression du patient:', error);
+      }
+    );
+  }
+
+  // Réinitialiser le formulaire
+  resetForm(): void {
     this.patientForm = {
       nom: '',
       prenom: '',
@@ -55,173 +101,33 @@ export class PatientsComponent {
       dateNaissance: '',
       adresse: '',
       telephone: '',
-      contacts: ['']
+      contacts: [''],
     };
-  
-    // Fermer la modale
-    this.toggleAjouterPatient();
   }
-  
-  
-  contacts: string[] = [''];
 
+  // Gérer les contacts
   addContact(): void {
-    this.contacts.push(''); // Ajoute un champ vide pour un nouveau contact
+    this.patientForm.contacts.push(''); // Ajouter un champ de contact
   }
 
   removeContact(index: number): void {
-    if (this.contacts.length > 1) {
-      this.contacts.splice(index, 1); // Supprime le contact à l'indice donné
+    if (this.patientForm.contacts.length > 1) {
+      this.patientForm.contacts.splice(index, 1); // Supprimer le contact
     }
   }
 
-
-  ajouterPatientVisible = false;
-
-  toggleAjouterPatient() {
+  toggleAjouterPatient(): void {
     this.ajouterPatientVisible = !this.ajouterPatientVisible;
   }
-  patients = [
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
-    {
-      nss: '123456789',
-      nom: 'John',
-      prenom: 'Doe',
-      telephone: '+213 123 456 789',
-      dateEntree: '2024-01-01'
-    },
 
-    {
-      nss: '987654321',
-      nom: 'Jane',
-      prenom: 'Smith',
-      telephone: '+213 987 654 321',
-      dateEntree: '2023-12-15'
-    }
-  ];
-  Math = Math; // Expose `Math` au template
-
-  currentPage: number = 1;
-  itemsPerPage: number = 11;
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.patients); // Vérifiez si les données des patients apparaissent dans la console
-  }
-  modifierPatient(patient: any) {
-    console.log('Modifier patient :', patient);
-  }
-
-  supprimerPatient(patient: any) {
-    console.log('Supprimer patient :', patient);
-  }
-
-  // Méthode pour obtenir les patients de la page courante
+  // Pagination
   get paginatedPatients() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return this.patients.slice(startIndex, endIndex);
   }
 
-  // Changer de page
-  changePage(page: number) {
+  changePage(page: number): void {
     this.currentPage = page;
   }
 }
