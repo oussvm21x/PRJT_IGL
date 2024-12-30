@@ -48,7 +48,7 @@ class Patient(models.Model):
     num_securite_sociale = models.CharField(max_length=50)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
-    date_naissance = models.DateField()
+    date_naissance = models.DateField(default="1900-01-01")
     adresse = models.CharField(max_length=255)
     telephone = models.CharField(max_length=20)
     email = models.EmailField()
