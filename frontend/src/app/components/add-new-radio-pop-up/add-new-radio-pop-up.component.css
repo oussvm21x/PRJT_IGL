@@ -80,6 +80,11 @@
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,5" >bg-image>"#23FF0000"/></svg>'); 
 }
 
+input[readonly]:focus {
+    outline: none; /* Supprime la bordure de focus par défaut */
+    border: 1px solid #ccc; /* Garde la bordure que vous avez définie */
+    box-shadow: none; /* Supprime l'ombre de focus si elle existe */
+}
 
 
 
@@ -112,5 +117,77 @@
     margin-right: 20px; /* Space between buttons */
     margin-top: 20px;
 }
+/* Style du bouton de sélection d'image */
+.upload-button {
+    width: 225px;
+    height: 38px;
+    border-width: 2px;
+    border-color: #D1DEE5; 
+    border-style: solid;
+    box-sizing: border-box; 
+    background-color: #F7FAFC;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 10px; /* Espace entre le label et le bouton */
+}
+
+.upload-button img {
+    margin-left: 5px; /* Espace entre le texte et l'icône */
+    margin-right: 10px;
+}
 
 
+
+/* Style du conteneur de l'image */
+.image-container {
+    height: 140px; 
+    margin-top: 10px; /* Espace entre le bouton et le conteneur */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+}
+
+/* Style du rectangle pour afficher l'image sélectionnée */
+.image-preview {
+    width: 160px;
+    height: 120px;
+    border: 5px solid #F7FAFC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Style de l'icône de suppression */
+.delete-icon {
+    position: absolute; 
+    top: 50%;
+    right: -34px; 
+    transform: translateY(-50%); 
+    cursor: pointer; 
+    font-size: 16px; 
+    color: black; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 50%; 
+    width: 24px; 
+    height: 24px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s; /* Animation au survol */
+}
+
+/* Effet au survol de l'icône de suppression */
+.delete-icon:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Fond légèrement gris au survol */
+}

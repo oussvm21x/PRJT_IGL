@@ -9,22 +9,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './add-new-soin-pop-up.component.css'
 })
 export class AddNewSoinPopUpComponent {
-  // array to store properties of the new soin 
+  // array to store properties of le nouveau soin 
   soinInfo = {
     titre: '',
     description: '',
     observations: ''
   };
-  sexes = ['Homme', 'Femme'];
-  days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
-  months = [
-    'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-  ];
-
-  // year options from 1900 to current year
-  years = Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => (1900 + i).toString());
-
+  
   // POP UPs
   currentPopup: string = 'popup1'; // Start with the first popup
 
@@ -37,9 +28,9 @@ export class AddNewSoinPopUpComponent {
   }
 
   addSoin() {
-    // Logic to add the patient is supposed to go here 
+    // Logic to add le soin is supposed to go here 
     console.log('Soin added:', this.soinInfo);
-    this.closePopup(); // Close the popup after adding the patient
+    this.closePopup(); // Close the popup after adding le soin 
   }
 
 

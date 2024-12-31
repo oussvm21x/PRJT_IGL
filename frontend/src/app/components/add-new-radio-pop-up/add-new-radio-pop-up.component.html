@@ -1,7 +1,7 @@
 <!-- FIRST POP UP -->
 <div class="popup-container" id="popup1" *ngIf="currentPopup === 'popup1'">
     <div class="top-part" >
-        <p class="pop-up-title" style="margin-right: 328px;">Ajouter soin</p>
+        <p class="pop-up-title" style="margin-right: 170px;">Ajouter examen radiologique</p>
         <button class="close_icon_button" (click)="closePopup()"> 
             <img src="assets/close_icon.svg"/>
         </button>
@@ -11,7 +11,7 @@
     <div class="input-row">
         <div class="input-group">
             <label style="margin-top: 35px;" >Nom</label>
-            <input type="text" [(ngModel)]="soinInfo.titre" style="width: 473px; height: 38px;" placeholder="Nom du soin" class="input-box" />
+            <input type="text" [(ngModel)]="radioInfo.nom" style="width: 473px; height: 38px;" placeholder="Nom du soin" class="input-box" readonly/>
         </div>
     </div>
     <div class="bottom-part" style="margin-top: 190px;">
@@ -25,21 +25,36 @@
 <!--  -->
 <!-- SECOND POP UP -->
 <div class="popup-container" id="popup2" *ngIf="currentPopup === 'popup2'">
-    <div class="top-part" >
-        <p class="pop-up-title" style="margin-right: 328px;">Ajouter soin</p>
-        <button class="close_icon_button" (click)="closePopup()"> 
-            <img src="assets/close_icon.svg"/>
+    <div class="top-part">
+        <p class="pop-up-title" style="margin-right: 170px;">Ajouter examen radiologique</p>
+        <button class="close_icon_button" (click)="closePopup()">
+            <img src="assets/close_icon.svg" />
         </button>
     </div>
     <div class="line"></div>
-    
+
     <div class="input-row">
         <div class="input-group">
-            <label style="margin-top: 35px;" >Description</label>
-            <textarea [(ngModel)]="soinInfo.description" class="input-box" style="width: 473px; height: 193px;"></textarea>
+            <label style="margin-top: 35px;">Image médicale</label>
+            <!-- Bouton pour sélectionner l'image -->
+            <button class="upload-button" (click)="fileInput.click()">
+                <span>Joindre une image</span>
+                <img src="assets/upload_icon.svg" alt="Upload Icon" />
+            </button>
+           
+            <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none;" />
+            <!-- Conteneur pour l'image avec une hauteur fixe -->
+            <div class="image-container">
+                <!-- Rectangle pour afficher l'image sélectionnée -->
+                <div *ngIf="radioInfo.image" class="image-preview">
+                    <img [src]="radioInfo.image" alt="Selected Image" />
+                </div>
+                <!-- Icône de suppression -->
+                <span *ngIf="radioInfo.image" class="delete-icon" (click)="deleteImage()">✕</span>
+            </div>
         </div>
     </div>
-    <div class="bottom-part" style="margin-top: 35px;">
+    <div class="bottom-part" style="margin-top: 30px;">
         <div class="line"></div>
         <div class="add-cancel-buttons-container">
             <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="showPopup('popup1')">Précédent</button>
@@ -48,11 +63,12 @@
     </div>
 </div>
 
+
 <!--  -->
 <!-- THIRD POP UP  -->
 <div class="popup-container" id="popup3" *ngIf="currentPopup === 'popup3'">
     <div class="top-part" >
-        <p class="pop-up-title" style="margin-right: 328px;">Ajouter soin</p>
+        <p class="pop-up-title" style="margin-right: 170px;">Ajouter examen radiologique</p>
         <button class="close_icon_button" (click)="closePopup()"> 
             <img src="assets/close_icon.svg"/>
         </button>
@@ -61,16 +77,17 @@
     
     <div class="input-row">
         <div class="input-group">
-            <label style="margin-top: 35px;" >Observations</label>
-            <textarea [(ngModel)]="soinInfo.observations" class="input-box" style="width: 473px; height: 193px;"></textarea>
+            <label style="margin-top: 35px;" >Compte rendu</label>
+            <textarea [(ngModel)]="radioInfo.compteRendu" class="input-box" style="width: 473px; height: 193px;"></textarea>
         </div>
     </div>
     <div class="bottom-part" style="margin-top: 35px;">
         <div class="line"></div>
         <div class="add-cancel-buttons-container">
             <button style="background-color: #FFFFFF; color: #000000;" class="add-cancel-buttons" (click)="showPopup('popup2')">Précédent</button>
-            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="addSoin()">Ajouter</button>
+            <button style="background-color: #448894; color: #FFFFFF;" class="add-cancel-buttons" (click)="addRadio()">Ajouter</button>
         </div>
     </div>
 </div>
+
 
