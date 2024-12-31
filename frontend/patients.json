@@ -1,6 +1,7 @@
 {
   "patients": [
     {
+      "id": "1",
       "nss": "123456789",
       "nom": "John",
       "prenom": "Doe",
@@ -14,6 +15,7 @@
       "dateEntree": "2024-01-01"
     },
     {
+      "id": "2",
       "nss": "987654321",
       "nom": "Jane",
       "prenom": "Smith",

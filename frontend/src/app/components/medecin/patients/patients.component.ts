@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PatientService } from '../../../services/patient.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patients',
@@ -30,7 +31,9 @@ export class PatientsComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 11;
 
-  constructor(private patientService: PatientService) {}
+  patientToDelete: any = null; // Patient en cours de suppression
+
+  constructor(private patientService: PatientService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadPatients(); // Charger les patients au démarrage
@@ -73,21 +76,35 @@ export class PatientsComponent implements OnInit {
   }
 
   // Modifier un patient
-  modifierPatient(patient: any): void {
-    console.log('Modifier patient :', patient);
-    // Implémenter la modification via le service
+  modifierPatient(nss: string): void {
+    this.router.navigate(['/medecin/modifier-patient', nss]); // Navigation vers la page de modification
   }
 
-  // Supprimer un patient
-  supprimerPatient(patient: any): void {
-    this.patientService.deletePatient(patient.nss).subscribe(
-      () => {
-        this.patients = this.patients.filter((p) => p.nss !== patient.nss); // Retirer localement
-      },
-      (error) => {
-        console.error('Erreur lors de la suppression du patient:', error);
-      }
-    );
+  // Demander une confirmation avant suppression
+  requestDeletion(patient: any): void {
+    this.patientToDelete = patient; 
+  }
+
+  // Annuler la suppression
+  cancelDeletion(): void {
+    this.patientToDelete = null;
+  }
+
+  // Confirmer la suppression
+  confirmDeletion(): void {
+    if (this.patientToDelete) {
+      this.patientService.deletePatient(this.patientToDelete.id).subscribe(
+        () => {
+          this.patients = this.patients.filter((p) => p.id !== this.patientToDelete.id);
+          console.log('Patient supprimé avec succès.');
+          this.patientToDelete = null; 
+        },
+        (error) => {
+          console.error('Erreur lors de la suppression du patient :', error);
+          this.patientToDelete = null; 
+        }
+      );
+    }
   }
 
   // Réinitialiser le formulaire
@@ -105,14 +122,14 @@ export class PatientsComponent implements OnInit {
     };
   }
 
-  // Gérer les contacts
+  // Gérer les contacts (li keynin f form)
   addContact(): void {
-    this.patientForm.contacts.push(''); // Ajouter un champ de contact
+    this.patientForm.contacts.push(''); 
   }
 
   removeContact(index: number): void {
     if (this.patientForm.contacts.length > 1) {
-      this.patientForm.contacts.splice(index, 1); // Supprimer le contact
+      this.patientForm.contacts.splice(index, 1); 
     }
   }
 

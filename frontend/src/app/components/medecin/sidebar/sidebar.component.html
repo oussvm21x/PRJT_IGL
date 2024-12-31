@@ -23,7 +23,7 @@
       <li>
         <a
         routerLink="/medecin/patients"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/patients' }"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/patients' || activeRoute.startsWith('/medecin/modifier-patient') }"
 
         (click)="setActiveButton('patients')"
         class=" flex items-center nav-item">

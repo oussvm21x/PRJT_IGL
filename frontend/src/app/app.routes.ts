@@ -5,6 +5,7 @@ import { PatientsComponent } from './components/medecin/patients/patients.compon
 import { NotificationsComponent } from './components/medecin/notifications/notifications.component';
 import { ParametresComponent } from './components/medecin/parametres/parametres.component';
 import { LayoutComponent } from './components/medecin/layout/layout.component';
+import { ModifierPatientComponent } from './components/medecin/modifier-patient/modifier-patient.component';
 
 export const routes: Routes = [
     {
@@ -15,6 +16,8 @@ export const routes: Routes = [
             { path: 'patients', component: PatientsComponent }, 
             { path: 'notifications', component: NotificationsComponent }, 
             { path: 'parametres', component: ParametresComponent }, 
+            { path: 'modifier-patient/:nss', component: ModifierPatientComponent }, 
+
         ],
         
     },
