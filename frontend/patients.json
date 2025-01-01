@@ -27,21 +27,6 @@
         "Peter Smith"
       ],
       "dateEntree": "2023-12-15"
-    },
-    {
-      "id": "6ce2",
-      "nom": "fff",
-      "prenom": "ffff",
-      "sexe": "Femme",
-      "nss": "302939",
-      "mutuelle": "RRRR",
-      "dateNaissance": "2024-11-29",
-      "adresse": "EEEEEEEEE",
-      "telephone": "0987654321",
-      "contacts": [
-        "EEzzer"
-      ],
-      "dateEntree": "2024-12-30"
     }
   ]
 }
