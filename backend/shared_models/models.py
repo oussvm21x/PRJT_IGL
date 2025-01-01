@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser , Permission ,Group
 from django.conf import Settings
 from rest_framework.authtoken.models import Token
+import qrcode
+import io
+from django.core.files.base import ContentFile
+import os
+from django.conf import settings
 
 
 class User(AbstractUser):
@@ -41,6 +46,20 @@ class Medecin(models.Model):
     prenom = models.CharField(max_length=100)
     specialite = models.CharField(max_length=100)
 
+def generate_and_save_qr_code(nss, date_of_birth):
+    qr = qrcode.QRCode()
+    qr_data = f"{nss}-{date_of_birth}"  # Combine NSS and Date of Birth
+    qr.add_data(qr_data)
+    qr.make(fit=True)
+    img = qr.make_image(fill="black", back_color="white")
+
+    qr_directory = os.path.join(settings.MEDIA_ROOT, "qrcodes")
+    os.makedirs(qr_directory, exist_ok=True)
+    file_name = f"{nss}-{date_of_birth}.png"
+    file_path = os.path.join(qr_directory, file_name)
+    img.save(file_path)
+    return f"qrcodes/{file_name}"  # Return relative path for storage in the database
+
 
 # Patient Model
 class Patient(models.Model):
@@ -54,6 +73,13 @@ class Patient(models.Model):
     email = models.EmailField()
     medecins_traitants = models.ManyToManyField(Medecin, related_name='patients', blank=True)
     personne_contact = models.CharField(max_length=100)
+    qr_code = models.ImageField(upload_to="qrcodes/", blank=True, null=True)  # Store QR image path
+
+    def save(self, *args, **kwargs):
+        if not self.qr_code:  # Only generate if not already present
+            qr_image_path = generate_and_save_qr_code(self.num_securite_sociale)
+            self.qr_code = qr_image_path
+        super().save(*args, **kwargs)
 
 
 # Resume Model
