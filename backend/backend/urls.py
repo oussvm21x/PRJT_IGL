@@ -24,5 +24,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('dpi/',include('DPI.urls')),
     path('patient/', include('patient.urls')),
+    path('ordonnance/', include('prescriptions.urls')),
+
 
 ]

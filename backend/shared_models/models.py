@@ -167,6 +167,11 @@ class DossierPatient(models.Model):
 
 # Ordonnance Model
 class Ordonnance(models.Model):
+    STATUS_CHOICES = [
+        ('PENDING', 'Pending'),
+        ('VALIDATED', 'Validated'),
+        ('REJECTED', 'Rejected'),
+    ]
     id_ordonnance = models.CharField(max_length=50)
     date = models.DateField()
     medicaments = models.ManyToManyField(Medicament, related_name='ordonnances')
