@@ -21,7 +21,7 @@
     </li>
     <li>
       <a routerLink="/pahrmacien/ordonnances"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/pahrmacien/ordonnances' || activeRoute.startsWith('/medecin/modifier-patient') }"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/pahrmacien/ordonnances' }"
         (click)="setActiveButton('ordonnances')" class=" flex items-center nav-item">
         <span>
           <svg width="22" height="22" viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,8 +34,7 @@
       </a>
     </li>
     <li>
-      <a routerLink="/pahrmacien/stocks"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/pahrmacien/stocks' || activeRoute.startsWith('/medecin/modifier-patient') }"
+      <a routerLink="/pahrmacien/stocks" [ngClass]="{ 'active-nav-item': activeRoute === '/pahrmacien/stocks' }"
         (click)="setActiveButton('stocks')" class=" flex items-center nav-item">
         <span>
           <svg width="22" height="22" viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,8 +47,7 @@
       </a>
     </li>
     <li>
-      <a routerLink="/pahrmacien/rapports"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/pahrmacien/rapports' || activeRoute.startsWith('/medecin/modifier-patient') }"
+      <a routerLink="/pahrmacien/rapports" [ngClass]="{ 'active-nav-item': activeRoute === '/pahrmacien/rapports'  }"
         (click)="setActiveButton('rapports')" class=" flex items-center nav-item">
         <span>
           <svg width="22" height="22" viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg">

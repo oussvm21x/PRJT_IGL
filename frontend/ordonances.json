@@ -1,0 +1,66 @@
+{
+  "ordonnances": [
+    {
+      "id": "aaa",
+      "numeroOrdonnance": "aaa",
+      "nss": "aaa",
+      "nomEtPrenom": "aaa",
+      "nomMedecin": "aa",
+      "datePrescription": "2025-01-03",
+      "etat": "En attente",
+      "medicaments": [
+        {
+          "nom": "aa",
+          "dosage": "aa",
+          "forme": "aa",
+          "quantite": "aa",
+          "posologie": "aa"
+        }
+      ]
+    },
+    {
+      "id": "aaa",
+      "numeroOrdonnance": "aaa",
+      "nss": "aaa",
+      "nomEtPrenom": "aaa",
+      "nomMedecin": "aa",
+      "datePrescription": "2025-01-03",
+      "etat": "Rejetée",
+      "medicaments": [
+        {
+          "nom": "aa",
+          "dosage": "aa",
+          "forme": "aa",
+          "quantite": "aa",
+          "posologie": "aa"
+        }
+      ]
+    }
+  ],
+  "medicaments": [
+    {
+      "id": "1",
+      "nom": "Paracetamol",
+      "dosage": "500mg",
+      "forme": "Tablet",
+      "quantite": "30",
+      "posologie": "1 tablet every 6 hours"
+    },
+    {
+      "id": "2",
+      "nom": "Ibuprofen",
+      "dosage": "400mg",
+      "forme": "Tablet",
+      "quantite": "20",
+      "posologie": "1 tablet every 8 hours"
+    },
+    {
+      "id": "3",
+      "nom": "Amoxicillin",
+      "dosage": "250mg",
+      "forme": "Capsule",
+      "quantite": "15",
+      "posologie": "1 capsule every 8 hours"
+    }
+  ]
+}
