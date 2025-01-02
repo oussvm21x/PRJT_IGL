@@ -1,0 +1,32 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "nss": "123456789",
+      "nom": "John",
+      "prenom": "Doe",
+      "sexe": "Homme",
+      "telephone": "+213 123 456 789",
+      "dateNaissance": "1985-01-01",
+      "adresse": "Rue des Fleurs, Alger",
+      "contacts": [
+        "Marie Doe"
+      ],
+      "dateEntree": "2024-01-01"
+    },
+    {
+      "id": "2",
+      "nss": "987654321",
+      "nom": "Jane",
+      "prenom": "Smith",
+      "sexe": "Femme",
+      "telephone": "+213 987 654 321",
+      "dateNaissance": "1990-12-15",
+      "adresse": "Boulevard Central, Oran",
+      "contacts": [
+        "Peter Smith"
+      ],
+      "dateEntree": "2023-12-15"
+    }
+  ]
+}
