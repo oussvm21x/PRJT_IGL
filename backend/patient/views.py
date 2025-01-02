@@ -28,25 +28,12 @@ class PatientByNSSView(APIView):
 
 
 class SearchPatientByQRCode(APIView):
-    def post(self, request):
-        """
-        Handle the scanned QR code content to search for a patient.
-        The request should include the QR code data as a plain string.
-        """
-        qr_code_content = request.data.get("qr_code_content")  # Example: "123456789012-1990-01-01"
-        if not qr_code_content:
-            return Response({"error": "QR code content is missing."}, status=400)
-
-        try:
-            # Extract NSS and Date of Birth from the QR code content
-            nss, date_of_birth = qr_code_content.split("-")
-
-            # Query the database for a matching patient
-            patient = Patient.objects.get(num_securite_sociale=nss, date_naissance=date_of_birth)
-            serializer = PatientSerializer(patient)
-            return Response(serializer.data)
-
-        except Patient.DoesNotExist:
-            raise NotFound({"error": "No patient found with the provided QR code data."})
-        except ValueError:
-            return Response({"error": "Invalid QR code format."}, status=400)
+    def get(self, request, qr_code, *args, **kwargs):
+        # Your logic to handle the qr_code
+        values = qr_code.split(":")
+        nss = values[0]
+        date_naissance = values[1]
+        # Query the database for a matching patient
+        patient = Patient.objects.get(num_securite_sociale=nss, date_naissance=date_naissance)
+        serializer = PatientSerializer(patient)
+        return Response(serializer.data)

@@ -37,29 +37,41 @@ class CreateConsultationView(APIView):
         resume = None
         if resume_data:
             resume = Resume.objects.create(
-                id_resume=str(uuid.uuid4()),
+                id_resume=Resume.objects.count(),
                 date=date.today(),
                 contenu=resume_data.get("contenu", ""),
                 antecedents=resume_data.get("antecedents", []),
                 auteur=doctor,
                 patient=patient,
             )
-
+        else :
+            resume = Resume.objects.create(
+                id_resume=Resume.objects.count(),
+                date=date.today(),
+                contenu="NOT GIVEN",
+                antecedents=[],
+                auteur=doctor,
+                patient=patient,
+            )
+        # Retrieve or create the DossierPatient entry
+        dossier, created = DossierPatient.objects.get_or_create(patient=patient)    
         # Create a Consultation entry
-        consultation = Consultation.objects.create(
-            id_consultation=str(uuid.uuid4()),
+        consultation = Consultation.objects.create (
+            # Add the consultation to the dossier
+            id_consultation = dossier.consultations.count() + 1 ,
             date=date.today(),
             motif=motif,
             observations=observations,
             resume=resume,
         )
 
-        # Retrieve or create the DossierPatient entry
-        dossier, created = DossierPatient.objects.get_or_create(patient=patient)
+        
 
-        # Add the consultation to the dossier
+        
         dossier.consultations.add(consultation)
+        
         dossier.save()
+        
 
         # Return a success response
         return Response(

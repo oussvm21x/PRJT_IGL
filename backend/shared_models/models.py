@@ -15,7 +15,9 @@ class User(AbstractUser):
         ('administratif', 'Administratif'),
         ('patient', 'Patient'),
         ('medecin', 'Medecin'),
-        ('infermier', 'Infermier'),
+        ('infirmier', 'Infirmier'),
+        ('radiologue', 'Radiologue'),
+        ('laborantien', 'Laborantien'),
     ]
     role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
@@ -111,9 +113,14 @@ class Medicament(models.Model):
 # Infirmier Model
 class Infirmier(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_infirmier = models.CharField(max_length=50)
+    id_infirmier = models.CharField(max_length=50, blank=True)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
+    def save(self, *args, **kwargs):
+        # If id_infirmier is not set, generate one
+        if not self.id_infirmier:
+            self.id_infirmier = Infirmier.objects.count() + 1
+        super(Infirmier, self).save(*args, **kwargs)
 
 
 # Soin Model

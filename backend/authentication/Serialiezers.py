@@ -10,6 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         role = validated_data.get('role')
         password = validated_data.pop('password', None)
+        
         if role == 'admin':
             user = User.objects.create_superuser(**validated_data)
         else:
@@ -22,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
             Patient.objects.create(user=user)
         elif role == 'medecin':
             Medecin.objects.create(user=user)
-        elif role == 'infermier':
+        elif role == 'infirmier':  
             Infirmier.objects.create(user=user)
         elif role == 'administratif':
             Administratif.objects.create(user=user)
@@ -64,7 +65,7 @@ class InfirmierSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Infirmier
-        fields = ['user', 'id_infirmier', 'nom', 'prenom']
+        fields = ['user', 'nom', 'prenom']
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')

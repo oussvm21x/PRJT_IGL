@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from .services import create_token
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
+from shared_models import *
 
 User = get_user_model()
 

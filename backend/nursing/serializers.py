@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from shared_models.models import Soin, Medicament, Infirmier, Patient
+from shared_models.models import Soin, Medicament, Infirmier, Patient, User
 
 # Serializer for Medicament
 class MedicamentSerializer(serializers.ModelSerializer):
@@ -9,9 +9,12 @@ class MedicamentSerializer(serializers.ModelSerializer):
 
 # Serializer for Infirmier (Nurse)
 class InfirmierSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())  # Make sure the user field is included
+
     class Meta:
         model = Infirmier
-        fields = ['id_infirmier', 'nom', 'prenom']
+        fields = ['id', 'nom', 'prenom', 'user']  # Include 'user' field here
+
 
 # Serializer for Patient
 class PatientSerializer(serializers.ModelSerializer):
