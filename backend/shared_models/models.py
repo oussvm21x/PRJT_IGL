@@ -77,7 +77,7 @@ class Patient(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.qr_code:  # Only generate if not already present
-            qr_image_path = generate_and_save_qr_code(self.num_securite_sociale)
+            qr_image_path = generate_and_save_qr_code(self.num_securite_sociale,self.date_naissance)
             self.qr_code = qr_image_path
         super().save(*args, **kwargs)
 
@@ -154,8 +154,8 @@ class DossierPatient(models.Model):
     date_ouverture = models.DateField()
     patient = models.OneToOneField(Patient, on_delete=models.CASCADE, related_name='dossier')
     antecedents = models.JSONField()  # List of strings
-    consultations = models.ManyToManyField(Consultation, related_name='dossiers')
-    certificats_medicaux = models.ManyToManyField(CertificatMedical, related_name='dossiers')
+    consultations = models.ManyToManyField(Consultation, related_name='dossiers', blank=True)
+    certificats_medicaux = models.ManyToManyField(CertificatMedical, related_name='dossiers', blank=True)
 
 
 # Ordonnance Model

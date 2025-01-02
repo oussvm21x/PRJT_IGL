@@ -38,7 +38,7 @@ class PatientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Patient
-        fields = ['user', 'num_securite_sociale', 'nom', 'prenom', 'date_naissance', 'adresse', 'telephone', 'email', 'medecins_traitants', 'personne_contact']
+        fields = ['user', 'num_securite_sociale', 'nom', 'prenom', 'date_naissance', 'adresse', 'telephone', 'email','personne_contact']
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')

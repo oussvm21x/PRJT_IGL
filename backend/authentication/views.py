@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
 from .services import create_token
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 User = get_user_model()
 
@@ -26,6 +28,9 @@ class CreateListUsersView(APIView):
         users = User.objects.all()
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
+    
+
+
 
 class RetrieveUserView(APIView):
     serializer_class = UserSerializer
@@ -63,16 +68,19 @@ class UserLoginView(APIView):
             # Authenticate the user
             user = authenticate(username=username, password=password)
             if user:
-                # Generate the JWT token
-                token = create_token(user)
+                # Generate the JWT token using simplejwt's TokenObtainPairView
+                refresh = RefreshToken.for_user(user)
+                access_token = str(refresh.access_token)
+                refresh_token = str(refresh)
 
                 # Serialize the user object
                 user_serializer = UserSerializer(user)
 
-                # Return token and user object in response
+                # Return access token, refresh token, and user object
                 return Response(
                     {
-                        "token": token,
+                        "access_token": access_token,
+                        "refresh_token": refresh_token,
                         "user": user_serializer.data,
                     },
                     status=status.HTTP_200_OK,
@@ -81,3 +89,24 @@ class UserLoginView(APIView):
                 return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class UserLogoutView(APIView):
+    
+    def post(self, request, *args, **kwargs):
+        try:
+            # Get the refresh token from the request data
+            refresh_token = request.data.get("refresh_token")
+            if not refresh_token:
+                return Response({"error": "Refresh token is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Blacklist the token
+            token = RefreshToken(refresh_token)
+            # Blacklisting the refresh token
+            token.blacklist()
+
+            return Response({"message": "Successfully logged out"}, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({"error": "Invalid token or logout failed"}, status=status.HTTP_400_BAD_REQUEST)
