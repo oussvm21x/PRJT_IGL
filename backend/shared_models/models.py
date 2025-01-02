@@ -199,8 +199,6 @@ class ExamenRadiologique(models.Model):
     compte_rendu = models.OneToOneField(CompteRendu, on_delete=models.CASCADE)
     examen = models.ForeignKey(Examen, on_delete=models.CASCADE, related_name='examens_radiologiques',default=0)
     radiologue = models.ForeignKey('Radiologue', on_delete=models.CASCADE, related_name='examens_radiologiques',default=0)
-
-
 # ExamenBiologique Model
 class ExamenBiologique(models.Model):
     parameters = models.JSONField()

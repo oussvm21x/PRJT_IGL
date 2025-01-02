@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import get_object_or_404
 from rest_framework.decorators import api_view
 from .serializers import ConsultationSerializer
-from shared_models.models import Patient, Medecin, Consultation , DossierPatient , Resume
+from shared_models.models import Examen, Patient, Medecin, Consultation , DossierPatient , Resume
 import uuid
 from datetime import date
 
@@ -25,7 +25,8 @@ class CreateConsultationView(APIView):
         motif = data.get("motif")
         observations = data.get("observations")
         resume_data = data.get("resume", {})
-
+        examens = data.get("examens",[])
+        print(examens)
         # Validation for required fields
         if not motif or not observations:
             return Response(
@@ -72,6 +73,11 @@ class CreateConsultationView(APIView):
         
         dossier.save()
         
+        # If there are any examens, add them to the consultation
+        if examens:
+            examen_objects = Examen.objects.filter(id_examen__in=examens)
+            consultation.examens.add(*examen_objects)
+            consultation.save()
 
         # Return a success response
         return Response(

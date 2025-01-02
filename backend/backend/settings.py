@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta  # Added for JWT configuration
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,8 @@ SECRET_KEY = 'django-insecure-@8-2cebq%#&ucjm3u0@d7s2npj8kpjy@!rhg=m_r&jf$ntoa_d
 DEBUG = True
 
 ALLOWED_HOSTS = []
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Application definition
@@ -46,6 +49,8 @@ INSTALLED_APPS = [
     'DPI',
     'patient',
     'rest_framework_simplejwt.token_blacklist',
+    'prescriptions',
+    'examens',
 
 ]
 
