@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 
 export class OrdonnanacesComponent implements OnInit {
   ajouterOrdonnanceVisible = false;
+  modifierOrdonnanceVisible = false;
   ordonnanceForm = {
     numeroOrdonnance: '',
     nss: '',
@@ -72,6 +73,10 @@ export class OrdonnanacesComponent implements OnInit {
     this.ajouterOrdonnanceVisible = !this.ajouterOrdonnanceVisible;
   }
 
+  toggleModifiererOrdonnance() {
+    this.modifierOrdonnanceVisible = !this.modifierOrdonnanceVisible;
+  }
+
   addMedicament() {
     this.ordonnanceForm.medicaments.push({ nom: '', dosage: '', forme: '', quantite: '', posologie: '' });
   }
@@ -113,7 +118,7 @@ export class OrdonnanacesComponent implements OnInit {
     if (ordonnance) {
       console.log('Found ordonnance:', ordonnance);  // Log the ordonnance found
       this.ordonnanceForm = { ...ordonnance };  // Populate the form with ordonnance data
-      this.toggleAjouterOrdonnance();  // Open the form for editing
+      this.toggleModifiererOrdonnance();  // Open the form for editing
     } else {
       console.error('Ordonnance non trouvée');  // Log if ordonnance is not found
     }
@@ -162,7 +167,7 @@ export class OrdonnanacesComponent implements OnInit {
           if (index !== -1) {
             this.ordonnances[index] = updatedOrdonnance;  // Replace the existing ordonnance
           }
-          this.toggleAjouterOrdonnance();  // Close the form
+          this.toggleModifiererOrdonnance();  // Close the form
         },
         (error: any) => {
           console.error('Error updating ordonnance', error);

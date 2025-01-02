@@ -1,4 +1,4 @@
-<main class="h-screen px-4">
+<main class=" px-4">
     <div class="flex-1  ">
         <!-- Sidebar pour petits écrans -->
         <div class="flex flex-row items-center justify-end mb-4 space-x-2 p-2 top-0">
@@ -50,8 +50,8 @@
         </div>
         <!-- Pop up ajouter ordonnance -->
         <div *ngIf="ajouterOrdonnanceVisible"
-            class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
-            <div class="bg-gray-100 p-6 rounded-lg shadow-lg w-[90%] md:w-[50%] relative">
+            class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 h-full">
+            <div class="bg-gray-100 p-6 rounded-lg shadow-lg w-[90%] md:w-[50%] relative h-full">
 
                 <div class="flex flex-row justify-between items-baseline">
                     <p class="text-xl font-bold mb-4">Ajouter une ordonnance</p>
@@ -145,6 +145,111 @@
                         <button (click)="submitOrdonnance()"
                             class="px-12 py-3 bg-[#2D6974] rounded-full text-sm font-bold text-white">
                             Ajouter
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Pop up modifier ordonnance -->
+        <div *ngIf="modifierOrdonnanceVisible"
+            class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 h-full ">
+            <div class="bg-gray-100 p-6 rounded-lg shadow-lg w-[90%] md:w-[50%] relative h-full">
+
+                <div class="flex flex-row justify-between items-baseline">
+                    <p class="text-xl font-bold mb-4">Modifier une ordonnance</p>
+                    <button title="'" (click)="toggleModifiererOrdonnance()" class="text-gray-500 hover:text-gray-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path fill-rule="evenodd"
+                                d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="border-t border-gray-300"></div>
+
+                <div class="flex flex-col">
+                    <!-- Informations générales de l'ordonnance -->
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <div>
+                            <label for="numeroOrdonnance" class="block text-sm font-medium">Numéro d'ordonnance
+                                :</label>
+                            <input id="numeroOrdonnance" type="text"
+                                class="w-full border border-gray-300 rounded-lg p-2" placeholder="Entrez le numéro"
+                                [(ngModel)]="ordonnanceForm.numeroOrdonnance" />
+                        </div>
+                        <div>
+                            <label for="nss" class="block text-sm font-medium">NSS :</label>
+                            <input id="nss" type="text" class="w-full border border-gray-300 rounded-lg p-2"
+                                placeholder="Entrez le NSS" [(ngModel)]="ordonnanceForm.nss" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <div>
+                            <label for="nomEtPrenom" class="block text-sm font-medium">Nom et Prénom :</label>
+                            <input id="nomEtPrenom" type="text" class="w-full border border-gray-300 rounded-lg p-2"
+                                placeholder="Entrez le nom complet" [(ngModel)]="ordonnanceForm.nomEtPrenom" />
+                        </div>
+                        <div>
+                            <label for="nomMedecin" class="block text-sm font-medium">Nom du médecin :</label>
+                            <input id="nomMedecin" type="text" class="w-full border border-gray-300 rounded-lg p-2"
+                                placeholder="Entrez le nom du médecin" [(ngModel)]="ordonnanceForm.nomMedecin" />
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="datePrescription" class="block text-sm font-medium">Date de prescription :</label>
+                        <input id="datePrescription" type="date" class="w-full border border-gray-300 rounded-lg p-2"
+                            [(ngModel)]="ordonnanceForm.datePrescription" />
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="etat" class="block text-sm font-medium">État :</label>
+                        <select id="etat" class="w-full border border-gray-300 rounded-lg p-2 text-gray-400"
+                            [(ngModel)]="ordonnanceForm.etat">
+                            <option value="" disabled selected>Choisir...</option>
+                            <option value="Validée">Validée</option>
+                            <option value="En attente">En attente</option>
+                            <option value="Rejetée">Rejetée</option>
+                        </select>
+                    </div>
+
+                    <!-- Liste des médicaments -->
+                    <div class="mt-6">
+                        <p class="font-bold text-sm mb-2">Médicaments :</p>
+                        <div *ngFor="let medicament of ordonnanceForm.medicaments; let i = index"
+                            class="grid grid-cols-3 gap-3 mb-4">
+                            <input type="text" placeholder="Nom" class="border border-gray-300 rounded-lg p-2"
+                                [(ngModel)]="ordonnanceForm.medicaments[i].nom" />
+                            <input type="text" placeholder="Dosage" class="border border-gray-300 rounded-lg p-2"
+                                [(ngModel)]="ordonnanceForm.medicaments[i].dosage" />
+                            <input type="text" placeholder="Forme" class="border border-gray-300 rounded-lg p-2"
+                                [(ngModel)]="ordonnanceForm.medicaments[i].forme" />
+                            <input type="text" placeholder="Quantité" class="border border-gray-300 rounded-lg p-2"
+                                [(ngModel)]="ordonnanceForm.medicaments[i].quantite" />
+                            <input type="text" placeholder="Posologie" class="border border-gray-300 rounded-lg p-2"
+                                [(ngModel)]="ordonnanceForm.medicaments[i].posologie" />
+                            <button (click)="removeMedicament(i)" class="text-red-500">Supprimer</button>
+                        </div>
+                        <button (click)="addMedicament()" class="px-4 py-2 bg-blue-500 text-white rounded-full">Ajouter
+                            un
+                            médicament</button>
+                    </div>
+
+
+                    <div class="border-t border-gray-300 mt-4"></div>
+                    <div class="flex flex-row justify-end space-x-2 mt-4">
+                        <button (click)="toggleAjouterOrdonnance()"
+                            class="px-12 py-3 bg-white rounded-full text-sm font-bold text-black">
+                            Annuler
+                        </button>
+                        <button (click)="updateOrdonnance()"
+                            class="px-12 py-3 bg-[#2D6974] rounded-full text-sm font-bold text-white">
+                            Modifier
                         </button>
                     </div>
                 </div>

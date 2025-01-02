@@ -1,40 +1,14 @@
 {
   "ordonnances": [
     {
-      "id": "aaa",
-      "numeroOrdonnance": "aaa",
-      "nss": "aaa",
-      "nomEtPrenom": "aaa",
-      "nomMedecin": "aa",
-      "datePrescription": "2025-01-03",
-      "etat": "En attente",
-      "medicaments": [
-        {
-          "nom": "aa",
-          "dosage": "aa",
-          "forme": "aa",
-          "quantite": "aa",
-          "posologie": "aa"
-        }
-      ]
-    },
-    {
-      "id": "aaa",
-      "numeroOrdonnance": "aaa",
-      "nss": "aaa",
-      "nomEtPrenom": "aaa",
-      "nomMedecin": "aa",
-      "datePrescription": "2025-01-03",
-      "etat": "Rejetée",
-      "medicaments": [
-        {
-          "nom": "aa",
-          "dosage": "aa",
-          "forme": "aa",
-          "quantite": "aa",
-          "posologie": "aa"
-        }
-      ]
+      "id": "s",
+      "numeroOrdonnance": "s",
+      "nss": "s",
+      "nomEtPrenom": "s",
+      "nomMedecin": "s",
+      "datePrescription": "2025-01-09",
+      "etat": "Validée",
+      "medicaments": []
     }
   ],
   "medicaments": [
