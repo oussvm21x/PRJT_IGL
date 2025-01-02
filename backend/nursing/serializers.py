@@ -10,7 +10,7 @@ class MedicamentSerializer(serializers.ModelSerializer):
 # Serializer for Infirmier (Nurse)
 class InfirmierSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())  # Make sure the user field is included
-
+    
     class Meta:
         model = Infirmier
         fields = ['id', 'nom', 'prenom', 'user']  # Include 'user' field here
