@@ -26,7 +26,6 @@ class CreateConsultationView(APIView):
         observations = data.get("observations")
         resume_data = data.get("resume", {})
         examens = data.get("examens",[])
-        print(examens)
         # Validation for required fields
         if not motif or not observations:
             return Response(
