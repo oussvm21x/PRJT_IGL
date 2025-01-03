@@ -1,192 +1,136 @@
 {
-    "bilans": [
-      {
-        "id": 1,
-        "nss": "1234567890123",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de glycémie",
-            "valeur": "5.6 mmol/L",
-            "unité": "mmol/L"
-          },
-          {
-            "nom": "Test de cholestérol",
-            "valeur": "200 mg/dL",
-            "unité": "mg/dL"
-          }
-        ],
-        "date": "2025-01-03",
-        "status": "traité"
-      },
-      {
-        "id": 2,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "traité"
-      },
-      {
-        "id": 14,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "traité"
-      },
-      {
-        "id": 13,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      },
-      {
-        "id": 12,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "traité"
-      },
-      {
-        "id": 11,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      },
-      {
-        "id": 10,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      },
-      {
-        "id": 9,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "traité"
-      },
-      {
-        "id": 8,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "traité"
-      },
-      {
-        "id": 7,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      },
-      {
-        "id": 6,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      },
-      {
-        "id": 5,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      },
-      {
-        "id": 4,
-        "nss": "9876543210987",
-        "type": "biologique",
-        "tests": [
-          {
-            "nom": "Test de protéine C-réactive",
-            "valeur": "3 mg/L",
-            "unité": "mg/L"
-          }
-        ],
-        "date": "2025-01-02",
-        "status": "non traité"
-      }
-    ]
-  }
-  
+  "bilans": [
+    {
+      "id": "1",
+      "nss": "1234567890123",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Glycémie",
+          "valeur": 5.6,
+          "unite": "mmol/L"
+        },
+        {
+          "nom": "Cholestérol",
+          "valeur": 200,
+          "unite": "mg/dL"
+        }
+      ],
+      "date": "2025-01-01",
+      "status": "traité"
+    },
+    {
+      "id": "2",
+      "nss": "1234567890123",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Glycémie",
+          "valeur": 6,
+          "unite": "mmol/L"
+        },
+        {
+          "nom": "Cholestérol",
+          "valeur": 195,
+          "unite": "mg/dL"
+        }
+      ],
+      "date": "2025-01-15",
+      "status": "traité"
+    },
+    {
+      "id": "3",
+      "nss": "1234567890123",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Glycémie",
+          "valeur": 5.8,
+          "unite": "mmol/L"
+        },
+        {
+          "nom": "Cholestérol",
+          "valeur": 190,
+          "unite": "mg/dL"
+        }
+      ],
+      "date": "2025-02-01",
+      "status": "traité"
+    },
+    {
+      "id": "4",
+      "nss": "9876543210987",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Protéine C-réactive",
+          "valeur": 3.2,
+          "unite": "mg/L"
+        }
+      ],
+      "date": "2025-01-10",
+      "status": "traité"
+    },
+    {
+      "id": "5",
+      "nss": "9876543210987",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Protéine C-réactive",
+          "valeur": 2.8,
+          "unite": "mg/L"
+        }
+      ],
+      "date": "2025-01-20",
+      "status": "traité"
+    },
+    {
+      "id": "6",
+      "nss": "9876543210987",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Protéine C-réactive",
+          "valeur": 3.5,
+          "unite": "mg/L"
+        }
+      ],
+      "date": "2025-02-01",
+      "status": "traité"
+    },
+    {
+      "id": "7",
+      "nss": "9876543210987",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Protéine C-réactive",
+          "valeur": "",
+          "unite": ""
+        }
+      ],
+      "date": "2025-02-15",
+      "status": "non traité"
+    },
+    {
+      "id": "8",
+      "nss": "1234567890123",
+      "type": "biologique",
+      "tests": [
+        {
+          "nom": "Glycémie",
+          "valeur": "12",
+          "unite": "mm"
+        },
+        {
+          "nom": "Cholestérol",
+          "valeur": "4",
+          "unite": "mm"
+        }
+      ],
+      "date": "2025-02-20",
+      "status": "traité"
+    }
+  ]
+}

@@ -31,8 +31,9 @@ export class BilanService {
   }
 
   // Mettre à jour un bilan existant
-  updateBilan(id: number, bilan: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, bilan);
+  updateBilan(bilan: any): Observable<any> {
+    const apiUrl = `http://localhost:3003/bilans/${bilan.id}`; 
+    return this.http.put<any>(`${this.apiUrl}/${bilan.id}`, bilan);
   }
 
   // Supprimer un bilan
