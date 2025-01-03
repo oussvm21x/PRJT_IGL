@@ -175,12 +175,59 @@
               </div>
 
               <!-- Examens complémentaires -->
-              <div class="mb-4">
+              <!-- Examens complémentaires -->
+              <div formGroupName="bilans" class="mb-4">
                 <label class="text-sm font-bold">Bilan Radiologique :</label>
                 <input type="text" formControlName="radio" class="border p-2 rounded w-full mb-4" />
+                
                 <label class="text-sm font-bold">Bilan Biologique :</label>
-                <input type="text" formControlName="biologique" class="border p-2 rounded w-full" />
+                <div>
+                  <!-- Liste des tests biologiques -->
+                  <div>
+                    <!-- Liste des tests biologiques -->
+                    <div formArrayName="biologique">
+                      <div
+                        *ngFor="let test of bilansBiologiques.controls; let i = index"
+                        [formGroupName]="i"
+                        class="mb-2 flex items-center"
+                      >
+                        <input
+                          type="text"
+                          formControlName="nom"
+                          class="border p-2 rounded w-3/4 mr-2"
+                          placeholder="Nom du test"
+                        />
+                        <button
+                          (click)="removeTest(i)"
+                          class="ml-2 text-red-500 hover:text-red-700"
+                        >
+                          Supprimer
+                        </button>
+                      </div>
+                    </div>
+                    
+                
+                    <!-- Bouton pour ajouter un test -->
+                    <button
+                      (click)="addTest()"
+                      class="flex flex-row items-center justify-center text-sm font-semibold text-black mt-2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="3"
+                        stroke="black"
+                        class="size-4 mr-2 mt-1"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                      Ajouter un Test
+                    </button>
+                  </div>
+                </div>
               </div>
+
 
               <!-- Résumé -->
               <div class="mb-4">
@@ -236,7 +283,7 @@
                       <p><strong>Bilan Biologique :</strong> </p>
                       <button
                         class="bg-gray-200 text-black font-semibold px-3 py-1 rounded-full text-sm flex flex-row  items-center space-x-4"
-                        (click)="downloadPDF(consultation.bilans.biologique, 'Bilan Biologique')">
+                        (click)="downloadBilanBiologiquePDF(consultation.bilans.biologique)">
                         BilanBiologique.pdf
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 ml-2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -244,7 +291,7 @@
                       </button>
                     </div>
                   </div>
-              
+               
                   <!-- Ordonnance -->
                   <div class="flex flex-row space-x-4 items-center mb-4">
                     <p><strong>Ordonnance :</strong></p>
