@@ -66,8 +66,6 @@ class CreateConsultationView(APIView):
         )
 
         
-
-        
         dossier.consultations.add(consultation)
         
         dossier.save()

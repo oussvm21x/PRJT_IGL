@@ -4,6 +4,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404
 from datetime import date
 import uuid
+from shared_models.models import DossierPatient
 
 from shared_models.models import CertificatMedical, Patient, Medecin
 from .serializers import CertificatMedicalSerializer
@@ -44,6 +45,8 @@ class RequestMedicalCertificateView(APIView):
             patient=patient,
             auteur=auteur,
         )
+        dpi = DossierPatient.objects.get(patient=patient)
+        dpi.certificats_medicaux.add(certificat)
 
         # Serialize and return the created certificate
         serializer = CertificatMedicalSerializer(certificat)

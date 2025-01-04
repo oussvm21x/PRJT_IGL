@@ -74,7 +74,7 @@ class Patient(models.Model):
     telephone = models.CharField(max_length=20)
     email = models.EmailField()
     medecins_traitants = models.ManyToManyField(Medecin, related_name='patients', blank=True)
-    personne_contact = models.CharField(max_length=100)
+    personne_contact = models.TextField(blank=True, default="[]")
     qr_code = models.ImageField(upload_to="qrcodes/", blank=True, null=True)  # Store QR image path
 
     def save(self, *args, **kwargs):
