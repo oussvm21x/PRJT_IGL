@@ -106,12 +106,12 @@
       "tests": [
         {
           "nom": "Protéine C-réactive",
-          "valeur": "",
-          "unite": ""
+          "valeur": "12",
+          "unite": "11"
         }
       ],
       "date": "2025-02-15",
-      "status": "non traité"
+      "status": "traité"
     },
     {
       "id": "8",

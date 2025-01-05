@@ -13,7 +13,7 @@ import { Chart, registerables } from 'chart.js';
 export class BilansComponent implements OnInit {
   bilans: any[] = []; // Liste complète des bilans
   currentPage: number = 1; // Page actuelle
-  itemsPerPage: number = 8; // Nombre d'éléments par page
+  itemsPerPage: number = 5; // Nombre d'éléments par page
   isLoading: boolean = true;
   Math = Math;
   popupVisible: boolean = false; // Gérer la visibilité de la popup
