@@ -9,6 +9,16 @@
       "datePrescription": "2025-01-09",
       "etat": "Validée",
       "medicaments": []
+    },
+    {
+      "id": "aa",
+      "numeroOrdonnance": "aa",
+      "nss": "aa",
+      "nomEtPrenom": "aa",
+      "nomMedecin": "aa",
+      "datePrescription": "2025-01-11",
+      "etat": "En attente",
+      "medicaments": []
     }
   ],
   "medicaments": [

@@ -50,7 +50,7 @@
         </div>
         <!-- Pop up ajouter ordonnance -->
         <div *ngIf="ajouterOrdonnanceVisible"
-            class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 h-full">
+            class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
             <div class="bg-gray-100 p-6 rounded-lg shadow-lg w-[90%] md:w-[50%] relative h-full">
 
                 <div class="flex flex-row justify-between items-baseline">
@@ -114,7 +114,7 @@
                     </div>
 
                     <!-- Liste des médicaments -->
-                    <div class="mt-6">
+                    <div class="mt-6 max-h-24 overflow-y-auto">
                         <p class="font-bold text-sm mb-2">Médicaments :</p>
                         <div *ngFor="let medicament of ordonnanceForm.medicaments; let i = index"
                             class="grid grid-cols-3 gap-3 mb-4">
