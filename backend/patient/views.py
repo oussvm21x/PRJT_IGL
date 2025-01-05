@@ -6,10 +6,11 @@ from .serializers import PatientSerializer
 from rest_framework import status
 from rest_framework.exceptions import NotFound
 
-# Create a new patient
-class CreatePatientView(generics.CreateAPIView):
-    queryset = Patient.objects.all()
-    serializer_class = PatientSerializer
+class CreatePatientView(APIView):
+    def get(self, request, *args, **kwargs):
+        patients = Patient.objects.all()
+        serializer = PatientSerializer(patients, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Get patient details
 class GetPatientDetailsView(generics.RetrieveAPIView):

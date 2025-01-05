@@ -76,7 +76,7 @@ class Patient(models.Model):
     medecins_traitants = models.ManyToManyField(Medecin, related_name='patients', blank=True)
     personne_contact = models.TextField(blank=True, default="[]")
     qr_code = models.ImageField(upload_to="qrcodes/", blank=True, null=True)  # Store QR image path
-
+    gender = models.BooleanField(default=True)  # True for male, False for female
     def save(self, *args, **kwargs):
         if not self.qr_code:  # Only generate if not already present
             qr_image_path = generate_and_save_qr_code(self.num_securite_sociale,self.date_naissance)
@@ -90,8 +90,8 @@ class Resume(models.Model):
     date = models.DateField()
     contenu = models.TextField()
     antecedents = models.JSONField()  # List of strings
-    auteur = models.ForeignKey(Medecin, on_delete=models.CASCADE, default=0)  # Default to a specific Medecin ID
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='resumes',default=0)
+    auteur = models.ForeignKey(Medecin, on_delete=models.CASCADE, null=True, blank=True)  # Default to a specific Medecin ID
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='resumes',null=True, blank=True)
 
 
 # Examen Model
@@ -100,7 +100,7 @@ class Examen(models.Model):
     type = models.CharField(max_length=100)
     date = models.DateField()
     resultat = models.TextField()
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='examens',default=0)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='examens',null=True, blank=True)
 
 
 # Medicament Model
@@ -131,7 +131,7 @@ class Soin(models.Model):
     medicaments_administres = models.ManyToManyField(Medicament, related_name='soins')
     infirmier = models.ForeignKey(Infirmier, on_delete=models.CASCADE)
     observations = models.TextField()
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='soins',default=0)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='soins',null=True, blank=True)
 
 
 # Consultation Model
@@ -151,8 +151,8 @@ class CertificatMedical(models.Model):
     date_emission = models.DateField()
     motif = models.CharField(max_length=255)
     duree_arret = models.CharField(max_length=100)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='certificats_medicaux',default=0)
-    auteur = models.ForeignKey(Medecin, on_delete=models.CASCADE, default=0)  # Default to a specific Medecin ID
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='certificats_medicaux',null=True, blank=True)
+    auteur = models.ForeignKey(Medecin, on_delete=models.CASCADE, null=True, blank=True)  # Default to a specific Medecin ID
 
 
 # DossierPatient Model
@@ -177,8 +177,7 @@ class Ordonnance(models.Model):
     medicaments = models.ManyToManyField(Medicament, related_name='ordonnances')
     doses = models.JSONField()  # List of doses
     duree_traitement = models.CharField(max_length=100)
-    consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE, related_name='ordonnances',default=0)
-
+    consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE, related_name='ordonnances',null=True, blank=True)
 
 # CompteRendu Model
 class CompteRendu(models.Model):
@@ -197,15 +196,15 @@ class ExamenRadiologique(models.Model):
     type_image = models.CharField(max_length=100)
     fichier_image = models.FileField(upload_to='radiologie/')
     compte_rendu = models.OneToOneField(CompteRendu, on_delete=models.CASCADE)
-    examen = models.ForeignKey(Examen, on_delete=models.CASCADE, related_name='examens_radiologiques',default=0)
-    radiologue = models.ForeignKey('Radiologue', on_delete=models.CASCADE, related_name='examens_radiologiques',default=0)
+    examen = models.ForeignKey(Examen, on_delete=models.CASCADE, related_name='examens_radiologiques',null=True, blank=True)
+    radiologue = models.ForeignKey('Radiologue', on_delete=models.CASCADE, related_name='examens_radiologiques',null=True, blank=True)
 # ExamenBiologique Model
 class ExamenBiologique(models.Model):
     parameters = models.JSONField()
     values = models.JSONField()
     graphique_tendance = models.CharField(max_length=255)
-    examen = models.OneToOneField(Examen, on_delete=models.CASCADE, related_name='examens_biologiques',default=0)
-    laborantien = models.ForeignKey('Laborantien', on_delete=models.CASCADE, related_name='examens_biologiques',default=0)
+    examen = models.OneToOneField(Examen, on_delete=models.CASCADE, related_name='examens_biologiques',null=True, blank=True)
+    laborantien = models.ForeignKey('Laborantien', on_delete=models.CASCADE, related_name='examens_biologiques',null=True, blank=True)
 
 
 # Radiologue Model

@@ -63,7 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200/",
+] 
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -91,10 +95,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS__SsLRue6rws09TR1Ybj',
+        'HOST': 'prjt-igl-prjt-igl.d.aivencloud.com',  # Use 'localhost' or the IP address of your MySQL server
+        'PORT': '25981',  # Default MySQL port
+        'OPTIONS': {
+            'ssl': {
+                'ca': 'db_files/ca.pem',  # Path to the CA certificate
+            },
+        }    
     }
 }
+
 
 
 # Password validation
@@ -160,3 +174,4 @@ SIMPLE_JWT = {
     "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
     "TOKEN_TYPE_CLAIM": "token_type",
 }
+
