@@ -95,17 +95,16 @@
                 <img src="assets/profil.svg" class="">
                 <div class="flex flex-col space-y-2 w-full">
                   <p class="text-3xl font-bold">{{ patient?.nom }} {{ patient?.prenom }} </p>
-                  <p class="text-sm text-gray-500">Patient depuis {{ patient?.dateEntree }}</p>
+                  <p class="text-sm text-gray-500">Patient depuis {{ patient?.date_ouverture }}</p>
                   <div class="bg-white rounded-3xl p-8 flex flex-col space-y-2 w-">
-                    <p><strong class="font-bold">Nom :</strong> {{ patient?.nom }}</p>
-                    <p><strong class="font-bold">Prénom :</strong> {{ patient?.prenom }}</p>
-                    <p><strong class="font-bold">NSS :</strong> {{ patient?.nss }}</p>
-                    <p><strong class="font-bold">Date de naissance :</strong> {{ patient?.dateNaissance }}</p>
-                    <p><strong class="font-bold">Adresse :</strong> {{ patient?.adresse }}</p>
-                    <p><strong class="font-bold">N°Téléphone :</strong> {{ patient?.telephone }}</p>
-                    <p><strong class="font-bold">Mutuelle :</strong> {{ patient?.mutuelle }}</p>
-                    <p><strong class="font-bold">Médecin Traitant :</strong> {{ patient?.nom }}</p>
-                    <p><strong class="font-bold">Sexe :</strong> {{ patient?.sexe }}</p>
+                      <p><strong class="font-bold">Nom :</strong> {{ patient?.nom }}</p>
+                      <p><strong class="font-bold">Prénom :</strong> {{ patient?.prenom }}</p>
+                      <p><strong class="font-bold">NSS :</strong> {{ patient?.num_securite_sociale }}</p>
+                      <p><strong class="font-bold">Date de naissance :</strong> {{ patient?.date_naissance }}</p>
+                      <p><strong class="font-bold">Adresse :</strong> {{ patient?.adresse }}</p>
+                      <p><strong class="font-bold">N°Téléphone :</strong> {{ patient?.telephone }}</p>
+                      <p><strong class="font-bold">Médecin Traitant :</strong> {{ patient?.medecins_traitants}}</p>
+                      <p><strong class="font-bold">Sexe :</strong> {{ patient?.gender }}</p>
                   </div>
                 </div>
             </div>
@@ -113,7 +112,7 @@
 
          <!-- Onglet Consultations -->
           <div *ngIf="activeTab === 'consultations'" class="">
-            <div class="flex flex-row justify-between items-baseline">
+            <div class="flex flex-row justify-between items-baseline h-96">
               <h3 class="text-xl font-bold mb-4">Liste des Consultations</h3>
               <button       
                       (click)="toggleModal()"
@@ -178,16 +177,16 @@
               <!-- Examens complémentaires -->
               <div formGroupName="bilans" class="mb-4">
                 <label class="text-sm font-bold">Bilan Radiologique :</label>
-                <input type="text" formControlName="radio" class="border p-2 rounded w-full mb-4" />
+                <input type="text" formControlName="ExamenRadiologique" class="border p-2 rounded w-full mb-4" />
                 
                 <label class="text-sm font-bold">Bilan Biologique :</label>
                 <div>
                   <!-- Liste des tests biologiques -->
                   <div>
                     <!-- Liste des tests biologiques -->
-                    <div formArrayName="biologique">
+                    <div formArrayName="ExamenBiologique">
                       <div
-                        *ngFor="let test of bilansBiologiques.controls; let i = index"
+                        *ngFor="let test of ExamenBiologique.controls; let i = index"
                         [formGroupName]="i"
                         class="mb-2 flex items-center"
                       >

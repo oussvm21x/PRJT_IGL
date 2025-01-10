@@ -133,33 +133,24 @@
                 </div>
                 <div class="grid  grid-cols-3 gap-3 justify-between items-center mt-4">
                     <div>
-                        <label for="NSS" class="block text-sm font-medium">Numéro Sécurité Sociale :</label>
+                        <label for="num_securite_sociale" class="block text-sm font-medium">NSS :</label>
                         <input
                             type="text"
                             class="w-full border border-gray-300 rounded-lg p-2"
-                            placeholder="Entrez le NSS"
-                            [(ngModel)]="patientForm.nss"
+                            placeholder="Entrez le num_securite_sociale"
+                            [(ngModel)]="patientForm.num_securite_sociale"
 
                         />
                     </div>
+                    
                     <div>
-                        <label for="mutuelle" class="block text-sm font-medium">mutuelle:</label>
+                        <label for="date_naissance" class="block text-sm font-medium">Date de naissance :</label>
                         <input
-                        type="text"
-                        class="w-full border border-gray-300 rounded-lg p-2"
-                        placeholder="Mutuelle"
-                        [(ngModel)]="patientForm.mutuelle"
-
-                        />
-                    </div>
-                    <div>
-                        <label for="dateNaissance" class="block text-sm font-medium">Date de naissance :</label>
-                        <input
-                          id="dateNaissance"
+                          id="date_naissance"
                           type="date"
                           class="w-full border border-gray-300 rounded-lg p-2 text-gray-400"
                           placeholder="Entrez la date de naissance"
-                          [(ngModel)]="patientForm.dateNaissance"
+                          [(ngModel)]="patientForm.date_naissance"
 
                         />
                       </div>
@@ -173,7 +164,7 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4 items-center mt-4">
                     <div>
-                        <label for="NSS" class="block text-sm font-medium">Adresse :</label>
+                        <label for="num_securite_sociale" class="block text-sm font-medium">Adresse :</label>
                         <input
                             type="text"
                             class="w-full border border-gray-300 rounded-lg p-2"
@@ -183,7 +174,7 @@
                         />
                     </div>
                     <div>
-                        <label for="mutuelle" class="block text-sm font-medium">N° téléphone:</label>
+                        <label for="telephone" class="block text-sm font-medium">N° téléphone:</label>
                         <input
                         type="text"
                         class="w-full border border-gray-300 rounded-lg p-2"
@@ -197,14 +188,14 @@
                 </div>
                 <label class="block text-sm font-medium">Personnes à contacter :</label>
                 <div class="overflow-x-auto w-full   p-2 rounded-lg">
-                  <!-- Liste des contacts -->
+                  <!-- Liste des personne_contact -->
                   <div class="flex space-x-2">
-                    <div *ngFor="let contact of patientForm.contacts; let i = index" class="flex flex-row space-x-1 items-center">
+                    <div *ngFor="let contact of patientForm.personne_contact; let i = index" class="flex flex-row space-x-1 items-center">
                       <input
                         type="text"
                         class="border border-gray-300 rounded-lg p-2"
                         [placeholder]="'Contact ' + (i + 1)"
-                        [(ngModel)]="patientForm.contacts[i]"
+                        [(ngModel)]="patientForm.personne_contact[i]"
                         />
                       <button
                         type="button"
@@ -234,23 +225,38 @@
                 </div>
                 <div class="grid  grid-cols-2 gap-3 justify-between items-center mt-4">
                   <div>
-                      <label for="Nom" class="block text-sm font-medium">Nom :</label>
+                      <label for="medecin_nom" class="block text-sm font-medium">Nom :</label>
                       <input
-                          id="Nom"
-                          type="text"
-                          class="w-full border border-gray-300 rounded-lg p-2"
-                          placeholder="Entrez le nom"
+                      id="medecin_nom"
+                      type="text"
+                      class="w-full border border-gray-300 rounded-lg p-2"
+                      placeholder="Entrez le nom du médecin"
+                      [(ngModel)]="patientForm.medecin_nom"
                       />
                   </div>
                   <div>
-                      <label for="Prenom" class="block text-sm font-medium">Prénom :</label>
+                      <label for="medecin_prenom" class="block text-sm font-medium">Prénom :</label>
                       <input
-                      id="prenom"
+                      id="medecin_prenom"
                       type="text"
                       class="w-full border border-gray-300 rounded-lg p-2"
-                      placeholder="Entrez le Prénom"
+                      placeholder="Entrez le prénom du médecin"
+                      [(ngModel)]="patientForm.medecin_prenom"
                       />
                   </div>
+                  <!-- <div>
+                    <label for="medecins_traitants" class="block text-sm font-medium">Médecins traitants :</label>
+                    <select
+                      id="medecins_traitants"
+                      class="w-full border border-gray-300 rounded-lg p-2 text-gray-400"
+                      [(ngModel)]="patientForm.medecins_traitants"
+                      multiple
+                    >
+                      <option *ngFor="let medecin of medecins" [value]="medecin.id">
+                        {{ medecin.nom }} {{ medecin.prenom }}
+                      </option>
+                    </select>
+                  </div> -->
                   
               
                 </div>
@@ -274,26 +280,30 @@
            
         </div>
         </div>
-        <div class="overflow-x-auto mt-5 h-[70%]">
+        <div *ngIf="isLoading" class="text-center py-4">
+          <p class="text-gray-600">Chargement des patients...</p>
+        </div>
+        
+        <div class="overflow-x-auto mt-5 h-[70%]" *ngIf="!isLoading">
             <table class="table-auto w-full text-left text-sm  text-gray-600">
               <thead>
                 <tr class="border-b bg-gray-100  ">
                   <th class="py-2 px-4">NSS</th>
                   <th class="py-2 px-4">Nom et Prénom</th>
                   <th class="py-2 px-4">Numéro de Téléphone</th>
-                  <th class="py-2 px-4">Date d'entrée</th>
+                  <th class="py-2 px-4">Date de naissance</th>
                   <th class="py-2 px-4">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let patient of paginatedPatients" class="hover:bg-gray-50">
-                  <td class="py-2 px-4">{{ patient?.nss }}</td>
+                  <td class="py-2 px-4">{{ patient?.num_securite_sociale }}</td>
                   <td class="py-2 px-4">{{ patient?.nom }} {{ patient?.prenom }}</td>
                   <td class="py-2 px-4">{{ patient?.telephone }}</td>
-                  <td class="py-2 px-4">{{ patient?.dateEntree }}</td>
+                  <td class="py-2 px-4">{{ patient?.date_naissance }}</td>
                   <td class="py-2 px-4 flex space-x-3">
                     <!-- Modifier -->
-                    <button (click)="modifierPatient(patient.nss)">
+                    <button (click)="modifierPatient(patient.num_securite_sociale)">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
                         <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
                         <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
