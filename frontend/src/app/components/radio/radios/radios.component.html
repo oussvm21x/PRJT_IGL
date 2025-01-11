@@ -60,7 +60,7 @@
               <th class="py-2 px-4">Date</th>
               <th class="py-2 px-4">Type de Radio</th>
               <th class="py-2 px-4">Statut</th>
-              <th class="py-2 px-4">Actions</th>
+              <th class="py-2 px-4"> </th>
             </tr>
           </thead>
           <tbody class="">
@@ -141,17 +141,18 @@
                 </button>
             </div> 
             <!-- Popup -->
-            <div
+          <div
             *ngIf="popupVisible"
-            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
           >
-            <div class="bg-white rounded-lg shadow-lg p-6 md:w-1/3 w-11/12">
-              <!-- En-tête -->
+            <div class="bg-white rounded-lg shadow-lg w-[90%] md:w-[40%] p-6 relative">
+              <!-- Titre et bouton fermer -->
               <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-semibold text-gray-700">Télécharger une Image</h3>
+                <h3 class="text-xl font-bold text-gray-800">Importer une image de radio</h3>
                 <button
-                  class="text-gray-500 hover:text-gray-700 focus:outline-none"
                   (click)="closePopup()"
+                  class="text-gray-500 hover:text-gray-800"
+                  aria-label="Fermer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -169,82 +170,84 @@
                   </svg>
                 </button>
               </div>
-          
-              <!-- Corps : Zone de fichier -->
+
+              <!-- Zone de téléchargement -->
               <div
-                class="border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-6 text-center"
+                class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  class="w-12 h-12 text-gray-400 mb-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3 16.5V18a2 2 0 002 2h14a2 2 0 002-2v-1.5M16.5 10.5L12 15m0 0l-4.5-4.5M12 15V3"
-                  />
+              <div 
+              class="flex flex-col items-center justify-center space-y-4 "
+              [class.border-green-500]="isDragOver"
+              (dragover)="onDragOver($event)" 
+              (drop)="onDrop($event)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor" class="size-16 text-gray-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
                 </svg>
-                <p class="text-gray-600 mb-2">Faites glisser et déposez une image ici</p>
-                <p class="text-gray-500 text-sm">ou cliquez pour sélectionner un fichier</p>
+                <p class="text-sm text-gray-500 mb-2">Glissez-déposez votre fichier ici</p>
+              </div>
+                
                 <input
                   type="file"
-                  class="hidden"
-                  #fileInput
+                  accept="image/*"
                   (change)="onFileSelected($event)"
+                  class="hidden"
+                  id="fileInput"
                 />
-                <button
-                  class="mt-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none"
-                  (click)="fileInput.click()"
+                <label
+                  for="fileInput"
+                  class="cursor-pointer bg-gray-200 mt-4 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-md inline-block"
                 >
-                  Sélectionner un Fichier
-                </button>
-              </div>
-          
-              <!-- Aperçu de l'image -->
-              <div *ngIf="fileToUpload" class="mt-4 text-center">
-                <img
-                  [src]="filePreviewUrl"
-                  alt="Aperçu de l'image"
-                  class="w-32 h-32 object-cover rounded-lg mx-auto"
-                />
+                  Choisir un fichier
+                </label>
                 <p *ngIf="fileToUpload" class="text-sm text-gray-600 mt-2">
-                  {{ fileToUpload.name }} ({{ (fileToUpload.size || 0) / 1024 | number: '1.0-2' }} KB)
+                  {{ fileToUpload.name }} 
                 </p>
-                
               </div>
-          
+
+              <!-- Message d'aperçu -->
+              <div *ngIf="fileToUpload" class="mt-4">
+                <p class="text-gray-600 text-sm">
+                  <strong>Fichier sélectionné :</strong> {{ fileToUpload.name }}
+                </p>
+                <img
+                  *ngIf="selectedImagePreview"
+                  [src]="selectedImagePreview"
+                  class="mt-4 rounded-lg max-h-48 mx-auto shadow-md"
+                  alt="Aperçu de l'image"
+                />
+              </div>
+
               <!-- Boutons -->
-              <div class="mt-6 flex justify-end space-x-4">
+              <div class="flex flex-row justify-end items-end space-x-2  mt-4">
                 <button
-                  class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none"
                   (click)="closePopup()"
+                  class="px-12 py-3 bg-white flex flex-row items-center justify-center rounded-full text-sm font-bold   text-black"
                 >
                   Annuler
                 </button>
                 <button
-                  class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
                   (click)="uploadImage()"
                   [disabled]="!fileToUpload"
+                  class="px-12 py-3 bg-[#2D6974]  rounded-full text-sm font-bold   text-white "
                 >
-                  Télécharger
+                  Importer
                 </button>
               </div>
+
+            
             </div>
           </div>
+
           
           
           <div *ngIf="showImageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div class="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[50%]">
               <div class="flex flex-row justify-between items-center mb-4">
                 <h2 class="text-xl font-bold">Image de la Radio</h2>
-                <button (click)="closeImage()" class="text-gray-600 hover:text-black">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                    <path fill-rule="evenodd" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                <button (click)="closeImage()" class=" hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"class="w-6 h-6">
+                      <path  stroke-linecap="round"stroke-linejoin="round"d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
                 </button>
               </div>
               <img [src]="selectedRadioImageUrl" alt="Image Radio" class="w-full">

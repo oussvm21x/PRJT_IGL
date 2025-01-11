@@ -19,6 +19,7 @@ export class RadiosComponent implements OnInit {
   showImageModal: boolean = false; // État du modal pour voir l'image
   selectedRadio: any = null; // Radio sélectionnée
   selectedRadioImageUrl: string | null = null; // URL de l'image de la radio
+  selectedImagePreview: string | null = null; // URL pour l'aperçu de l'image
   fileToUpload: File | null = null; // Fichier à uploader
   Math=Math;
   constructor(private radioService: RadioService, private sanitizer: DomSanitizer) {}
@@ -73,44 +74,93 @@ closePopup(): void {
     if (file) {
       this.fileToUpload = file;
   
-      // Générer une URL de prévisualisation
+      // Créez un aperçu de l'image sélectionnée
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.filePreviewUrl = e.target.result;
+        this.selectedImagePreview = e.target.result;
       };
       reader.readAsDataURL(file);
     }
   }
 
-  // Enregistrer l'image dans le backend
   uploadImage(): void {
     if (this.fileToUpload && this.selectedRadio) {
-      const formData = new FormData();
-      formData.append('image', this.fileToUpload);
-      formData.append('radioId', this.selectedRadio.id);
+      const imageName = this.fileToUpload.name; // Obtenir le nom du fichier
+      const updatedRadio = {
+        ...this.selectedRadio,
+        fichier: `assets/uploads/${imageName}`, 
+        statut: 'Traité', // Mettre à jour le statut à "Traité"
+      };
   
-      this.radioService.uploadImage(formData).subscribe(
+      // Appeler le service pour mettre à jour la radio dans le backend factice
+      this.radioService.updateRadio(updatedRadio).subscribe(
         () => {
-          this.fetchRadios(); // Recharger les radios après l'upload
-          this.closePopup();
+          console.log('Image enregistrée et statut mis à jour avec succès.');
+          this.fetchRadios(); // Recharger les radios pour voir la mise à jour
+          this.closePopup(); // Fermer le popup
         },
         (error) => {
-          console.error("Erreur lors de l'upload de l'image :", error);
+          console.error("Erreur lors de l'enregistrement de l'image :", error);
         }
       );
+    } else {
+      console.error('Aucun fichier ou radio sélectionné.');
     }
   }
+  
+  
 
   // Voir l'image de la radio
   voirImageRadio(radio: any): void {
     this.selectedRadio = radio;
-    this.selectedRadioImageUrl = radio.imageUrl; // Supposons que `imageUrl` contient l'URL de l'image
+    this.selectedRadioImageUrl = radio.fichier; 
     this.showImageModal = true;
   }
+  
 
   // Fermer le modal d'image
   closeImage(): void {
     this.showImageModal = false;
     this.selectedRadioImageUrl = null;
   }
+  //drag droooop
+  onDragOver(event: DragEvent): void {
+    event.preventDefault(); // Empêche le comportement par défaut (comme l'ouverture du fichier dans le navigateur).
+    event.stopPropagation();
+    this.isDragOver = true; // Activer la bordure verte
+
+  }
+  
+  onDrop(event: DragEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = false; // Activer la bordure verte
+
+  
+    if (event.dataTransfer && event.dataTransfer.files.length > 0) {
+      const file = event.dataTransfer.files[0];
+      this.handleFileInput(file); 
+    }
+  }
+  
+  handleFileInput(file: File): void {
+    if (file) {
+      this.fileToUpload = file;
+  
+      // Créer un aperçu du fichier (si nécessaire)
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImagePreview = e.target.result;
+      };
+      reader.readAsDataURL(file);
+  
+      console.log('Fichier sélectionné :', file.name);
+    }
+  }
+
+
+  isDragOver: boolean = false; // État de drag
+
+
+
 }

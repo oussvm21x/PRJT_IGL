@@ -25,10 +25,14 @@ export class RadioService {
     return this.http.post<any>(this.apiUrl, radio);
   }
 
-  // Mettre à jour une radio existante
+  // Méthode pour mettre à jour une radio
   updateRadio(radio: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${radio.id}`, radio);
   }
+  
+  
+
+
 
   // Supprimer une radio
   deleteRadio(id: number): Observable<void> {
