@@ -1,19 +1,19 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarLabComponent } from '../sidebar-lab/sidebar-lab.component';
+import { SidebarRadioComponent } from '../sidebar-radio/sidebar-radio.component';
 import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
-  selector: 'app-layout-lab',
+  selector: 'app-layout-radio',
   imports: [
-        SidebarLabComponent,
+        SidebarRadioComponent,
         RouterOutlet
       
     ],
-  templateUrl: './layout-lab.component.html',
-  styleUrl: './layout-lab.component.css'
+  templateUrl: './layout-radio.component.html',
+  styleUrl: './layout-radio.component.css'
 })
 
-export class LayoutLabComponent implements OnInit{
+export class LayoutRadioComponent implements OnInit{
   activeRoute: string = '';
 
   constructor(private router: Router) {}

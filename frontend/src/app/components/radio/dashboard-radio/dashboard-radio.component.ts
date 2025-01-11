@@ -7,13 +7,13 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 
 @Component({
-  selector: 'app-dashboard-lab',
+  selector: 'app-dashboard-radio',
   standalone: true,
   imports: [RouterModule,FullCalendarModule],
-  templateUrl: './dashboard-lab.component.html',
-  styleUrl: './dashboard-lab.component.css'
+  templateUrl: './dashboard-radio.component.html',
+  styleUrl: './dashboard-radio.component.css'
 })
-export class DashboardLabComponent implements OnInit {
+export class DashboardRadioComponent implements OnInit {
 
   calendarOptions: CalendarOptions = {};
   userName: string = 'Mark Leverese'; // Donnée statique
