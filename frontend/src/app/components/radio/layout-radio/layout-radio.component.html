@@ -1,1 +1,9 @@
-<p>layout-radio works!</p>
+<div class="flex h-screen">
+    <app-sidebar-lab [activeRoute]="activeRoute"></app-sidebar-lab>
+      
+      <main class="flex-1  ">
+        <router-outlet></router-outlet> 
+      </main>
+  </div>
+    
+  
