@@ -72,12 +72,13 @@
                 <span
                 class="py-2 text-sm rounded-full text-white font-bold"
                 [ngClass]="{
-                  'bg-[#2D6974] px-9 ': radio.status === 'traité',
-                  'bg-[#FCC698] px-5 ': radio.status === 'non traité'
+                  'bg-[#2D6974] px-9 ': radio.statu === 'traité',
+                  'bg-[#FCC698] px-5 ': radio.statu === 'Non traité'
                 }"
               >
-                {{ radio.status }}
+                {{ radio.statut }}
               </span>
+
               
               </td>
               <td class="py-2 px-4 flex space-x-2">

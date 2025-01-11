@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RadioService {
-  private apiUrl = 'http://localhost:3005/radio'; // Remplacez par l'URL de votre API backend
+  private apiUrl = 'http://localhost:3005/radios'; // Remplacez par l'URL de votre API backend
 
   constructor(private http: HttpClient) {}
 
