@@ -11,9 +11,9 @@
   <ul class="space-y-7 mt-[7%] ml-[15%] md:ml-[3%]">
     <li>
       <a
-        routerLink="/radio/dashboardradio"
-        [ngClass]="{ 'active-nav-item dashboard': activeRoute === '/laborantin/dashboardLab' || activeButton === 'dashboardLab' }"
-        (click)="setActiveButton('dashboardLab')"
+        routerLink="/radiologue/dashboardradio"
+        [ngClass]="{ 'active-nav-item dashboard': activeRoute === '/radiologue/dashboardradio' || activeButton === 'dashboardradio' }"
+        (click)="setActiveButton('dashboardradio')"
         class="flex items-center dashboard nav-item"
       >
         <span>
@@ -38,8 +38,8 @@
     </li>
     <li>
       <a
-        routerLink="/radio/radios"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/laborantin/bilans' }"
+        routerLink="/radiologue/radios"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/radiologue/radios' }"
         (click)="setActiveButton('bilans')"
         class="flex items-center nav-item"
       >
@@ -54,8 +54,8 @@
     </li>
     <li>
       <a
-        routerLink="/radio/notifications"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/laborantin/notifications' }"
+        routerLink="/radiologue/notifications"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/radiologue/notifications' }"
         (click)="setActiveButton('notifications')"
         class="flex items-center nav-item"
       >
@@ -70,8 +70,8 @@
     </li>
     <li>
       <a
-        routerLink="/radio/parametres"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/laborantin/parametres' }"
+        routerLink="/radiologue/parametres"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/radiologue/parametres' }"
         (click)="setActiveButton('parametres')"
         class="flex items-center nav-item"
       >

@@ -3,25 +3,45 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RadioService {
-  private apiUrl = 'http://localhost:3005/radios'; // Remplacez par l'URL de votre API backend
+  private apiUrl = 'http://localhost:3005/radios'; // URL de l'API JSON Server pour les radios
 
   constructor(private http: HttpClient) {}
 
-  // Méthode pour récupérer les radios
+  // Récupérer toutes les radios
   getRadios(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/radios`);
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Méthode pour uploader une image de radio
+  // Récupérer une radio spécifique par son ID
+  getRadioById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  // Ajouter une nouvelle radio
+  addRadio(radio: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, radio);
+  }
+
+  // Mettre à jour une radio existante
+  updateRadio(radio: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${radio.id}`, radio);
+  }
+
+  // Supprimer une radio
+  deleteRadio(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  // Télécharger une image pour une radio
   uploadImage(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/radios/upload`, formData);
+    return this.http.post<any>(`${this.apiUrl}/upload`, formData);
   }
 
-  // (Optionnel) Méthode pour récupérer les détails d'une radio spécifique
-  getRadioDetails(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/radios/${id}`);
+  // Filtrer les radios par NSS
+  getRadiosByNSS(nss: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?nss=${nss}`);
   }
 }

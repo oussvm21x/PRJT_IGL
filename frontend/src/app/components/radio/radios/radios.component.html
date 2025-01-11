@@ -72,8 +72,8 @@
                 <span
                 class="py-2 text-sm rounded-full text-white font-bold"
                 [ngClass]="{
-                  'bg-[#2D6974] px-9 ': radio.statu === 'traité',
-                  'bg-[#FCC698] px-5 ': radio.statu === 'Non traité'
+                  'bg-[#2D6974] px-9 ': radio.statut === 'Traité',
+                  'bg-[#FCC698] px-5 ': radio.statut === 'Non traité',
                 }"
               >
                 {{ radio.statut }}
@@ -82,17 +82,20 @@
               
               </td>
               <td class="py-2 px-4 flex space-x-2">
-                <button *ngIf="radio.status === 'non traité'" (click)="ajouterImageRadio(radio)">
-                  <svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17 2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2ZM5 16V4h12v12H5ZM14 6H8v1.5h6V6ZM12 10H8v1.5h4V10Z" fill="#000" />
+                <button *ngIf="radio.statut === 'Non traité'" (click)="ajouterImageRadio(radio)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                   </svg>
-                  Ajouter Imagvve
+                  
+                  
                 </button>
-                <button *ngIf="radio.status === 'traité'" (click)="voirImageRadio(radio)">
-                  <svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 4a7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7 7 7 0 0 1 7-7Zm0-2A9 9 0 1 0 20 11 9 9 0 0 0 11 2Zm0 4a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 11 6Zm-3 9.5s1.5-1.5 3-1.5 3 1.5 3 1.5V17H8v-1.5Z" fill="#000" />
+                <button *ngIf="radio.statut === 'Traité'" (click)="voirImageRadio(radio)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                    <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
                   </svg>
-                  Voir Image
+                  
+                  
                 </button>
               </td>
               
@@ -140,37 +143,99 @@
             <!-- Popup -->
             <div
             *ngIf="popupVisible"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
           >
-            <div class="bg-gray-100 p-6 rounded-lg shadow-lg md:w-[50%] w-[90%] relative">
-              <div class="flex flex-row justify-between items-baseline">
-                <p class="text-xl font-bold mb-4">Ajouter une Image pour la Radio</p>
-                <button (click)="closePopup()" class="text-gray-500 hover:text-gray-800">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <div class="bg-white rounded-lg shadow-lg p-6 md:w-1/3 w-11/12">
+              <!-- En-tête -->
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-gray-700">Télécharger une Image</h3>
+                <button
+                  class="text-gray-500 hover:text-gray-700 focus:outline-none"
+                  (click)="closePopup()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               </div>
-              <div class="border-t border-gray-300"></div>
-              <div class="mt-4">
-                <label for="image" class="block text-sm font-medium">Télécharger l'Image :</label>
+          
+              <!-- Corps : Zone de fichier -->
+              <div
+                class="border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-6 text-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-12 h-12 text-gray-400 mb-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 16.5V18a2 2 0 002 2h14a2 2 0 002-2v-1.5M16.5 10.5L12 15m0 0l-4.5-4.5M12 15V3"
+                  />
+                </svg>
+                <p class="text-gray-600 mb-2">Faites glisser et déposez une image ici</p>
+                <p class="text-gray-500 text-sm">ou cliquez pour sélectionner un fichier</p>
                 <input
-                  id="image"
                   type="file"
-                  class="w-full border border-gray-300 rounded-lg p-2 mt-2"
+                  class="hidden"
+                  #fileInput
                   (change)="onFileSelected($event)"
                 />
-              </div>
-              <div class="flex justify-end mt-4">
                 <button
-                  class="px-4 py-2 bg-[#2D6974] text-white rounded-md"
-                  (click)="uploadImage()"
+                  class="mt-4 px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none"
+                  (click)="fileInput.click()"
                 >
-                  Enregistrer
+                  Sélectionner un Fichier
+                </button>
+              </div>
+          
+              <!-- Aperçu de l'image -->
+              <div *ngIf="fileToUpload" class="mt-4 text-center">
+                <img
+                  [src]="filePreviewUrl"
+                  alt="Aperçu de l'image"
+                  class="w-32 h-32 object-cover rounded-lg mx-auto"
+                />
+                <p *ngIf="fileToUpload" class="text-sm text-gray-600 mt-2">
+                  {{ fileToUpload.name }} ({{ (fileToUpload.size || 0) / 1024 | number: '1.0-2' }} KB)
+                </p>
+                
+              </div>
+          
+              <!-- Boutons -->
+              <div class="mt-6 flex justify-end space-x-4">
+                <button
+                  class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none"
+                  (click)="closePopup()"
+                >
+                  Annuler
+                </button>
+                <button
+                  class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
+                  (click)="uploadImage()"
+                  [disabled]="!fileToUpload"
+                >
+                  Télécharger
                 </button>
               </div>
             </div>
           </div>
+          
           
           <div *ngIf="showImageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div class="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[50%]">

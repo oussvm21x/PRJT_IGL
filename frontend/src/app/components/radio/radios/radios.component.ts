@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class RadiosComponent implements OnInit {
   radios: any[] = []; // Liste des radios
+  filePreviewUrl: string | null = null; // URL de prévisualisation
   paginatedRadios: any[] = []; // Radios paginées pour l'affichage
   currentPage: number = 1; // Page actuelle
   itemsPerPage: number = 5; // Nombre d'éléments par page
@@ -59,16 +60,25 @@ export class RadiosComponent implements OnInit {
   }
 
   // Fermer le popup
-  closePopup(): void {
-    this.popupVisible = false;
-    this.fileToUpload = null;
-  }
+  
+closePopup(): void {
+  this.popupVisible = false;
+  this.fileToUpload = null;
+  this.filePreviewUrl = null;
+}
 
   // Gérer la sélection d'un fichier
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
       this.fileToUpload = file;
+  
+      // Générer une URL de prévisualisation
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.filePreviewUrl = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
@@ -78,14 +88,14 @@ export class RadiosComponent implements OnInit {
       const formData = new FormData();
       formData.append('image', this.fileToUpload);
       formData.append('radioId', this.selectedRadio.id);
-
+  
       this.radioService.uploadImage(formData).subscribe(
         () => {
           this.fetchRadios(); // Recharger les radios après l'upload
           this.closePopup();
         },
         (error) => {
-          console.error('Erreur lors de l\'upload de l\'image :', error);
+          console.error("Erreur lors de l'upload de l'image :", error);
         }
       );
     }
