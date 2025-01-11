@@ -19,7 +19,7 @@ export class RadiosComponent implements OnInit {
   selectedRadio: any = null; // Radio sélectionnée
   selectedRadioImageUrl: string | null = null; // URL de l'image de la radio
   fileToUpload: File | null = null; // Fichier à uploader
-
+  Math=Math;
   constructor(private radioService: RadioService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
