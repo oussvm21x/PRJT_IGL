@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes,RouterModule } from '@angular/router';
 import { DashboardRadioComponent } from './components/radio/dashboard-radio/dashboard-radio.component';
 import { RadiosComponent } from './components/radio/radios/radios.component';
 import {NotificationsRadioComponent  } from './components/radio/notifications-radio/notifications-radio.component';
