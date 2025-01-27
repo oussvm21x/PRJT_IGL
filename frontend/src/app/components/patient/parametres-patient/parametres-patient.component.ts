@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-parametres',
+  selector: 'app-parametres-patient',
   imports: [],
   standalone: true,
   templateUrl: './parametres.component.html',

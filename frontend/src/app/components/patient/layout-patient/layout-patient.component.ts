@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebar-patient/sidebar-patient.component';
 import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
@@ -21,6 +21,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       this.activeRoute = this.router.url;
-    });
+    }
+  );
   }
 }
