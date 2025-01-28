@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ConsultationService {
-  private apiUrl = 'http://127.0.0.1:8000/consultations'; // URL de l'API JSON Server
+  private apiUrl = 'http://localhost:3001/consultations'; // URL de l'API JSON Server
 
   constructor(private http: HttpClient) {}
 
@@ -21,9 +21,8 @@ export class ConsultationService {
   }
 
   // Ajouter une consultation
-  addConsultation(medcinId: string, patientNSS: string, consultation: any): Observable<any> {
-    const url = `http://127.0.0.1:8000/consultations/create/${medcinId}/${patientNSS}`;
-    return this.http.post<any>(url, consultation);
+  addConsultation(consultation: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, consultation);
   }
 
   // Mettre à jour une consultation

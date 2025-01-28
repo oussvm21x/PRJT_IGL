@@ -8,10 +8,10 @@ import { RouterOutlet,Router } from '@angular/router';
   imports: [
       SidebarComponent,
       RouterOutlet
-    
+
   ],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  templateUrl: './layout-patient.component.html',
+  styleUrl: './layout-patient.component.css'
 })
 export class LayoutComponent implements OnInit {
   activeRoute: string = '';

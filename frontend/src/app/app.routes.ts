@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule } from '@angular/router';
-import { DashboardMdcnComponent } from './components/medecin/dashboard-mdcn/dashboard-mdcn.component';
-import { PatientsComponent } from './components/medecin/patients/patients.component';
-import { NotificationsComponent } from './components/medecin/notifications/notifications.component';
-import { ParametresComponent } from './components/medecin/parametres/parametres.component';
-import { LayoutComponent } from './components/medecin/layout/layout.component';
-import { ModifierPatientComponent } from './components/medecin/modifier-patient/modifier-patient.component';
+import { DashboardMdcnComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
+import { NotificationsComponent } from './components/patient/notifications-patient/notifications-patient.component';
+import { ParametresComponent } from './components/patient/parametres-patient/parametres-patient.component';
+import { LayoutComponent } from './components/patient/layout-patient/layout-patient.component';
+import { ModifierPatientComponent } from './components/patient/dossier/dossier.component';
 
 export const routes: Routes = [
     {
-        path: 'medecin',
+        path: 'patient',
         component:LayoutComponent,
         children: [
-            { path: 'dashboardMdcn', component: DashboardMdcnComponent },
-            { path: 'patients', component: PatientsComponent }, 
+            { path: 'dashboard', component: DashboardMdcnComponent },
             { path: 'notifications', component: NotificationsComponent }, 
             { path: 'parametres', component: ParametresComponent }, 
-            { path: 'modifier-patient/:nss', component: ModifierPatientComponent }, 
+            { path: 'dossier/:nss', component: ModifierPatientComponent }, 
 
         ],
         

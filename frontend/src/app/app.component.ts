@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DashboardMdcnComponent } from './components/medecin/dashboard-mdcn/dashboard-mdcn.component';
-import { SidebarComponent } from './components/medecin/sidebar/sidebar.component';
+import { DashboardMdcnComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
+import { SidebarComponent } from './components/patient/sidebar-patient/sidebar-patient.component';
 
 @Component({
   selector: 'app-root',

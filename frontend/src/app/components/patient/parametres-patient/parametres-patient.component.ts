@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-parametres-patient',
   imports: [],
   standalone: true,
-  templateUrl: './parametres.component.html',
-  styleUrl: './parametres.component.css'
+  templateUrl: './parametres-patient.component.html',
+  styleUrl: './parametres-patient.component.css'
 })
 export class ParametresComponent {
 

@@ -13,7 +13,6 @@ import jsPDF from 'jspdf';
   styleUrls: ['./modifier-patient.component.css'],
   imports: [CommonModule, ReactiveFormsModule],
 })
-
 export class ModifierPatientComponent implements OnInit {
   public consultationElements = ['Ordonnance', 'Bilans', 'Résumé'];
   showConsultationForm: boolean = false;
@@ -24,7 +23,7 @@ export class ModifierPatientComponent implements OnInit {
   patientForm!: FormGroup;
   consultationForm!: FormGroup;
   antecedentForm!: FormGroup; 
-  ExamenBiologique!: FormArray; // Ajout de la propriété
+  bilansBiologiques!: FormArray; // Ajout de la propriété
   nss!: string;
   activeTab: string = 'profil';
   showModal: boolean = false;
@@ -37,7 +36,8 @@ export class ModifierPatientComponent implements OnInit {
     private consultationService: ConsultationService,
     private antecedentService: AntecedentService, 
     private fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.nss = this.route.snapshot.paramMap.get('nss')!;
@@ -49,7 +49,9 @@ export class ModifierPatientComponent implements OnInit {
     this.addTest();
   }
   
-  initForms(): void {
+  initForms(): void 
+  
+  {
     this.patientForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -150,8 +152,8 @@ export class ModifierPatientComponent implements OnInit {
         this.consultations = data.map((consultation) => ({
           ...consultation,
           bilans: {
-            radio: consultation.examens?.radio || '',
-            biologique: consultation.examens?.biologique || [],
+            radio: consultation.bilans?.radio || '',
+            biologique: consultation.bilans?.biologique || [],
           },
           ordonnance: consultation.ordonnance || [],
         }));
@@ -199,7 +201,7 @@ export class ModifierPatientComponent implements OnInit {
         patientNSS: this.nss,
       };
   
-      this.consultationService.addConsultation(this.patient.medecin,this.patient.num_securite_sociale, newConsultation).subscribe(
+      this.consultationService.addConsultation(newConsultation).subscribe(
         (data) => {
           this.consultations.push(data);
           this.toggleModal(); // Fermer le modal
@@ -310,7 +312,7 @@ export class ModifierPatientComponent implements OnInit {
     doc.text(content, 10, 20);
     doc.save(`${title}.pdf`);
   }
-  downloadBilanBiologiquePDF(ExamenBiologique: any[]): void {
+  downloadBilanBiologiquePDF(biologique: any[]): void {
     const doc = new jsPDF();
   
     // Titre du document
