@@ -68,6 +68,19 @@ class UserLoginView(APIView):
 
             # Authenticate the user
             user = authenticate(username=username, password=password)
+            additional_data = {}
+            if user.role == 'patient':
+                patient = user.patient
+                additional_data['nss'] = patient.num_securite_sociale
+            if user.role == 'medecin':
+                medecin = user.medecin
+                additional_data['id_medecin'] = medecin.id_medecin
+            if user.role == 'infirmier':
+                infirmier = user.infirmier
+                additional_data['id_infirmier'] = infirmier.id_infirmier
+            if user.role == 'laborantien':
+                laborantien = user.laborantien
+                additional_data['id_laborantien'] = laborantien.id_laborantien
             if user:
                 # Generate the JWT token using simplejwt's TokenObtainPairView
                 refresh = RefreshToken.for_user(user)
@@ -83,6 +96,7 @@ class UserLoginView(APIView):
                         "access_token": access_token,
                         "refresh_token": refresh_token,
                         "user": user_serializer.data,
+                        "additional_data" : additional_data 
                     },
                     status=status.HTTP_200_OK,
                 )
