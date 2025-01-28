@@ -14,12 +14,12 @@ export const routes: Routes = [
             { path: 'dashboard', component: DashboardMdcnComponent },
             { path: 'notifications', component: NotificationsComponent }, 
             { path: 'parametres', component: ParametresComponent }, 
-            { path: 'dossier/:nss', component: ModifierPatientComponent }, 
+            { path: 'dossier', component: ModifierPatientComponent }, 
 
         ],
         
     },
-    { path: '', redirectTo: '/medecin/dashboardMdcn', pathMatch: 'full' },
+    { path: '', redirectTo: '/patient/dashboard', pathMatch: 'full' },
 
 ];
 @NgModule({

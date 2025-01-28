@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
 
 @Component({
+  
   selector: 'app-dossier',
   templateUrl: './dossier.component.html',
   styleUrls: ['./dossier.component.css'],
@@ -24,7 +25,7 @@ export class ModifierPatientComponent implements OnInit {
   consultationForm!: FormGroup;
   antecedentForm!: FormGroup; 
   bilansBiologiques!: FormArray; // Ajout de la propriété
-  nss!: string;
+  nss: string = '987654321'; // NSS statique défini ici
   activeTab: string = 'profil';
   showModal: boolean = false;
 
@@ -36,11 +37,10 @@ export class ModifierPatientComponent implements OnInit {
     private consultationService: ConsultationService,
     private antecedentService: AntecedentService, 
     private fb: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.nss = this.route.snapshot.paramMap.get('nss')!;
+    // this.nss = this.route.snapshot.paramMap.get('nss')!;
     this.initForms();
     this.initConsultationForm(); // Initialisation du formulaire de consultation
     this.loadPatient();
@@ -49,9 +49,7 @@ export class ModifierPatientComponent implements OnInit {
     this.addTest();
   }
   
-  initForms(): void 
-  
-  {
+  initForms(): void {
     this.patientForm = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
