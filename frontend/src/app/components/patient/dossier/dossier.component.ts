@@ -8,9 +8,9 @@ import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
 
 @Component({
-  selector: 'app-modifier-patient',
-  templateUrl: './modifier-patient.component.html',
-  styleUrls: ['./modifier-patient.component.css'],
+  selector: 'app-dossier',
+  templateUrl: './dossier.component.html',
+  styleUrls: ['./dossier.component.css'],
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class ModifierPatientComponent implements OnInit {
