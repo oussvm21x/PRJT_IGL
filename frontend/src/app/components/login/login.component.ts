@@ -21,6 +21,7 @@ export class LoginComponent {
   }
 
   onSubmit() {
+    console.log("yacine roh ");
     if (this.myForm.valid) {
       const loginData = {
         username: this.myForm.value.username,
