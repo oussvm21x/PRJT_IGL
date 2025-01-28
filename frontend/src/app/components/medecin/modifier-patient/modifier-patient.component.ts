@@ -23,6 +23,7 @@ export class ModifierPatientComponent implements OnInit {
   patientForm!: FormGroup;
   consultationForm!: FormGroup;
   antecedentForm!: FormGroup; 
+  bilansBiologiques!: FormArray; // Ajout de la propriété
   nss!: string;
   activeTab: string = 'profil';
   showModal: boolean = false;
@@ -40,11 +41,13 @@ export class ModifierPatientComponent implements OnInit {
   ngOnInit(): void {
     this.nss = this.route.snapshot.paramMap.get('nss')!;
     this.initForms();
+    this.initConsultationForm(); // Initialisation du formulaire de consultation
     this.loadPatient();
     this.loadConsultations();
     this.loadAntecedents(); // Charger les antécédents
+    this.addTest();
   }
-
+  
   initForms(): void {
     this.patientForm = this.fb.group({
       nom: ['', Validators.required],
@@ -69,12 +72,39 @@ export class ModifierPatientComponent implements OnInit {
       date: [new Date().toISOString().split('T')[0], Validators.required],
       resume: ['', Validators.required],
       bilans: this.fb.group({
-        radio: [''], // Pas requis initialement
-        biologique: [''], // Pas requis initialement
+        radio: ['', Validators.required], // Champ pour 'radio'
+        biologique: this.fb.array([]),    // Tableau dynamique pour 'biologique'
       }),
-      ordonnance: this.fb.array([]), // Médicaments sous forme de tableau
+      ordonnance: this.fb.array([]),       // Tableau dynamique pour les médicaments
     });
+  
+    // Accès rapide à bilans.biologique
+    this.bilansBiologiques = this.consultationForm.get('bilans.biologique') as FormArray;
   }
+  
+  
+  
+  
+  
+  // Ajouter un test biologique
+  addTest(): void {
+    this.bilansBiologiques.push(
+      this.fb.group({
+        nom: ['', Validators.required],
+      })
+    );
+  }
+  
+  
+  
+
+  // Supprimer un test biologique
+  removeTest(index: number): void {
+    this.bilansBiologiques.removeAt(index);
+  }
+  
+
+  
   initAntecedentForm(): void {
     this.antecedentForm = this.fb.group({
       condition: ['', Validators.required],
@@ -116,13 +146,21 @@ export class ModifierPatientComponent implements OnInit {
   loadConsultations(): void {
     this.consultationService.getConsultationsByPatientNSS(this.nss).subscribe(
       (data) => {
-        this.consultations = data;
+        this.consultations = data.map((consultation) => ({
+          ...consultation,
+          bilans: {
+            radio: consultation.bilans?.radio || '',
+            biologique: consultation.bilans?.biologique || [],
+          },
+          ordonnance: consultation.ordonnance || [],
+        }));
       },
       (error) => {
         console.error('Erreur lors du chargement des consultations:', error);
       }
     );
   }
+  
   loadAntecedents(): void {
     this.antecedentService.getAntecedentsByPatientNSS(this.nss).subscribe(
       (data) => (this.antecedents = data),
@@ -174,6 +212,7 @@ export class ModifierPatientComponent implements OnInit {
       alert('Veuillez remplir tous les champs requis.');
     }
   }
+  
 
   deleteAntecedent(id: number): void {
     this.antecedentService.deleteAntecedent(id).subscribe(
@@ -270,7 +309,24 @@ export class ModifierPatientComponent implements OnInit {
     doc.text(content, 10, 20);
     doc.save(`${title}.pdf`);
   }
-
+  downloadBilanBiologiquePDF(biologique: any[]): void {
+    const doc = new jsPDF();
+  
+    // Titre du document
+    doc.setFontSize(18);
+    doc.text('Bilan Biologique', 10, 10);
+  
+    // Contenu des bilans biologiques
+    doc.setFontSize(12);
+    let y = 20; // Position initiale
+    biologique.forEach((test, index) => {
+      doc.text(`${index + 1}. ${test.nom}`, 10, y);
+      y += 10; // Espacement entre chaque ligne
+    });
+  
+    // Sauvegarder le fichier PDF
+    doc.save('Bilan_Biologique.pdf');
+  }
   generateOrdonnanceContent(ordonnance: any[]): string {
     return ordonnance
       .map(o => `${o.nom} : ${o.dose}, ${o.duree}, ${o.details}`)
