@@ -103,7 +103,6 @@
                   <p><strong class="font-bold">Date de naissance :</strong> {{ patient?.dateNaissance }}</p>
                   <p><strong class="font-bold">Adresse :</strong> {{ patient?.adresse }}</p>
                   <p><strong class="font-bold">N°Téléphone :</strong> {{ patient?.telephone }}</p>
-                  <p><strong class="font-bold">Mutuelle :</strong> {{ patient?.mutuelle }}</p>
                   <p><strong class="font-bold">Médecin Traitant :</strong> {{ patient?.nom }}</p>
                   <p><strong class="font-bold">Sexe :</strong> {{ patient?.sexe }}</p>
                 </div>
@@ -438,6 +437,76 @@
                 </button>
               </div>
       </div>
+
+    <!-- Onglet Soin -->
+    <div *ngIf="activeTab === 'soins'" class="h-[400px] 2xl:h-full overflow-auto ">
+      <div class="flex flex-row justify-between items-baseline">
+        <h3 class="text-xl font-bold mb-4">Liste des Soins</h3>
+       
+      </div>
+        <!-- Popup/Modal -->
+        <div *ngIf="showSoinstModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div class="bg-gray-100 rounded-3xl shadow-lg p-6 w-full max-w-xl">
+            
+            <div class="border-t border-gray-300 mb-4"></div>
+
+            <!-- Formulaire complet -->
+            <form [formGroup]="soinsForm" class="mt-6">
+              <div class="mb-4">
+                <label class="text-sm font-bold">Nom :</label>
+                <input type="text" formControlName="nom" class="border p-2 rounded w-full mb-4" />
+              </div>
+              <div class="mb-4">
+                <label class="text-sm font-bold">Description :</label>
+                <input type="text" formControlName="description" class="border p-2 rounded w-full mb-4" />
+              </div>
+              <div class="mb-4">
+                <label class="text-sm font-bold">Observations :</label>
+                <input type="text" formControlName="observations" class="border p-2 rounded w-full mb-4" />
+              </div>
+            </form>
+
+            <!-- Boutons d'action -->
+            <div class="flex flex-row justify-end items-end space-x-2 mt-4">
+              <button (click)="toggleSoinsModal()"
+                class="px-12 py-3 bg-white flex flex-row items-center justify-center rounded-full text-sm font-bold text-black">
+                Annuler
+              </button>
+              <button (click)="submitSoin()" class="px-12 py-3 bg-[#2D6974] rounded-full text-sm font-bold text-white">
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+
+           <!-- Scrolling Container for Soins -->
+           <div class="overflow-y-auto space-y-4">
+            <div *ngFor="let soin of paginatedSoins" class="mb-6">
+              <!-- Date -->
+              <p class="text-gray-600 text-sm mb-2"><strong>Date :</strong> {{ soin.date }}</p>
+  
+              <!-- Résumé -->
+              <div class="p-4 bg-white rounded-lg shadow border-l-4 border-[#448894]">
+                <div class="mb-4">
+                  <p class="text-xl"><strong>{{ soin.nom }}</strong></p>
+                  <p class="text-[#2D6974]">{{ soin.description }}</p>
+                </div>
+  
+                <!-- Bilans -->
+                <div class="flex items-center align-middle mb-4 text-[#3A405B]">
+                  <p class="font-semibold">Infirmier :</p>
+                  <p class="text-[#103550] px-1">{{ soin.infirmier }}</p>
+                </div>
+  
+                <!-- Ordonnance -->
+                <div class="mb-4 text-[#3A405B]">
+                  <p class="text-xl"><strong>Observations</strong></p>
+                  <p class="text-[#2D6974]">{{ soin.observations }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <!-- Confirmation de suppression d'un antécédent -->
       <div
       *ngIf="antecedentToDelete"
