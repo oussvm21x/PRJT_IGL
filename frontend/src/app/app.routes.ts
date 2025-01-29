@@ -21,12 +21,12 @@ import { NotificationspatientComponent } from './components/patient/notification
 import { ParametrespatientComponent } from './components/patient/parametres-patient/parametres-patient.component';
 import { LayoutpatientComponent } from './components/patient/layout-patient/layout-patient.component';
 import { DossierComponent } from './components/patient/dossier/dossier.component';
-import { DashboardinfComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
-import { PatientsinfComponent } from './components/infermier/patients/patients.component';
-import { NotificationsinfComponent } from './components/infermier/notifications/notifications.component';
-import { ParametresinfComponent } from './components/infermier/parametres/parametres.component';
-import { LayoutinfComponent } from './components/infermier/layout/layout.component';
-import { ModifierPatientinfComponent } from './components/infermier/modifier-patient/modifier-patient.component';
+import { DashboardinfComponent } from './components/infermier/dashboard-infirmier/dashboard-mdcn.component';
+import { PatientsinfComponent } from './components/infermier/patients-infirmier/patients.component';
+import { NotificationsinfComponent } from './components/infermier/notifications-infirmier/notifications.component';
+import { ParametresinfComponent } from './components/infermier/parametres-infirmier/parametres.component';
+import { LayoutinfComponent } from './components/infermier/layout-infirmier/layout.component';
+import { ModifierPatientinfComponent } from './components/infermier/modifier-patient-infirmier/modifier-patient.component';
 
 export const routes: Routes = [
     {
