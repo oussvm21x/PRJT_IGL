@@ -6,9 +6,13 @@ import { LandingPageComponent } from "./components/landing-page/landing-page.com
 import { NosChiffresComponent } from "./components/nos-chiffres/nos-chiffres.component";
 // import { DashboardMdcnComponent } from './components/medecin/dashboard-mdcn/dashboard-mdcn.component';
 // import { SidebarComponent } from './components/medecin/sidebar/sidebar.component';
+import { DashboardinfComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
+import { SidebarinfComponent } from './components/infermier/sidebar/sidebar.component';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LandingPageComponent, NosChiffresComponent,  DashboardpatientComponent,SidebarpatientComponent],
+  imports: [RouterOutlet, LandingPageComponent, NosChiffresComponent,  DashboardpatientComponent,SidebarpatientComponent, DashboardinfComponent,
+    SidebarinfComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

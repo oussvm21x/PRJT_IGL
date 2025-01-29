@@ -7,7 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class SoinsService {
 
+<<<<<<< HEAD
   private apiUrl = 'http://localhost:3005/soins';
+=======
+  private apiUrl = 'http://localhost:3003/soins';
+>>>>>>> oussama/infermier
 
   constructor(private http: HttpClient) { }
 
@@ -17,4 +21,8 @@ export class SoinsService {
   addSoin(soin: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, soin);
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> oussama/infermier

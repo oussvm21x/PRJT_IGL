@@ -1,19 +1,19 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarpatientComponent } from '../sidebar-patient/sidebar-patient.component';
+import { SidebarinfComponent } from '../sidebar/sidebar.component';
 import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [
-    SidebarpatientComponent,
+      SidebarinfComponent,
       RouterOutlet
-
+    
   ],
-  templateUrl: './layout-patient.component.html',
-  styleUrl: './layout-patient.component.css'
+  templateUrl: './layout.component.html',
+  styleUrl: './layout.component.css'
 })
-export class LayoutpatientComponent implements OnInit {
+export class LayoutinfComponent implements OnInit {
   activeRoute: string = '';
 
   constructor(private router: Router) {}
@@ -21,7 +21,6 @@ export class LayoutpatientComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       this.activeRoute = this.router.url;
-    }
-  );
+    });
   }
 }
