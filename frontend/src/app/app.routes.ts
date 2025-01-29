@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule } from '@angular/router';
+import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
+import { PatientsComponent } from './components/infermier/patients/patients.component';
+import { NotificationsComponent } from './components/infermier/notifications/notifications.component';
+import { ParametresComponent } from './components/infermier/parametres/parametres.component';
+import { LayoutComponent } from './components/infermier/layout/layout.component';
+import { ModifierPatientComponent } from './components/infermier/modifier-patient/modifier-patient.component';
 import { DashboardRadioComponent } from './components/radio/dashboard-radio/dashboard-radio.component';
 import { RadiosComponent } from './components/radio/radios/radios.component';
 import {NotificationsRadioComponent  } from './components/radio/notifications-radio/notifications-radio.component';
@@ -19,10 +25,10 @@ import {LayoutLabComponent  } from './components/laborantin/layout-lab/layout-la
 
 export const routes: Routes = [
     {
-        path: 'medecin',
+        path: 'infirmier',
         component:LayoutComponent,
         children: [
-            { path: 'dashboardMdcn', component: DashboardMdcnComponent },
+            { path: 'dashboard', component: DashboardMdcnComponent },
             { path: 'patients', component: PatientsComponent }, 
             { path: 'notifications', component: NotificationsComponent }, 
             { path: 'parametres', component: ParametresComponent }, 
