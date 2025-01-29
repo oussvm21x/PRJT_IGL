@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule } from '@angular/router';
-import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
-import { PatientsComponent } from './components/infermier/patients/patients.component';
-import { NotificationsComponent } from './components/infermier/notifications/notifications.component';
-import { ParametresComponent } from './components/infermier/parametres/parametres.component';
-import { LayoutComponent } from './components/infermier/layout/layout.component';
-import { ModifierPatientComponent } from './components/infermier/modifier-patient/modifier-patient.component';
+import { DashboardinfComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
+import { PatientsinfComponent } from './components/infermier/patients/patients.component';
+import { NotificationsinfComponent } from './components/infermier/notifications/notifications.component';
+import { ParametresinfComponent } from './components/infermier/parametres/parametres.component';
+import { LayoutinfComponent } from './components/infermier/layout/layout.component';
+import { ModifierPatientinfComponent } from './components/infermier/modifier-patient/modifier-patient.component';
 
 export const routes: Routes = [
     {
         path: 'infirmier',
-        component:LayoutComponent,
+        component:LayoutinfComponent,
         children: [
-            { path: 'dashboard', component: DashboardMdcnComponent },
-            { path: 'patients', component: PatientsComponent }, 
-            { path: 'notifications', component: NotificationsComponent }, 
-            { path: 'parametres', component: ParametresComponent }, 
-            { path: 'modifier-patient/:nss', component: ModifierPatientComponent }, 
+            { path: 'dashboard', component: DashboardinfComponent },
+            { path: 'patients', component: PatientsinfComponent }, 
+            { path: 'notifications', component: NotificationsinfComponent }, 
+            { path: 'parametres', component: ParametresinfComponent }, 
+            { path: 'modifier-patient/:nss', component: ModifierPatientinfComponent }, 
 
         ],
         
     },
-    { path: '', redirectTo: '/medecin/dashboardMdcn', pathMatch: 'full' },
+    { path: '', redirectTo: '/infirmier/dashboard', pathMatch: 'full' },
 
 ];
 @NgModule({

@@ -1,19 +1,19 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarinfComponent } from '../sidebar/sidebar.component';
 import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [
-      SidebarComponent,
+      SidebarinfComponent,
       RouterOutlet
     
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
-export class LayoutComponent implements OnInit {
+export class LayoutinfComponent implements OnInit {
   activeRoute: string = '';
 
   constructor(private router: Router) {}

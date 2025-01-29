@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './parametres.component.html',
   styleUrl: './parametres.component.css'
 })
-export class ParametresComponent {
+export class ParametresinfComponent {
 
 }

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
-import { SidebarComponent } from './components/infermier/sidebar/sidebar.component';
+import { DashboardinfComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
+import { SidebarinfComponent } from './components/infermier/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
   imports: [
   RouterOutlet,
-  DashboardMdcnComponent,
-  SidebarComponent
+  DashboardinfComponent,
+  SidebarinfComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

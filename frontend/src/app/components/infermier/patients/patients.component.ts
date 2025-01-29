@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './patients.component.html',
   styleUrls: ['./patients.component.css'],
 })
-export class PatientsComponent implements OnInit {
+export class PatientsinfComponent implements OnInit {
   Math = Math;
 
   patientForm = {

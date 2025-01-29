@@ -6,9 +6,9 @@
   </div>
   <ul class="space-y-7  mt-[7%] ml-[15%] md:ml-[3%]">
     <li>
-      <a routerLink="/medecin/dashboardMdcn"
-        [ngClass]="{ 'active-nav-item dashboard': activeRoute === '/medecin/dashboardMdcn'|| activeButton === 'dashboard' }"
-        (click)="setActiveButton('dashboardMdcn')" class=" flex items-center dashboard nav-item">
+      <a routerLink="/infirmier/dashboard"
+        [ngClass]="{ 'active-nav-item dashboard': activeRoute === '/infirmier/dashboard'|| activeButton === 'dashboard' }"
+        (click)="setActiveButton('dashboard')" class=" flex items-center dashboard nav-item">
         <span>
           <svg width="22" height="22" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -20,8 +20,8 @@
       </a>
     </li>
     <li>
-      <a routerLink="/medecin/patients"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/patients' || activeRoute.startsWith('/medecin/modifier-patient') }"
+      <a routerLink="/infirmier/patients"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/infirmier/patients' || activeRoute.startsWith('/infirmier/modifier-patient') }"
         (click)="setActiveButton('patients')" class=" flex items-center nav-item">
         <span>
           <svg width="22" height="22" viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@
       </a>
     </li>
     <li>
-      <a routerLink="/medecin/notifications" [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/notifications' }"
+      <a routerLink="/infirmier/notifications" [ngClass]="{ 'active-nav-item': activeRoute === '/infirmier/notifications' }"
         (click)="setActiveButton('notifications')" class=" flex items-center nav-item">
         <span>
           <svg width="19" height="19" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +48,7 @@
       </a>
     </li>
     <li>
-      <a routerLink="/medecin/parametres" [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/parametres' }"
+      <a routerLink="/infirmier/parametres" [ngClass]="{ 'active-nav-item': activeRoute === '/infirmier/parametres' }"
         (click)="setActiveButton('parametres')" class=" flex items-center nav-item">
         <span>
           <svg width="20" height="20" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
