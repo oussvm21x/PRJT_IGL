@@ -6,8 +6,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-sidebar',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  templateUrl: './sidebar-patient.component.html',
+  styleUrls: ['./sidebar-patient.component.css']
 })
 export class SidebarComponent implements OnInit {
   @Input() activeRoute: string = ''; // Route active

@@ -7,8 +7,8 @@
     <ul class="space-y-7  mt-[7%] ml-[15%] md:ml-[3%]">
       <li >
         <a 
-        routerLink="/medecin/dashboardMdcn"
-        [ngClass]="{ 'active-nav-item dashboard': activeRoute === '/medecin/dashboardMdcn'|| activeButton === 'dashboard' }"
+        routerLink="/patient/dashboard"
+        [ngClass]="{ 'active-nav-item dashboard': activeRoute === '/patient/dashboardMdcn'|| activeButton === 'dashboard' }"
         (click)="setActiveButton('dashboardMdcn')"
         class=" flex items-center dashboard nav-item">
           <span>
@@ -22,8 +22,8 @@
       </li>
       <li>
         <a
-        routerLink="/medecin/patients"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/patients' || activeRoute.startsWith('/medecin/modifier-patient') }"
+        routerLink="/patient/dossier"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/patient/dossier' || activeRoute.startsWith('/patient/dossier') }"
 
         (click)="setActiveButton('patients')"
         class=" flex items-center nav-item">
@@ -33,13 +33,13 @@
                 fill="white"/>
             </svg> 
           </span>
-          <span class="ml-[10%] hidden md:block">Patients</span>
+          <span class="ml-[10%] hidden md:block">dossier medicale</span>
         </a>
       </li>
       <li>
         <a 
-        routerLink="/medecin/notifications"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/notifications' }"
+        routerLink="/patient/notifications"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/patient/notifications' }"
         (click)="setActiveButton('notifications')"
         class=" flex items-center nav-item">
           <span>
@@ -54,8 +54,8 @@
       </li>
       <li>
         <a 
-        routerLink="/medecin/parametres"
-        [ngClass]="{ 'active-nav-item': activeRoute === '/medecin/parametres' }"
+        routerLink="/patient/parametres"
+        [ngClass]="{ 'active-nav-item': activeRoute === '/patient/parametres' }"
         (click)="setActiveButton('parametres')"
         class=" flex items-center nav-item">
           <span>

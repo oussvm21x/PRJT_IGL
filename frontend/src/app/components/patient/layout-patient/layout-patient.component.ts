@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebar-patient/sidebar-patient.component';
 import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
@@ -8,12 +8,12 @@ import { RouterOutlet,Router } from '@angular/router';
   imports: [
       SidebarComponent,
       RouterOutlet
-    
+
   ],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  templateUrl: './layout-patient.component.html',
+  styleUrl: './layout-patient.component.css'
 })
-export class LayoutComponent implements OnInit {
+export class LayoutpatientComponent implements OnInit {
   activeRoute: string = '';
 
   constructor(private router: Router) {}
@@ -21,6 +21,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       this.activeRoute = this.router.url;
-    });
+    }
+  );
   }
 }

@@ -7,13 +7,13 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 
 @Component({
-  selector: 'app-dashboard-mdcn',
+  selector: 'app-dashboard-patient',
   standalone: true,
   imports: [RouterModule,FullCalendarModule],
-  templateUrl: './dashboard-mdcn.component.html',
-  styleUrl: './dashboard-mdcn.component.css'
+  templateUrl: './dashboard-patient.component.html',
+  styleUrl: './dashboard-patient.component.css'
 })
-export class DashboardMdcnComponent implements OnInit {
+export class DashboardpatientComponent implements OnInit {
   calendarOptions: CalendarOptions = {};
   userName: string = 'Mark Leverese'; // Donnée statique
 
