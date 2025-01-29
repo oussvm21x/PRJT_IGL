@@ -27,21 +27,6 @@
         "Peter Smith"
       ],
       "dateEntree": "2023-12-15"
-    },
-    {
-      "id": "0f44",
-      "nom": "A",
-      "prenom": "A",
-      "sexe": "Homme",
-      "nss": "A",
-      "mutuelle": "A",
-      "dateNaissance": "2024-12-31",
-      "adresse": "A",
-      "telephone": "A",
-      "contacts": [
-        "A"
-      ],
-      "dateEntree": "2025-01-09"
     }
   ]
 }
