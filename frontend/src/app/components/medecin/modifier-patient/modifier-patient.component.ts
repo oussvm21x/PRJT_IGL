@@ -6,7 +6,6 @@ import { AntecedentService } from '../../../services/antecedent.service';
 import { FormGroup, FormBuilder, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import jsPDF from 'jspdf';
-import { SoinsService } from '../../../services/soins.service';
 
 @Component({
   selector: 'app-modifier-patient',
@@ -18,23 +17,16 @@ export class ModifierPatientComponent implements OnInit {
   public consultationElements = ['Ordonnance', 'Bilans', 'Résumé'];
   showConsultationForm: boolean = false;
   showAntecedentModal: boolean = false;
-  showSoinstModal: boolean = false;
   patient: any;
   consultations: any[] = [];
-  antecedents: any[] = [];
-  soins: any[] = [];
+  antecedents: any[] = []; 
   patientForm!: FormGroup;
   consultationForm!: FormGroup;
-  antecedentForm!: FormGroup;
-  soinsForm!: FormGroup;
+  antecedentForm!: FormGroup; 
   bilansBiologiques!: FormArray; // Ajout de la propriété
   nss!: string;
-  activeTab: string = 'soins';
+  activeTab: string = 'profil';
   showModal: boolean = false;
-  paginatedSoins: any[] = []; // Soins for the current page
-  currentPage: number = 1;
-  itemsPerPage: number = 2;
-  totalPages: number = 1;
 
 
   constructor(
@@ -42,10 +34,9 @@ export class ModifierPatientComponent implements OnInit {
     private router: Router,
     private patientService: PatientService,
     private consultationService: ConsultationService,
-    private antecedentService: AntecedentService,
-    private soinsService: SoinsService,
+    private antecedentService: AntecedentService, 
     private fb: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.nss = this.route.snapshot.paramMap.get('nss')!;
@@ -55,9 +46,8 @@ export class ModifierPatientComponent implements OnInit {
     this.loadConsultations();
     this.loadAntecedents(); // Charger les antécédents
     this.addTest();
-    this.loadSoins();
   }
-
+  
   initForms(): void {
     this.patientForm = this.fb.group({
       nom: ['', Validators.required],
@@ -74,14 +64,7 @@ export class ModifierPatientComponent implements OnInit {
       date: ['', Validators.required],
       commentaire: ['', Validators.required],
     });
-    this.soinsForm = this.fb.group({
-      nom: ['', Validators.required],
-      description: ['', Validators.required],
-      observations: ['', Validators.required
-      ]
-    });
-
-
+    
   }
 
   initConsultationForm(): void {
@@ -94,15 +77,15 @@ export class ModifierPatientComponent implements OnInit {
       }),
       ordonnance: this.fb.array([]),       // Tableau dynamique pour les médicaments
     });
-
+  
     // Accès rapide à bilans.biologique
     this.bilansBiologiques = this.consultationForm.get('bilans.biologique') as FormArray;
   }
-
-
-
-
-
+  
+  
+  
+  
+  
   // Ajouter un test biologique
   addTest(): void {
     this.bilansBiologiques.push(
@@ -111,17 +94,17 @@ export class ModifierPatientComponent implements OnInit {
       })
     );
   }
-
-
-
+  
+  
+  
 
   // Supprimer un test biologique
   removeTest(index: number): void {
     this.bilansBiologiques.removeAt(index);
   }
+  
 
-
-
+  
   initAntecedentForm(): void {
     this.antecedentForm = this.fb.group({
       condition: ['', Validators.required],
@@ -177,7 +160,7 @@ export class ModifierPatientComponent implements OnInit {
       }
     );
   }
-
+  
   loadAntecedents(): void {
     this.antecedentService.getAntecedentsByPatientNSS(this.nss).subscribe(
       (data) => (this.antecedents = data),
@@ -214,7 +197,7 @@ export class ModifierPatientComponent implements OnInit {
         ...this.consultationForm.value,
         patientNSS: this.nss,
       };
-
+  
       this.consultationService.addConsultation(newConsultation).subscribe(
         (data) => {
           this.consultations.push(data);
@@ -229,7 +212,7 @@ export class ModifierPatientComponent implements OnInit {
       alert('Veuillez remplir tous les champs requis.');
     }
   }
-
+  
 
   deleteAntecedent(id: number): void {
     this.antecedentService.deleteAntecedent(id).subscribe(
@@ -245,33 +228,33 @@ export class ModifierPatientComponent implements OnInit {
 
 
   //confirmation suppression 
-  antecedentToDelete: any = null;
-  askToDeleteAntecedent(antecedent: any): void {
-    this.antecedentToDelete = antecedent;
-  }
+      antecedentToDelete: any = null; 
+      askToDeleteAntecedent(antecedent: any): void {
+        this.antecedentToDelete = antecedent;
+      }
 
-  cancelAntecedentDeletion(): void {
-    this.antecedentToDelete = null;
-  }
+      cancelAntecedentDeletion(): void {
+        this.antecedentToDelete = null;
+      }
 
-  confirmAntecedentDeletion(): void {
-    if (this.antecedentToDelete) {
-      this.antecedentService.deleteAntecedent(this.antecedentToDelete.id).subscribe(
-        () => {
-          this.antecedents = this.antecedents.filter(
-            (a) => a.id !== this.antecedentToDelete.id
+      confirmAntecedentDeletion(): void {
+        if (this.antecedentToDelete) {
+          this.antecedentService.deleteAntecedent(this.antecedentToDelete.id).subscribe(
+            () => {
+              this.antecedents = this.antecedents.filter(
+                (a) => a.id !== this.antecedentToDelete.id
+              );
+              this.antecedentToDelete = null;
+            },
+            (error) => {
+              console.error('Erreur lors de la suppression de l\'antécédent:', error);
+              alert('Une erreur est survenue lors de la suppression.');
+              this.antecedentToDelete = null;
+            }
           );
-          this.antecedentToDelete = null;
-        },
-        (error) => {
-          console.error('Erreur lors de la suppression de l\'antécédent:', error);
-          alert('Une erreur est survenue lors de la suppression.');
-          this.antecedentToDelete = null;
         }
-      );
-    }
-  }
-
+      }
+        
 
   goToPatientsPage(): void {
     this.router.navigate(['/medecin/patients']);
@@ -293,7 +276,7 @@ export class ModifierPatientComponent implements OnInit {
   }
 
 
-
+  
 
   toggleModal(): void {
     this.showModal = !this.showModal;
@@ -311,14 +294,8 @@ export class ModifierPatientComponent implements OnInit {
       this.antecedentForm.reset(); // Cette ligne ne devrait pas poser problème si `antecedentForm` est bien initialisé
     }
   }
-  toggleSoinsModal(): void {
-    this.showSoinstModal = !this.showSoinstModal;
-    if (!this.showSoinstModal) {
-      this.soinsForm.reset();
-    }
-  }
-
-
+  
+  
 
   addConsultation(): void {
     this.showConsultationForm = !this.showConsultationForm;
@@ -334,11 +311,11 @@ export class ModifierPatientComponent implements OnInit {
   }
   downloadBilanBiologiquePDF(biologique: any[]): void {
     const doc = new jsPDF();
-
+  
     // Titre du document
     doc.setFontSize(18);
     doc.text('Bilan Biologique', 10, 10);
-
+  
     // Contenu des bilans biologiques
     doc.setFontSize(12);
     let y = 20; // Position initiale
@@ -346,7 +323,7 @@ export class ModifierPatientComponent implements OnInit {
       doc.text(`${index + 1}. ${test.nom}`, 10, y);
       y += 10; // Espacement entre chaque ligne
     });
-
+  
     // Sauvegarder le fichier PDF
     doc.save('Bilan_Biologique.pdf');
   }
@@ -363,7 +340,7 @@ export class ModifierPatientComponent implements OnInit {
 
   // pagination
   currentAntecedentPage: number = 1;
-  itemsPerAntecedentPage: number = 6;
+  itemsPerAntecedentPage: number = 6; 
   Math = Math;
 
 
@@ -372,84 +349,10 @@ export class ModifierPatientComponent implements OnInit {
     const endIndex = startIndex + this.itemsPerAntecedentPage;
     return this.antecedents.slice(startIndex, endIndex);
   }
-
+  
   // Changer de page
   changeAntecedentPage(page: number): void {
     this.currentAntecedentPage = page;
   }
-
-  newSoin = {
-    nom: '',
-    description: '',
-    observations: '',
-  };
-  submitSoin(): void {
-    console.log('Button clicked!');
-    if (this.soinsForm.valid) {
-      const newSoin = this.soinsForm.value;
-      console.log('Submitting soin:', newSoin); // Add a log to confirm the method is called
-      this.soinsService.addSoin(newSoin).subscribe(
-        (response) => {
-          alert('Soin ajouté avec succès !');
-          this.toggleSoinsModal();
-          this.soinsForm.reset();
-          this.loadSoins();
-        },
-        (error) => {
-          console.error('Erreur lors de l’ajout du soin:', error);
-        }
-      );
-    } else {
-      alert('Veuillez remplir tous les champs obligatoires.');
-    }
-  }
-
-  resetForm(): void {
-    this.newSoin = {
-      nom: '',
-      description: '',
-      observations: '',
-    };
-  }
-
-  loadSoins(): void {
-    this.soinsService.getSoins().subscribe({
-      next: (data) => {
-        this.soins = data;
-        this.totalPages = Math.ceil(this.soins.length / this.itemsPerPage);
-        console.log('Soins:', this.soins);
-        this.updatePagination();
-        
-        console.log('pagiated:', this.paginatedSoins);
-      },
-      error: (err) => console.error('Error fetching soins:', err)
-    });
-
-    
-  }
-
-  updatePagination(): void {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.paginatedSoins = this.soins.slice(start, end);
-  }
-
-  prevPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.updatePagination();
-    }
-  }
-
-  nextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.updatePagination();
-    }
-  }
-  
-
-
-
 
 }

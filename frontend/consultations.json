@@ -95,21 +95,6 @@
       },
       "ordonnance": [],
       "patientNSS": "123456789"
-    },
-    {
-      "id": "b93c",
-      "date": "2025-01-09",
-      "resume": "ml",
-      "bilans": {
-        "radio": "mlm",
-        "biologique": [
-          {
-            "nom": "ml"
-          }
-        ]
-      },
-      "ordonnance": [],
-      "patientNSS": "123456789"
     }
   ]
 }
