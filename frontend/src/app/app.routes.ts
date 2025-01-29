@@ -1,11 +1,4 @@
 import { NgModule } from '@angular/core';
-import { DashboardMdcnComponent } from './components/pharmacie/dashboard-mdcn/dashboard-mdcn.component';
-import { NotificationsComponent } from './components/pharmacie/notifications/notifications.component';
-import { ParametresComponent } from './components/pharmacie/parametres/parametres.component';
-import { LayoutComponent } from './components/pharmacie/layout/layout.component';
-import { RapportsComponent } from './components/rapports/rapports.component';
-import { StocksComponent } from './components/stocks/stocks.component';
-import { OrdonnanacesComponent } from './components/ordonnanaces/ordonnanaces.component';
 import { Routes,RouterModule } from '@angular/router';
 import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
 import { PatientsComponent } from './components/infermier/patients/patients.component';
@@ -29,7 +22,7 @@ import { BilansComponent } from './components/laborantin/bilans/bilans.component
 import {NotificationsLabComponent  } from './components/laborantin/notifications-lab/notifications-lab.component';
 import {ParametresLabComponent  } from './components/laborantin/parametres-lab/parametres-lab.component';
 import {LayoutLabComponent  } from './components/laborantin/layout-lab/layout-lab.component';
-   
+
 export const routes: Routes = [
     {
         path: 'infirmier',
@@ -45,20 +38,6 @@ export const routes: Routes = [
 
         
         
-    },
-       {
-        path: 'pahrmacien',
-        component: LayoutComponent,
-        children: [
-            { path: 'dashboardMdcn', component: DashboardMdcnComponent },
-            { path: 'ordonnances', component: OrdonnanacesComponent },
-            { path: 'stocks', component: StocksComponent },
-            { path: 'rapports', component: RapportsComponent },
-            { path: 'notifications', component: NotificationsComponent },
-            { path: 'parametres', component: ParametresComponent },
-
-        ],
-
     },
      {
         path: 'radiologue',
@@ -91,7 +70,6 @@ export const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-})
-export class AppRoutingModule { }
-
+  })
+  export class AppRoutingModule {}
 

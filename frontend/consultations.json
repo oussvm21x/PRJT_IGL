@@ -7,8 +7,6 @@
       "resume": "Patient présente des douleurs abdominales.",
       "bilans": {
         "radio": "Suspicion de calculs biliaires.",
-
-
         "biologique": [
           {
             "nom": "Enzymes hépatiques"
@@ -17,7 +15,6 @@
             "nom": "Bilirubine"
           }
         ]
-
       },
       "ordonnance": [
         {
@@ -41,7 +38,6 @@
       "resume": "Fièvre persistante et toux.",
       "bilans": {
         "radio": "Infiltrats pulmonaires.",
-
         "biologique": [
           {
             "nom": "CRP"
@@ -59,7 +55,61 @@
           "details": "À prendre deux fois par jour."
         }
       ]
+    },
+    {
+      "id": "ffb9",
+      "patientNSS": "123456789",
+      "date": "2024-12-31",
+      "resume": "",
+      "bilans": {
+        "radio": "",
+        "biologique": []
+      },
+      "ordonnance": []
+    },
+    {
+      "id": "f149",
+      "patientNSS": "987654321",
+      "date": "2024-12-31",
+      "resume": "",
+      "bilans": {
+        "radio": "",
+        "biologique": []
+      },
+      "ordonnance": []
+    },
+    {
+      "id": "9235",
+      "date": "2025-01-03",
+      "resume": "oooooooooo",
+      "bilans": {
+        "radio": "oooooooooooo",
+        "biologique": [
+          {
+            "nom": "j j j"
+          },
+          {
+            "nom": "oooooooo"
+          }
+        ]
+      },
+      "ordonnance": [],
+      "patientNSS": "123456789"
+    },
+    {
+      "id": "b93c",
+      "date": "2025-01-09",
+      "resume": "ml",
+      "bilans": {
+        "radio": "mlm",
+        "biologique": [
+          {
+            "nom": "ml"
+          }
+        ]
+      },
+      "ordonnance": [],
+      "patientNSS": "123456789"
     }
-    
   ]
 }
