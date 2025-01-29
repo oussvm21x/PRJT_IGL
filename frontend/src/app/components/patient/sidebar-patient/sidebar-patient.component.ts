@@ -9,7 +9,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './sidebar-patient.component.html',
   styleUrls: ['./sidebar-patient.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarpatientComponent implements OnInit {
   @Input() activeRoute: string = ''; // Route active
   activeButton: string = ''; // Bouton actif
 

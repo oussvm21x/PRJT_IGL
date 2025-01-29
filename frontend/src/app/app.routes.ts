@@ -65,7 +65,7 @@ export const routes: Routes = [
         
         
     },
-    { path: '', redirectTo: '/laborantin/dashboardLab', pathMatch: 'full' },
+    { path: '', redirectTo: '', pathMatch: 'full' },
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
