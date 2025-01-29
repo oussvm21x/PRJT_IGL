@@ -7,6 +7,11 @@ import { RapportsComponent } from './components/rapports/rapports.component';
 import { StocksComponent } from './components/stocks/stocks.component';
 import { OrdonnanacesComponent } from './components/ordonnanaces/ordonnanaces.component';
 import { Routes,RouterModule } from '@angular/router';
+import { DashboardMdcnComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
+import { NotificationsComponent } from './components/patient/notifications-patient/notifications-patient.component';
+import { ParametresComponent } from './components/patient/parametres-patient/parametres-patient.component';
+import { LayoutComponent } from './components/patient/layout-patient/layout-patient.component';
+import { ModifierPatientComponent } from './components/patient/dossier/dossier.component';
 import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
 import { PatientsComponent } from './components/infermier/patients/patients.component';
 import { NotificationsComponent } from './components/infermier/notifications/notifications.component';
@@ -31,6 +36,17 @@ import {ParametresLabComponent  } from './components/laborantin/parametres-lab/p
 import {LayoutLabComponent  } from './components/laborantin/layout-lab/layout-lab.component';
    
 export const routes: Routes = [
+   {
+        path: 'patient',
+        component:LayoutComponent,
+          children: [
+            { path: 'dashboard', component: DashboardMdcnComponent },
+            { path: 'dossier', component: ModifierPatientComponent }, 
+            { path: 'notifications', component: NotificationsComponent }, 
+            { path: 'parametres', component: ParametresComponent }, 
+
+        ],
+ },
     {
         path: 'infirmier',
         component:LayoutComponent,
@@ -39,7 +55,7 @@ export const routes: Routes = [
             { path: 'patients', component: PatientsComponent }, 
             { path: 'notifications', component: NotificationsComponent }, 
             { path: 'parametres', component: ParametresComponent }, 
-            { path: 'modifier-patient/:nss', component: ModifierPatientComponent }, 
+            { path: 'dossier', component: ModifierPatientComponent }, 
 
         ],
 
@@ -68,10 +84,7 @@ export const routes: Routes = [
             { path: 'radios', component: RadiosComponent }, 
             { path: 'notifications', component: NotificationsRadioComponent }, 
             { path: 'parametres', component: ParametresRadioComponent }, 
-        ],
-
-        
-        
+        ],        
     },
     {
         path: 'laborantin',

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DashboardMdcnComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
+import { SidebarComponent } from './components/patient/sidebar-patient/sidebar-patient.component';
 import { DashboardMdcnComponent } from './components/pharmacie/dashboard-mdcn/dashboard-mdcn.component';
 import { SidebarComponent } from './components/pharmacie/sidebar/sidebar.component';
 import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';

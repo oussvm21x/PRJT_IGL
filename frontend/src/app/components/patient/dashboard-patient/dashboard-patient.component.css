@@ -1,0 +1,13 @@
+.active-nav-item {
+    background-color: white;
+    color: #2D6974;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  nav a:hover {
+    color: #D4D4D4;
+  }
+  
+  
+  
