@@ -9,10 +9,10 @@ import { ModifierPatientComponent } from './components/infermier/modifier-patien
 
 export const routes: Routes = [
     {
-        path: 'medecin',
+        path: 'infirmier',
         component:LayoutComponent,
         children: [
-            { path: 'dashboardMdcn', component: DashboardMdcnComponent },
+            { path: 'dashboard', component: DashboardMdcnComponent },
             { path: 'patients', component: PatientsComponent }, 
             { path: 'notifications', component: NotificationsComponent }, 
             { path: 'parametres', component: ParametresComponent }, 
