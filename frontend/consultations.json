@@ -7,7 +7,14 @@
       "resume": "Patient présente des douleurs abdominales.",
       "bilans": {
         "radio": "Suspicion de calculs biliaires.",
-        "biologique": "Anomalies des enzymes hépatiques."
+        "biologique": [
+          {
+            "nom": "Enzymes hépatiques"
+          },
+          {
+            "nom": "Bilirubine"
+          }
+        ]
       },
       "ordonnance": [
         {
@@ -31,7 +38,14 @@
       "resume": "Fièvre persistante et toux.",
       "bilans": {
         "radio": "Infiltrats pulmonaires.",
-        "biologique": "CRP élevée, leucocytose."
+        "biologique": [
+          {
+            "nom": "CRP"
+          },
+          {
+            "nom": "Leucocytose"
+          }
+        ]
       },
       "ordonnance": [
         {
@@ -49,7 +63,7 @@
       "resume": "",
       "bilans": {
         "radio": "",
-        "biologique": ""
+        "biologique": []
       },
       "ordonnance": []
     },
@@ -60,7 +74,7 @@
       "resume": "",
       "bilans": {
         "radio": "",
-        "biologique": ""
+        "biologique": []
       },
       "ordonnance": []
     },
@@ -70,7 +84,11 @@
       "resume": "hgghhg",
       "bilans": {
         "radio": "fffffffffff",
-        "biologique": "ffffffffffffffffffff"
+        "biologique": [
+          {
+            "nom": "ffffffffffffffffffff"
+          }
+        ]
       },
       "ordonnance": [],
       "patientNSS": "123456789"
@@ -81,7 +99,11 @@
       "resume": "ddddddddddd",
       "bilans": {
         "radio": "dddddddddddd",
-        "biologique": "ddddddddddddd"
+        "biologique": [
+          {
+            "nom": "ddddddddddddd"
+          }
+        ]
       },
       "ordonnance": [
         {
@@ -99,7 +121,7 @@
       "resume": "aaaaaaaaaaaaaaaaaaaaaaaaa",
       "bilans": {
         "radio": "",
-        "biologique": ""
+        "biologique": []
       },
       "ordonnance": [],
       "patientNSS": "123456789"
@@ -110,7 +132,7 @@
       "resume": "aaaaaaaaaaaaaaaaaaaaaaaaa",
       "bilans": {
         "radio": "",
-        "biologique": ""
+        "biologique": []
       },
       "ordonnance": [],
       "patientNSS": "123456789"
