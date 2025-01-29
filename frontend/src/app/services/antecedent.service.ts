@@ -14,12 +14,10 @@ export class AntecedentService {
   getAntecedents(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-
   // Récupérer les consultations d'un patient spécifique via son NSS
   getAntecedentsByPatientNSS(patientNSS: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}?patientNSS=${patientNSS}`);
   }
-  
   // Ajouter un antécédent
   addAntecedent(antecedent: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, antecedent); 
