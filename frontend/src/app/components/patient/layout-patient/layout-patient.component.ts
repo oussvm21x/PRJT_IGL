@@ -13,7 +13,7 @@ import { RouterOutlet,Router } from '@angular/router';
   templateUrl: './layout-patient.component.html',
   styleUrl: './layout-patient.component.css'
 })
-export class LayoutComponent implements OnInit {
+export class LayoutpatientComponent implements OnInit {
   activeRoute: string = '';
 
   constructor(private router: Router) {}

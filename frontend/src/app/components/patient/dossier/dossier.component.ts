@@ -15,7 +15,7 @@ import { SoinsService } from '../../../services/soins.service';
   styleUrls: ['./dossier.component.css'],
   imports: [CommonModule, ReactiveFormsModule],
 })
-export class ModifierPatientComponent implements OnInit {
+export class DossierComponent implements OnInit {
   public consultationElements = ['Ordonnance', 'Bilans', 'Résumé'];
   showConsultationForm: boolean = false;
   showAntecedentModal: boolean = false;

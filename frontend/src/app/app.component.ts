@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DashboardMdcnComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
+import { DashboardpatientComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
 import { SidebarComponent } from './components/patient/sidebar-patient/sidebar-patient.component';
 
 @Component({
   selector: 'app-root',
   imports: [
   RouterOutlet,
-  DashboardMdcnComponent,
+  DashboardpatientComponent,
   SidebarComponent
   ],
   templateUrl: './app.component.html',
