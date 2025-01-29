@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes,RouterModule } from '@angular/router';
-import { DashboardMdcnComponent } from './components/medecin/dashboard-mdcn/dashboard-mdcn.component';
-import { PatientsComponent } from './components/medecin/patients/patients.component';
-import { NotificationsComponent } from './components/medecin/notifications/notifications.component';
-import { ParametresComponent } from './components/medecin/parametres/parametres.component';
-import { LayoutComponent } from './components/medecin/layout/layout.component';
-import { ModifierPatientComponent } from './components/medecin/modifier-patient/modifier-patient.component';
+import { DashboardMdcnComponent } from './components/infermier/dashboard-mdcn/dashboard-mdcn.component';
+import { PatientsComponent } from './components/infermier/patients/patients.component';
+import { NotificationsComponent } from './components/infermier/notifications/notifications.component';
+import { ParametresComponent } from './components/infermier/parametres/parametres.component';
+import { LayoutComponent } from './components/infermier/layout/layout.component';
+import { ModifierPatientComponent } from './components/infermier/modifier-patient/modifier-patient.component';
 
 export const routes: Routes = [
     {
