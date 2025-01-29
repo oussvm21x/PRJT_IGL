@@ -7,7 +7,17 @@
       "resume": "Patient présente des douleurs abdominales.",
       "bilans": {
         "radio": "Suspicion de calculs biliaires.",
-        "biologique": "Anomalies des enzymes hépatiques."
+
+
+        "biologique": [
+          {
+            "nom": "Enzymes hépatiques"
+          },
+          {
+            "nom": "Bilirubine"
+          }
+        ]
+
       },
       "ordonnance": [
         {
@@ -31,7 +41,15 @@
       "resume": "Fièvre persistante et toux.",
       "bilans": {
         "radio": "Infiltrats pulmonaires.",
-        "biologique": "CRP élevée, leucocytose."
+
+        "biologique": [
+          {
+            "nom": "CRP"
+          },
+          {
+            "nom": "Leucocytose"
+          }
+        ]
       },
       "ordonnance": [
         {
@@ -41,79 +59,7 @@
           "details": "À prendre deux fois par jour."
         }
       ]
-    },
-    {
-      "id": "ffb9",
-      "patientNSS": "123456789",
-      "date": "2024-12-31",
-      "resume": "",
-      "bilans": {
-        "radio": "",
-        "biologique": ""
-      },
-      "ordonnance": []
-    },
-    {
-      "id": "f149",
-      "patientNSS": "987654321",
-      "date": "2024-12-31",
-      "resume": "",
-      "bilans": {
-        "radio": "",
-        "biologique": ""
-      },
-      "ordonnance": []
-    },
-    {
-      "id": "7f32",
-      "date": "2024-12-31",
-      "resume": "hgghhg",
-      "bilans": {
-        "radio": "fffffffffff",
-        "biologique": "ffffffffffffffffffff"
-      },
-      "ordonnance": [],
-      "patientNSS": "123456789"
-    },
-    {
-      "id": "50c2",
-      "date": "2024-12-31",
-      "resume": "ddddddddddd",
-      "bilans": {
-        "radio": "dddddddddddd",
-        "biologique": "ddddddddddddd"
-      },
-      "ordonnance": [
-        {
-          "nom": "dddddddddd",
-          "dose": "dddddddddd",
-          "duree": "dddddd",
-          "details": "dddddddddddddddd"
-        }
-      ],
-      "patientNSS": "123456789"
-    },
-    {
-      "id": "967e",
-      "date": "2024-12-31",
-      "resume": "aaaaaaaaaaaaaaaaaaaaaaaaa",
-      "bilans": {
-        "radio": "",
-        "biologique": ""
-      },
-      "ordonnance": [],
-      "patientNSS": "123456789"
-    },
-    {
-      "id": "0454",
-      "date": "2024-12-31",
-      "resume": "aaaaaaaaaaaaaaaaaaaaaaaaa",
-      "bilans": {
-        "radio": "",
-        "biologique": ""
-      },
-      "ordonnance": [],
-      "patientNSS": "123456789"
     }
+    
   ]
 }
