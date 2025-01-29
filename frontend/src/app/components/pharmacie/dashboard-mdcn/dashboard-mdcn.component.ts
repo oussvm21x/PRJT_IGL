@@ -13,7 +13,7 @@ import { EventInput } from '@fullcalendar/core';
   templateUrl: './dashboard-mdcn.component.html',
   styleUrl: './dashboard-mdcn.component.css'
 })
-export class DashboardMdcnComponent implements OnInit {
+export class DashboardpharmaComponent implements OnInit {
   calendarOptions: CalendarOptions = {};
   userName: string = 'Mark Leverese'; // Donnée statique
 

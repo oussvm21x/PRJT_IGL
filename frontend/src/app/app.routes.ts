@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardMdcnComponent } from './components/pharmacie/dashboard-mdcn/dashboard-mdcn.component';
-import { NotificationsComponent } from './components/pharmacie/notifications/notifications.component';
-import { ParametresComponent } from './components/pharmacie/parametres/parametres.component';
-import { LayoutComponent } from './components/pharmacie/layout/layout.component';
+import { DashboardpharmaComponent } from './components/pharmacie/dashboard-mdcn/dashboard-mdcn.component';
+import { NotificationspharmaComponent } from './components/pharmacie/notifications/notifications.component';
+import { ParametrespharmaComponent } from './components/pharmacie/parametres/parametres.component';
+import { LayoutpharmaComponent } from './components/pharmacie/layout/layout.component';
 import { RapportsComponent } from './components/rapports/rapports.component';
 import { StocksComponent } from './components/stocks/stocks.component';
 import { OrdonnanacesComponent } from './components/ordonnanaces/ordonnanaces.component';
@@ -11,19 +11,19 @@ import { OrdonnanacesComponent } from './components/ordonnanaces/ordonnanaces.co
 export const routes: Routes = [
     {
         path: 'pahrmacien',
-        component: LayoutComponent,
+        component: LayoutpharmaComponent,
         children: [
-            { path: 'dashboardMdcn', component: DashboardMdcnComponent },
+            { path: 'dashboard', component: DashboardpharmaComponent },
             { path: 'ordonnances', component: OrdonnanacesComponent },
             { path: 'stocks', component: StocksComponent },
             { path: 'rapports', component: RapportsComponent },
-            { path: 'notifications', component: NotificationsComponent },
-            { path: 'parametres', component: ParametresComponent },
+            { path: 'notifications', component: NotificationspharmaComponent },
+            { path: 'parametres', component: ParametrespharmaComponent },
 
         ],
 
     },
-    { path: '', redirectTo: '/pahrmacien/dashboardMdcn', pathMatch: 'full' },
+    { path: '', redirectTo: '/pahrmacien/dashboard', pathMatch: 'full' },
 
 ];
 @NgModule({
