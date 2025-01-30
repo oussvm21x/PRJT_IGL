@@ -1,0 +1,116 @@
+{
+  "antecedents": [
+    {
+      "id": "3",
+      "patientNSS": "987654321",
+      "condition": "Asthme",
+      "date": "2022-06-10",
+      "commentaire": "Médicaments à inhaler prescrits."
+    },
+    {
+      "id": "17",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "16",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "15",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "14",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "13",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "12",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "11",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "10",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "9",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "8",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "7",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "6",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "5",
+      "patientNSS": "123456789",
+      "condition": "Allergie",
+      "date": "2021-05-20",
+      "commentaire": "Antihistaminiques nécessaires."
+    },
+    {
+      "id": "fd17",
+      "condition": "dddddddddddddd",
+      "date": "2025-01-24",
+      "commentaire": "ddddddddddddddddddddddd",
+      "patientNSS": "123456789"
+    },
+    {
+      "id": "ede9",
+      "condition": "eze",
+      "date": "2025-01-16",
+      "commentaire": "ezezezeze",
+      "patientNSS": "123456789"
+    }
+  ]
+}

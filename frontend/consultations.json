@@ -1,0 +1,100 @@
+{
+  "consultations": [
+    {
+      "id": "1",
+      "patientNSS": "123456789",
+      "date": "2024-12-30",
+      "resume": "Patient présente des douleurs abdominales.",
+      "bilans": {
+        "radio": "Suspicion de calculs biliaires.",
+        "biologique": [
+          {
+            "nom": "Enzymes hépatiques"
+          },
+          {
+            "nom": "Bilirubine"
+          }
+        ]
+      },
+      "ordonnance": [
+        {
+          "medicament": "Paracétamol",
+          "dose": "500mg",
+          "duree": "7 jours",
+          "details": "À prendre après les repas."
+        },
+        {
+          "medicament": "Ibuprofène",
+          "dose": "200mg",
+          "duree": "5 jours",
+          "details": "À prendre en cas de douleur uniquement."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "patientNSS": "987654321",
+      "date": "2024-12-31",
+      "resume": "Fièvre persistante et toux.",
+      "bilans": {
+        "radio": "Infiltrats pulmonaires.",
+        "biologique": [
+          {
+            "nom": "CRP"
+          },
+          {
+            "nom": "Leucocytose"
+          }
+        ]
+      },
+      "ordonnance": [
+        {
+          "medicament": "Amoxicilline",
+          "dose": "1g",
+          "duree": "10 jours",
+          "details": "À prendre deux fois par jour."
+        }
+      ]
+    },
+    {
+      "id": "ffb9",
+      "patientNSS": "123456789",
+      "date": "2024-12-31",
+      "resume": "",
+      "bilans": {
+        "radio": "",
+        "biologique": []
+      },
+      "ordonnance": []
+    },
+    {
+      "id": "f149",
+      "patientNSS": "987654321",
+      "date": "2024-12-31",
+      "resume": "",
+      "bilans": {
+        "radio": "",
+        "biologique": []
+      },
+      "ordonnance": []
+    },
+    {
+      "id": "9235",
+      "date": "2025-01-03",
+      "resume": "oooooooooo",
+      "bilans": {
+        "radio": "oooooooooooo",
+        "biologique": [
+          {
+            "nom": "j j j"
+          },
+          {
+            "nom": "oooooooo"
+          }
+        ]
+      },
+      "ordonnance": [],
+      "patientNSS": "123456789"
+    }
+  ]
+}

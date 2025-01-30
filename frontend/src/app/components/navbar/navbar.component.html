@@ -1,0 +1,56 @@
+<nav class="flex justify-between items-center md:pr-6 md:py-4 w-full  ">
+
+    <div class="hidden md:flex justify-between w-full ">
+        <!-- Left-side menu items -->
+        <div class="flex gap-5 md:gap-10 lg:gap-20 lg:text-lg  ">
+            <a href="#" class=" font-medium">Accueil</a>
+            <a href="#" class="  font-medium">Fonctionnalités</a>
+            <a href="#" class=" font-medium">À propos</a>
+            <a href="#" class="  font-medium">Contact</a>
+        </div>
+
+        <!-- Right-side login button -->
+        <div>
+            <a href="/login">
+                <button
+                    class="bg-teal-700 text-white font-semibold px-4 py-2 rounded-full hover:bg-teal-800 transition duration-200">
+                    Se connecter
+                </button>
+            </a>
+        </div>
+    </div>
+    <!-- Mobile Logo and Toggle Button -->
+    <div class="flex md:hidden items-center justify-between w-full  py-1 px-2">
+        <div>
+            <img src="assets/images/logo.svg" alt="logo" class="w-20">
+        </div>
+        <button *ngIf="!isMenuOpen" type="button" (click)="toggleMenu()"
+            class="text-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-700 p-2 rounded-md"
+            aria-label="Toggle menu" title="Toggle menu">
+            <img src="assets/images/open.svg" alt="menu" class="w-6">
+        </button>
+
+        <button *ngIf="isMenuOpen" type="button" (click)="toggleMenu()"
+            class="text-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-700 p-2 rounded-md"
+            aria-label="Toggle menu" title="Toggle menu">
+            <img src="assets/images/close.svg" alt="menu" class="w-6">
+        </button>
+
+        <!-- Mobile Menu -->
+        <div *ngIf="isMenuOpen"
+            class="md:hidden flex flex-col bg-white w-full mt-4 space-y-4 absolute top-16 left-0 z-10">
+            <a href="#" class="block text-gray-700 font-medium text-center">Accueil</a>
+            <a href="#" class="block text-gray-700 font-medium text-center">Fonctionnalités</a>
+            <a href="#" class="block text-gray-700 font-medium text-center">À propos</a>
+            <a href="#" class="block text-gray-700 font-medium text-center">Contact</a>
+            <button
+                class="bg-teal-700 text-white font-semibold px-4 py-2 rounded-full hover:bg-teal-800 transition duration-200 mx-auto">
+                Se connecter
+            </button>
+        </div>
+
+
+    </div>
+
+
+</nav>
