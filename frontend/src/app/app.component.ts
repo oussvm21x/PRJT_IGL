@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DashboardpharmaComponent } from './components/pharmacie/dashboard-mdcn/dashboard-mdcn.component';
+import { SidebarpharmaComponent } from './components/pharmacie/sidebar/sidebar.component';
 import { DashboardpatientComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
 import { SidebarpatientComponent } from './components/patient/sidebar-patient/sidebar-patient.component';
 import { LandingPageComponent } from "./components/landing-page/landing-page.component";
@@ -13,7 +15,11 @@ import { SidebarinfComponent } from './components/infermier/sidebar-infirmier/si
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,DashboardMdcnComponent,SidebarComponent, LandingPageComponent, NosChiffresComponent,  DashboardpatientComponent,SidebarpatientComponent, DashboardinfComponent,
+  imports: [
+  RouterOutlet,
+  DashboardpharmaComponent,
+  SidebarpharmaComponent
+  ,DashboardMdcnComponent,SidebarComponent, LandingPageComponent, NosChiffresComponent,  DashboardpatientComponent,SidebarpatientComponent, DashboardinfComponent,
     SidebarinfComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
