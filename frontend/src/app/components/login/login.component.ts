@@ -54,8 +54,12 @@ export class LoginComponent {
                 this.router.navigate(['/infirmier/dashboard']);
                 break;
               case 'laborantin':
-                this.router.navigate(['/dashboardLab/dashboardLab']);
+                this.router.navigate(['/laborantin/dashboardLab']);
                 break;
+              case 'radiologue':
+                this.router.navigate(['/radiologue/dashboardradio']);
+                break;
+
               default:
                 this.router.navigate(['/default-dashboard']);
             }
