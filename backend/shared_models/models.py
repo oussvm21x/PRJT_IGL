@@ -57,7 +57,7 @@ def generate_and_save_qr_code(nss, date_of_birth):
 
     qr_directory = os.path.join(settings.MEDIA_ROOT, "qrcodes")
     os.makedirs(qr_directory, exist_ok=True)
-    file_name = f"{nss}:{date_of_birth}.png"
+    file_name = f"{nss}-{date_of_birth}.png"
     file_path = os.path.join(qr_directory, file_name)
     img.save(file_path)
     return f"qrcodes/{file_name}"  # Return relative path for storage in the database
