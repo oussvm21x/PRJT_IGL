@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes,RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardpharmaComponent } from './components/pharmacie/dashboard-mdcn/dashboard-mdcn.component';
 import { NotificationspharmaComponent } from './components/pharmacie/notifications/notifications.component';
@@ -19,15 +19,15 @@ import { ModifierPatientComponent } from './components/medecin/modifier-patient/
 
 import { DashboardRadioComponent } from './components/radio/dashboard-radio/dashboard-radio.component';
 import { RadiosComponent } from './components/radio/radios/radios.component';
-import {NotificationsRadioComponent  } from './components/radio/notifications-radio/notifications-radio.component';
-import {ParametresRadioComponent  } from './components/radio/parametres-radio/parametres-radio.component';
-import {LayoutRadioComponent  } from './components/radio/layout-radio/layout-radio.component';
+import { NotificationsRadioComponent } from './components/radio/notifications-radio/notifications-radio.component';
+import { ParametresRadioComponent } from './components/radio/parametres-radio/parametres-radio.component';
+import { LayoutRadioComponent } from './components/radio/layout-radio/layout-radio.component';
 
 import { DashboardLabComponent } from './components/laborantin/dashboard-lab/dashboard-lab.component';
 import { BilansComponent } from './components/laborantin/bilans/bilans.component';
-import {NotificationsLabComponent  } from './components/laborantin/notifications-lab/notifications-lab.component';
-import {ParametresLabComponent  } from './components/laborantin/parametres-lab/parametres-lab.component';
-import {LayoutLabComponent  } from './components/laborantin/layout-lab/layout-lab.component';
+import { NotificationsLabComponent } from './components/laborantin/notifications-lab/notifications-lab.component';
+import { ParametresLabComponent } from './components/laborantin/parametres-lab/parametres-lab.component';
+import { LayoutLabComponent } from './components/laborantin/layout-lab/layout-lab.component';
 
 import { DashboardpatientComponent } from './components/patient/dashboard-patient/dashboard-patient.component';
 import { NotificationspatientComponent } from './components/patient/notifications-patient/notifications-patient.component';
@@ -44,26 +44,28 @@ import { ModifierPatientinfComponent } from './components/infermier/modifier-pat
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
+import { LoginComponent } from './components/login/login.component';
+
 export const routes: Routes = [
     {
         path: 'medecin',
-        component:LayoutComponent,
+        component: LayoutComponent,
         children: [
             { path: 'dashboardMdcn', component: DashboardMdcnComponent },
-            { path: 'patients', component: PatientsComponent }, 
-            { path: 'notifications', component: NotificationsComponent }, 
-            { path: 'parametres', component: ParametresComponent }, 
-            { path: 'modifier-patient/:nss', component: ModifierPatientComponent }, 
+            { path: 'patients', component: PatientsComponent },
+            { path: 'notifications', component: NotificationsComponent },
+            { path: 'parametres', component: ParametresComponent },
+            { path: 'modifier-patient/:nss', component: ModifierPatientComponent },
 
         ],
 
-        
-        
+
+
     },
     {
         path: 'landing',
-        component:LandingPageComponent,
-    
+        component: LandingPageComponent,
+
     },
     {
         path: 'pharmacien',
@@ -81,60 +83,60 @@ export const routes: Routes = [
     },
     {
         path: 'infirmier',
-        component:LayoutinfComponent,
+        component: LayoutinfComponent,
         children: [
             { path: 'dashboard', component: DashboardinfComponent },
-            { path: 'patients', component: PatientsinfComponent }, 
-            { path: 'notifications', component: NotificationsinfComponent }, 
-            { path: 'parametres', component: ParametresinfComponent }, 
-            { path: 'modifier-patient/:nss', component: ModifierPatientinfComponent }, 
+            { path: 'patients', component: PatientsinfComponent },
+            { path: 'notifications', component: NotificationsinfComponent },
+            { path: 'parametres', component: ParametresinfComponent },
+            { path: 'modifier-patient/:nss', component: ModifierPatientinfComponent },
 
         ],
-        
+
     },
     {
         path: 'patient',
-        component:LayoutpatientComponent,
+        component: LayoutpatientComponent,
         children: [
             { path: 'dashboard', component: DashboardpatientComponent },
-            { path: 'notifications', component: NotificationspatientComponent }, 
-            { path: 'parametres', component: ParametrespatientComponent }, 
-            { path: 'dossier', component: DossierComponent }, 
+            { path: 'notifications', component: NotificationspatientComponent },
+            { path: 'parametres', component: ParametrespatientComponent },
+            { path: 'dossier', component: DossierComponent },
         ],
     },
-    
+
     {
         path: 'laborantin',
-        component:LayoutLabComponent,
+        component: LayoutLabComponent,
         children: [
             { path: 'dashboardLab', component: DashboardLabComponent },
-            { path: 'bilans', component: BilansComponent }, 
-            { path: 'notifications', component: NotificationsLabComponent }, 
-            { path: 'parametres', component: ParametresLabComponent }, 
+            { path: 'bilans', component: BilansComponent },
+            { path: 'notifications', component: NotificationsLabComponent },
+            { path: 'parametres', component: ParametresLabComponent },
         ],
 
-        
-        
+
+
     },
     {
         path: 'radiologue',
-        component:LayoutRadioComponent,
+        component: LayoutRadioComponent,
         children: [
             { path: 'dashboardradio', component: DashboardRadioComponent },
-            { path: 'radios', component: RadiosComponent }, 
-            { path: 'notifications', component: NotificationsRadioComponent }, 
-            { path: 'parametres', component: ParametresRadioComponent }, 
+            { path: 'radios', component: RadiosComponent },
+            { path: 'notifications', component: NotificationsRadioComponent },
+            { path: 'parametres', component: ParametresRadioComponent },
         ],
-
-        
-        
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
     },
     { path: '', component: LandingPageComponent, pathMatch: 'full' }, // Page par défaut
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-  })
-  export class AppRoutingModule {}
+})
+export class AppRoutingModule { }
 
-  

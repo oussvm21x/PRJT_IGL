@@ -45,19 +45,19 @@ export class LoginComponent {
             const userRole = response.user.role;
             switch (userRole) {
               case 'patient':
-                // this.router.navigate(['/patient-dashboard']);
+                this.router.navigate(['/patient/dashboard']);
                 break;
               case 'medecin':
-                // this.router.navigate(['/doctor-dashboard']);
+                this.router.navigate(['/medecin/dashboardMdcn']);
                 break;
               case 'infirmier':
-                // this.router.navigate(['/nurse-dashboard']);
+                this.router.navigate(['/infirmier/dashboard']);
                 break;
-              case 'laborantien':
-                // this.router.navigate(['/lab-dashboard']);
+              case 'laborantin':
+                this.router.navigate(['/dashboardLab/dashboardLab']);
                 break;
               default:
-                // this.router.navigate(['/default-dashboard']);
+                this.router.navigate(['/default-dashboard']);
             }
           },
           error: (error) => {
