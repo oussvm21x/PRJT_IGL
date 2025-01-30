@@ -210,6 +210,7 @@ class ExamenBiologique(models.Model):
 # Radiologue Model
 class Radiologue(models.Model):
     id_radiologue = models.CharField(max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
 
@@ -217,6 +218,7 @@ class Radiologue(models.Model):
 # Laborantien Model
 class Laborantien(models.Model):
     id_laborantien = models.CharField(max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
 
